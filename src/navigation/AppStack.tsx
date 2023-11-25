@@ -3,24 +3,32 @@ import React, {FC} from "react";
 import {Details} from "../screens/Home/Details/Details";
 import {Home} from "../screens/Home/Home";
 import {Profile} from "../screens/Profile/Profile";
-import {APPROUTES} from "../types/enums";
+import {APP_ROUTES} from "../types/enums";
 import {NavigationParams} from "../types/types";
 
 const Stack = createNativeStackNavigator<NavigationParams>();
 
 export const HomeStack: FC = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name={APPROUTES.home} component={Home} />
-      <Stack.Screen name={APPROUTES.details} component={Details} />
+    <Stack.Navigator screenOptions={{animation: "slide_from_left"}}>
+      <Stack.Screen
+        name={APP_ROUTES.home}
+        component={Home}
+        options={{animation: "slide_from_right"}}
+      />
+      <Stack.Screen
+        name={APP_ROUTES.details}
+        component={Details}
+        options={{animation: "slide_from_right"}}
+      />
     </Stack.Navigator>
   );
 };
 
 export const ProfileStack: FC = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name={APPROUTES.profile} component={Profile} />
+    <Stack.Navigator screenOptions={{animation: "slide_from_left"}}>
+      <Stack.Screen name={APP_ROUTES.profile} component={Profile} />
     </Stack.Navigator>
   );
 };
@@ -28,8 +36,8 @@ export const ProfileStack: FC = () => {
 export const AppStack: FC = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name={APPROUTES.homeStack} component={HomeStack} />
-      <Stack.Screen name={APPROUTES.profileStack} component={ProfileStack} />
+      <Stack.Screen name={APP_ROUTES.homeStack} component={HomeStack} />
+      <Stack.Screen name={APP_ROUTES.profileStack} component={ProfileStack} />
     </Stack.Navigator>
   );
 };

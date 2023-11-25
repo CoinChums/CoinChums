@@ -1,4 +1,4 @@
-enum APPROUTES {
+enum APP_ROUTES {
   homeStack = "HomeStack",
   profileStack = "ProfileStack",
   login = "Login",
@@ -7,4 +7,4 @@ enum APPROUTES {
   profile = "Profile",
 }
 
-export {APPROUTES};
+export {APP_ROUTES};

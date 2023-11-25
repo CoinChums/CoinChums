@@ -1,10 +1,10 @@
-import {APPROUTES} from "./enums";
+import {APP_ROUTES} from "./enums";
 
 export type NavigationParams = {
-  [APPROUTES.login]: undefined;
-  [APPROUTES.home]: undefined;
-  [APPROUTES.details]: undefined;
-  [APPROUTES.profile]: undefined;
-  [APPROUTES.homeStack]: undefined;
-  [APPROUTES.profileStack]: undefined;
+  [APP_ROUTES.login]: undefined;
+  [APP_ROUTES.home]: undefined;
+  [APP_ROUTES.details]: undefined;
+  [APP_ROUTES.profile]: undefined;
+  [APP_ROUTES.homeStack]: undefined;
+  [APP_ROUTES.profileStack]: undefined;
 };
