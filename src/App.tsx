@@ -1,5 +1,5 @@
-import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import React from "react";
+import {SafeAreaView, Text} from "react-native";
 
 //To disable App font scaling
 interface TextWithDefaultProps extends Text {
