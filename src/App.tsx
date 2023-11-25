@@ -1,5 +1,6 @@
 import React from "react";
-import {SafeAreaView, Text} from "react-native";
+import {Text} from "react-native";
+import {MainNavigator} from "./navigation";
 
 //To disable App font scaling
 interface TextWithDefaultProps extends Text {
@@ -12,11 +13,7 @@ interface TextWithDefaultProps extends Text {
   false;
 
 const App = (): JSX.Element => {
-  return (
-    <SafeAreaView>
-      <Text>CarPool</Text>
-    </SafeAreaView>
-  );
+  return <MainNavigator />;
 };
 
 export default App;
