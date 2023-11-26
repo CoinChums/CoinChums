@@ -2,6 +2,7 @@ import {API_URL} from "@env";
 import React from "react";
 import {Button, Text, View} from "react-native";
 import {THome} from "./types";
+import {Loader} from "../../components/Loader";
 
 export const Home: React.FC<THome> = ({navigation}) => {
   return (
@@ -13,6 +14,7 @@ export const Home: React.FC<THome> = ({navigation}) => {
         title="Go to details"
         onPress={() => navigation.navigate("Details")}
       />
+      <Loader />
     </View>
   );
 };
