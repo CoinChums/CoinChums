@@ -5,9 +5,5 @@ import {AppTabs} from "./BottomTabs";
 
 export const MainNavigator = () => {
   const isUserLoggedIn = true;
-  return (
-    <NavigationContainer>
-      {isUserLoggedIn ? <AppTabs /> : <AuthStack />}
-    </NavigationContainer>
-  );
+  return <NavigationContainer>{isUserLoggedIn ? <AppTabs /> : <AuthStack />}</NavigationContainer>;
 };

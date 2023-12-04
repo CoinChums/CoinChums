@@ -1,11 +1,14 @@
 import React, {FC} from "react";
-import {Text, View} from "react-native";
-import {styles} from "./styles";
+import {View} from "react-native";
+import {styles} from "./Login.style";
+import {Button} from "../../components/Button/Button";
 
-export const Login: FC = () => {
+const Login: FC = () => {
   return (
     <View style={styles.sectionContainer}>
-      <Text style={styles.sectionTitle}>Login</Text>
+      <Button title={"Login"} buttonContainerStyle={styles.loginBtn} onPress={() => {}} />
     </View>
   );
 };
+
+export default React.memo(Login);

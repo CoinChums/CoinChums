@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {theme} from "../../themes";
+import dimensions from "../../utils/dimensions";
 
 export const styles = StyleSheet.create({
   sectionContainer: {
@@ -7,8 +7,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  sectionTitle: {
-    fontSize: theme.typography.fontSize.hero,
-    fontWeight: "600",
+  loginBtn: {
+    marginTop: dimensions.viewHeight(15),
   },
 });
