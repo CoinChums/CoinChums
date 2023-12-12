@@ -1,7 +1,7 @@
 import React from "react";
 import {Text, View} from "react-native";
-import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
 import {styles} from "./Settings.style";
+import {BaseLayout} from "../../components";
 
 const Settings = () => {
   return (

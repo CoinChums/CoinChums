@@ -12,7 +12,13 @@ enum APP_ROUTES {
   home = "Home",
   details = "Details",
   profile = "Profile",
-  settings = "Setting",
+  settings = "Settings",
 }
 
-export {APP_ROUTES, STORAGE_KEYS};
+enum APP_LABELS {
+  HOME = "Home",
+  PROFILE = "Profile",
+  SETTINGS = "Settings",
+}
+
+export {APP_ROUTES, STORAGE_KEYS, APP_LABELS};

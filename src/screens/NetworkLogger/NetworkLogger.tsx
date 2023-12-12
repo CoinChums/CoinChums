@@ -1,6 +1,6 @@
 import React from "react";
 import NetworkLogger from "react-native-network-logger";
-import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
+import {BaseLayout} from "../../components";
 
 const NetworkLog = () => {
   return (

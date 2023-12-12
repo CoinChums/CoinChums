@@ -5,6 +5,7 @@
 
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "typeRoots": ["src/types/images.d.ts"],
     "allowJs": true /* Allow javascript files to be compiled. */,
     "strict": true /* Enable all strict type-checking options. */,
     "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. */
