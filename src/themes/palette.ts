@@ -23,7 +23,7 @@ export const palette: IPalette = {
   },
   secondary: {
     dark: '#787878',
-    medium: ' #B4BBB7',
+    medium: '#B4BBB7',
     light: '#B4BBB7',
   },
   success: {
