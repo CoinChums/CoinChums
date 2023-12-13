@@ -1,4 +1,4 @@
-# CarPool
+# CoinChums
 
 ### A React Native & Typescript powered app
 
