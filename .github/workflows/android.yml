@@ -1,4 +1,4 @@
-name: CarPool CI
+name: CoinChums CI
 
 on:
   pull_request:
