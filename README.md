@@ -17,13 +17,13 @@ Built using React Native, Typescript, and Redux Saga.
 Clone the project
 
 ```bash
- $ git clone https://github.com/SurajGupta07/CarPool
+ $ git clone https://github.com/CoinChums/CoinChums.git
 ```
 
 Go to the project directory
 
 ```bash
- $ cd CarPool
+ $ cd CoinChums
 ```
 
 Install dependencies
@@ -60,8 +60,8 @@ User Color Palette user `src/themes/palette.ts` for reference
 
 | Color          | Hex                                                              |
 | -------------- | ---------------------------------------------------------------- |
-| Primary Dark   | ![#F94464](https://via.placeholder.com/10/F94464?text=+) #F94464 |
-| Secondary Dark | ![#787878](https://via.placeholder.com/10/787878?text=+) #787878 |
+| Primary Dark   | ![#0EA47A](https://via.placeholder.com/10/F94464?text=+) #0EA47A |
+| Secondary Dark | ![#B4BBB7](https://via.placeholder.com/10/787878?text=+) #B4BBB7 |
 | Success Dark   | ![#1FA73D](https://via.placeholder.com/10/1FA73D?text=+) #1FA73D |
 | Error Dark     | ![#991B1B](https://via.placeholder.com/10/991B1B?text=+) #991B1B |
 
