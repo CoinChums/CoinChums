@@ -1,10 +1,15 @@
-import {Platform, Dimensions, PixelRatio} from "react-native";
+import {Dimensions, PixelRatio, Platform} from "react-native";
+import DeviceInfo from "react-native-device-info";
 
+export const isTablet = () => DeviceInfo.isTablet();
 const isAndroid = (): boolean => Platform.OS === "android";
 const isIOS = (): boolean => Platform.OS === "ios";
 
 const screenWidth: number = Dimensions.get("window").width;
 const screenHeight: number = Dimensions.get("window").height;
+
+export const getScreenHeight = (): number => Dimensions.get("screen").height;
+export const getScreenWidth = (): number => Dimensions.get("screen").width;
 
 const designHeight: number = 812;
 const designWidth: number = 375;
