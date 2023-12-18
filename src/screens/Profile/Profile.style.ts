@@ -13,4 +13,11 @@ export const styles = StyleSheet.create({
     padding: dimensions.viewWidth(10),
     backgroundColor: theme.palette.primary.light,
   },
+  headerText: {
+    fontSize: 16,
+  },
+  content: {
+    padding: 10,
+    backgroundColor: "#fff",
+  },
 });
