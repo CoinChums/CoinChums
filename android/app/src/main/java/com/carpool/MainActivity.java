@@ -14,7 +14,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "CarPool";
+    return "CoinChums";
   }
 
   @Override
