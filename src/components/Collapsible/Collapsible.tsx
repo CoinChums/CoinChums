@@ -9,7 +9,7 @@ import {ICollapsible} from "./types";
 export const Accordion: React.FC<ICollapsible> = props => {
   const {children, closeExpansion, loading} = props;
 
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(true);
 
   const toggleExpansion = () => {
     setIsExpanded(val => !val);

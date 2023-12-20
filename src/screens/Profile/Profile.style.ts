@@ -1,6 +1,6 @@
 import {StyleSheet} from "react-native";
 import {theme} from "../../themes";
-import dimensions from "../../utils/dimensions";
+import {spacing} from "../../themes/spacing";
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,14 +10,14 @@ export const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    padding: dimensions.viewWidth(10),
+    padding: spacing.normalWidth,
     backgroundColor: theme.palette.primary.light,
   },
   headerText: {
     fontSize: 16,
   },
   content: {
-    padding: 10,
+    padding: spacing.normalWidth,
     backgroundColor: "#fff",
   },
 });

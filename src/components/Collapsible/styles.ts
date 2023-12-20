@@ -1,12 +1,16 @@
 import {StyleSheet} from "react-native";
-import dimensions from "../../utils/dimensions";
 import {theme} from "../../themes";
+import {spacing} from "../../themes/spacing";
 
 export const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
+    backgroundColor: theme.palette.secondary.light,
+    borderRadius: spacing.normalWidth,
+    marginHorizontal: spacing.averageWidth,
+    paddingHorizontal: spacing.normalWidth,
+    paddingVertical: spacing.normalHeight,
   },
 
   icon: {

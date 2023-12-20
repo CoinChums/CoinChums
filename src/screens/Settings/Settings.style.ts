@@ -1,12 +1,13 @@
 import {StyleSheet} from "react-native";
+import {spacing} from "../../themes/spacing";
 import dimensions from "../../utils/dimensions";
 
 export const styles = StyleSheet.create({
   btn: {
-    marginTop: dimensions.viewHeight(30),
+    marginTop: spacing.heroHeight,
   },
   content: {
-    marginTop: dimensions.viewHeight(25),
+    marginTop: spacing.titleHeight,
     paddingHorizontal: dimensions.viewWidth(50),
   },
   header: {
@@ -25,6 +26,6 @@ export const styles = StyleSheet.create({
   themes: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: dimensions.viewHeight(5),
+    marginVertical: spacing.tinyHeight,
   },
 });
