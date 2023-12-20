@@ -6098,6 +6098,16 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-collapsible@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.npmjs.org/react-native-collapsible/-/react-native-collapsible-1.6.1.tgz#27e289831a6955aebde98abff2424a7710f36f02"
+  integrity sha512-orF4BeiXd2hZW7fu9YcqIJXzN6TJcFcddY807D3MAOVktLuW9oQ+RIkrTJ5DR3v9ZOFfREkOjEmS79qeUTvkBQ==
+
+react-native-device-info@^10.12.0:
+  version "10.12.0"
+  resolved "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-10.12.0.tgz#be4e71cbcc9a05e8643b1a419a4450d4cef9bbcc"
+  integrity sha512-gnBkjyZNEqRd+5BNrdzuvmlraHTCH/to2x0Gp9rtDt0O9xWWW1MTYohUVWX9A0Ad2HVYcGanDCIvjWp4ngMZFg==
+
 react-native-dotenv@^3.4.9:
   version "3.4.9"
   resolved "https://registry.yarnpkg.com/react-native-dotenv/-/react-native-dotenv-3.4.9.tgz#621c5b0c1d0c5c7f569bfe5a1d804bec7885c010"

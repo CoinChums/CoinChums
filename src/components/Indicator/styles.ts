@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import dimensions from "../../utils/dimensions";
+import {spacing} from "../../themes/spacing";
 
 export const styles = StyleSheet.create({
   container: {
@@ -11,6 +11,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   loaderStyle: {
-    padding: dimensions.viewWidth(7),
+    padding: spacing.smallWidth,
   },
 });

@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import dimensions from "../../utils/dimensions";
+import {spacing} from "../../themes/spacing";
 
 export const styles = StyleSheet.create({
   sectionContainer: {
@@ -8,6 +8,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   loginBtn: {
-    marginTop: dimensions.viewHeight(15),
+    marginTop: spacing.mediumHeight,
   },
 });

@@ -1,6 +1,6 @@
 import {API_URL} from "@env";
 import React, {useEffect} from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {Text, View} from "react-native";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -12,9 +12,8 @@ import Animated, {
 import {BaseLayout, Button} from "../../components";
 import {IndicatorView} from "../../components/Indicator/Indicator";
 import {loader} from "../../utils/helper";
-import {THome} from "./types";
-import {useFocusEffect} from "@react-navigation/native";
 import {styles} from "./Home.style";
+import {THome} from "./types";
 
 const Home: React.FC<THome> = ({navigation}) => {
   const width = useSharedValue(100);
