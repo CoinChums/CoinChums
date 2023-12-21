@@ -81,7 +81,7 @@ export const styles = StyleSheet.create<Styles>({
     borderLeftWidth: 44,
     borderRightWidth: 0,
     borderBottomWidth: 60,
-    borderBottomColor: theme.palette.success.light,
+    borderBottomColor: theme.palette.secondary.dark,
     marginLeft: -spacing.tinyWidth,
   },
 });

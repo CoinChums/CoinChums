@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {Image, Text, View} from "react-native";
 import {BaseLayout, BottomShape, Button} from "../../components";
-import {styles} from "./Login.style";
+import {styles} from "./Launch.style";
 
 const Login: FC = () => {
   const iconSrc = require("../../assets/images/coinchums.png");

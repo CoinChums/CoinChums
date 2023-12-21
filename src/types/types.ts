@@ -1,7 +1,7 @@
 import {APP_ROUTES} from "../constants/enums";
 
 export type NavigationParams = {
-  [APP_ROUTES.login]: undefined;
+  [APP_ROUTES.launch]: undefined;
   [APP_ROUTES.home]: undefined;
   [APP_ROUTES.details]: undefined;
   [APP_ROUTES.profile]: undefined;
