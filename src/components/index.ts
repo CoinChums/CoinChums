@@ -6,3 +6,4 @@ export * from "./ErrorScreen/ErrorScreen";
 export * from "./Header/Header";
 export * from "./ImageRender/Image";
 export * from "./Indicator/Indicator";
+export * from "./BottomShape/BottomShape";
