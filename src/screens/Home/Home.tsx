@@ -9,7 +9,7 @@ import Animated, {
   withSpring,
   withTiming,
 } from "react-native-reanimated";
-import {BaseLayout, Button} from "../../components";
+import {BaseLayout, Button, Header} from "../../components";
 import {IndicatorView} from "../../components/Indicator/Indicator";
 import {loader} from "../../utils/helper";
 import {styles} from "./Home.style";
@@ -49,6 +49,7 @@ const Home: React.FC<THome> = ({navigation}) => {
 
   return (
     <BaseLayout>
+      <Header title="Home" />
       <Text>
         Accessing env example {"->"} {API_URL}
       </Text>

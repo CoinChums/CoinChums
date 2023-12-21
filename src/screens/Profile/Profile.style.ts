@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
+    marginTop: spacing.tinyHeight,
   },
   header: {
     alignItems: "center",
@@ -18,6 +19,6 @@ export const styles = StyleSheet.create({
   },
   content: {
     padding: spacing.normalWidth,
-    backgroundColor: "#fff",
+    backgroundColor: theme.palette.white.dark,
   },
 });

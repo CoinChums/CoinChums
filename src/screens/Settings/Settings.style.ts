@@ -10,10 +10,6 @@ export const styles = StyleSheet.create({
     marginTop: spacing.titleHeight,
     paddingHorizontal: dimensions.viewWidth(50),
   },
-  header: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
   radio: {
     alignItems: "center",
     borderRadius: 10,
