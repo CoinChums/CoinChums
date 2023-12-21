@@ -11,7 +11,7 @@ export const BaseLayout = React.memo(({children, style}: BaseLayoutProps) => {
 
   return (
     <SafeAreaView style={[styles.safeAreaStyle, style]}>
-      <StatusBar backgroundColor={theme.palette.primary.dark} />
+      <StatusBar backgroundColor={theme.palette.white.dark} />
       {children}
     </SafeAreaView>
   );
