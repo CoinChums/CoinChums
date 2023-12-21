@@ -1,14 +1,15 @@
 import React from "react";
 import {Text, View} from "react-native";
-import {BaseLayout} from "../../components";
+import {BaseLayout, Header} from "../../components";
 import {styles} from "./Profile.style";
 
 const Profile = () => {
   return (
     <BaseLayout>
+      <Header title="Profile" />
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text>Header</Text>
+          <Text>Profile</Text>
         </View>
         <View style={styles.header}>
           <Text>Footer</Text>
