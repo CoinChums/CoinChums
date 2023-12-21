@@ -5,3 +5,4 @@ export * from "./ImageRender/Image";
 export * from "./Collapsible/Collapsible";
 export * from "./ConditionRenderer/ConditionRender";
 export * from "./Header/Header";
+export * from "./ErrorScreen/ErrorScreen";

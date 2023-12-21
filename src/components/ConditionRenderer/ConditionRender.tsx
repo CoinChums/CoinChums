@@ -5,5 +5,5 @@ export const ConditionRenderer: React.FC<{
   C1?: JSX.Element;
   C2?: JSX.Element;
 }> = ({state, C1, C2}) => {
-  return state ? C1 || null : C2 || null;
+  return state ? C1 ?? null : C2 ?? null;
 };
