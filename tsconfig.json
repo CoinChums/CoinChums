@@ -10,5 +10,5 @@
     "strict": true /* Enable all strict type-checking options. */,
     "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. */
   },
-  "exclude": ["node_modules", "babel.config.js", "metro.config.js"]
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }
