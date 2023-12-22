@@ -15,9 +15,11 @@ import {loader} from "../../utils/helper";
 import {styles} from "./Home.style";
 import {NavigationParams, THome} from "./types";
 import {NavigationProp, useNavigation} from "@react-navigation/native";
+import {useTranslation} from "react-i18next";
 
 const Home: React.FC<THome> = () => {
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
+  const {t} = useTranslation();
   const width = useSharedValue(100);
 
   const handlePress = () => {
@@ -52,11 +54,11 @@ const Home: React.FC<THome> = () => {
 
   return (
     <BaseLayout>
-      <Header title="Home" />
+      <Header title={t("common:home")} />
       <Text>
-        Accessing env example {"->"} {API_URL}
+        {t("common:env")} {"->"} {API_URL}
       </Text>
-      <Button title="Go to details" onPress={() => navigation.navigate("Details")} />
+      <Button title={t("common:detailsNavigation")} onPress={() => navigation.navigate("Details")} />
       <IndicatorView isLoading={true} ref={loader} />
       <Animated.View
         style={{
@@ -65,7 +67,7 @@ const Home: React.FC<THome> = () => {
           backgroundColor: "violet",
         }}
       />
-      <Button onPress={handlePress} title="Click me" />
+      <Button onPress={handlePress} title={t("common:clickMe")} />
       <View style={styles.container}>
         <Animated.View style={[styles.square, animatedStyle]} />
       </View>
