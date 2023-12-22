@@ -11,9 +11,9 @@ const Details = () => {
 
   return (
     <BaseLayout>
-      <Header title="Details" onPress={backPress} />
+      <Header title={t("common:details")} onPress={backPress} />
       <Text>{t("common:details")}</Text>
-      <ErrorScreen description={"Something went wrong!"} onBtnPress={() => {}} />
+      <ErrorScreen description={t("common:err")} onBtnPress={() => {}} />
     </BaseLayout>
   );
 };

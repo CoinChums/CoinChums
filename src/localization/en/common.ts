@@ -6,4 +6,6 @@ export default {
   detailsNavigation: "Go to details",
   clickMe: "Click Me",
   env: "Accessing env example",
+  err: "Something Went Wrong!",
+  try: "Try Again",
 };
