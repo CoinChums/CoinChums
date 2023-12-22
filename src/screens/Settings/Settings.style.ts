@@ -1,27 +1,16 @@
 import {StyleSheet} from "react-native";
 import {spacing} from "../../themes/spacing";
 import dimensions from "../../utils/dimensions";
+import {theme} from "../../themes";
 
 export const styles = StyleSheet.create({
-  btn: {
-    marginTop: spacing.heroHeight,
+  language: {
+    paddingTop: spacing.normalHeight,
+    textAlign: "center",
   },
-  content: {
-    marginTop: spacing.titleHeight,
-    paddingHorizontal: dimensions.viewWidth(50),
-  },
-  radio: {
-    alignItems: "center",
-    borderRadius: 10,
-    borderWidth: 1,
-    justifyContent: "center",
-  },
-  selectedRadio: {
-    borderRadius: 10,
-  },
-  themes: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginVertical: spacing.tinyHeight,
+  languageText: {
+    padding: spacing.smallWidth,
+    fontSize: theme.typography.fontSize.big,
+    fontWeight: "600",
   },
 });
