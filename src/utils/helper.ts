@@ -23,4 +23,4 @@ const logger = (...args: any) => {
 
 const loader = createRef<IndicatorRef>();
 
-export {boxShadow, delay, logger, loader};
+export {boxShadow, delay, loader, logger};

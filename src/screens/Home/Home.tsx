@@ -1,5 +1,7 @@
 import {API_URL} from "@env";
+import {NavigationProp, useNavigation} from "@react-navigation/native";
 import React, {useEffect} from "react";
+import {useTranslation} from "react-i18next";
 import {Text, View} from "react-native";
 import Animated, {
   Easing,
@@ -14,8 +16,6 @@ import {IndicatorView} from "../../components/Indicator/Indicator";
 import {loader} from "../../utils/helper";
 import {styles} from "./Home.style";
 import {NavigationParams, THome} from "./types";
-import {NavigationProp, useNavigation} from "@react-navigation/native";
-import {useTranslation} from "react-i18next";
 
 const Home: React.FC<THome> = () => {
   const navigation = useNavigation<NavigationProp<NavigationParams>>();

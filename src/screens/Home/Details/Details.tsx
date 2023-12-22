@@ -1,8 +1,8 @@
 import {useNavigation} from "@react-navigation/native";
 import React from "react";
+import {useTranslation} from "react-i18next";
 import {Text} from "react-native";
 import {BaseLayout, ErrorScreen, Header} from "../../../components";
-import {useTranslation} from "react-i18next";
 
 const Details = () => {
   const navigation = useNavigation();
