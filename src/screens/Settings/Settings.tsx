@@ -19,13 +19,13 @@ const Settings = () => {
 
   return (
     <BaseLayout>
-      <Header title="Settings" />
-      <Accordion loading={false} title={"Settings Page"}>
+      <Header title={t("common:settings")} />
+      <Accordion loading={false} title={t("common:settings")}>
         <>
-          <Text>This is the example usage of the Accordion Component.</Text>
-          <Text>This is the example usage of the Accordion Component.</Text>
-          <Text>This is the example usage of the Accordion Component.</Text>
-          <Text>This is the example usage of the Accordion Component.</Text>
+          <Text>{t("common:accExample")}</Text>
+          <Text>{t("common:accExample")}</Text>
+          <Text>{t("common:accExample")}</Text>
+          <Text>{t("common:accExample")}</Text>
         </>
       </Accordion>
       <View>
