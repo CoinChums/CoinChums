@@ -13,10 +13,13 @@ import {BaseLayout, Button, Header} from "../../components";
 import {IndicatorView} from "../../components/Indicator/Indicator";
 import {loader} from "../../utils/helper";
 import {styles} from "./Home.style";
-import {THome} from "./types";
+import {NavigationParams, THome} from "./types";
+import {NavigationProp, useNavigation} from "@react-navigation/native";
 
-const Home: React.FC<THome> = ({navigation}) => {
+const Home: React.FC<THome> = () => {
+  const navigation = useNavigation<NavigationProp<NavigationParams>>();
   const width = useSharedValue(100);
+
   const handlePress = () => {
     width.value = withSpring(width.value + 50);
   };

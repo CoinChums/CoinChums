@@ -13,7 +13,7 @@ const backgroundPrimaryStyle = {
 };
 
 const backgroundBlackStyle = {
-  backgroundColor: theme.palette.black.medium,
+  backgroundColor: theme.palette.secondary.dark,
 };
 
 const appIconStyle: ImageStyle = {
