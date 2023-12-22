@@ -1,5 +1,5 @@
 import React, {useCallback, useImperativeHandle, useRef, useState} from "react";
-import {ActivityIndicator, Pressable, Text, View} from "react-native";
+import {ActivityIndicator, Pressable, View} from "react-native";
 import {theme} from "../../themes";
 import {styles} from "./styles";
 import {IndicatorProps} from "./types";
