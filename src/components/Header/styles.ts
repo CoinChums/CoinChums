@@ -1,7 +1,7 @@
 import {StyleSheet} from "react-native";
-import dimensions from "../../utils/dimensions";
 import {theme} from "../../themes";
 import {spacing} from "../../themes/spacing";
+import dimensions from "../../utils/dimensions";
 
 export const styles = StyleSheet.create({
   cardContainer: {

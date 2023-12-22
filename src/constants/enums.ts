@@ -21,4 +21,16 @@ enum APP_LABELS {
   SETTINGS = "Settings",
 }
 
-export {APP_ROUTES, STORAGE_KEYS, APP_LABELS};
+enum GENDER {
+  MALE = "MALE",
+  FEMALE = "FEMALE",
+}
+
+enum SCREEN_STATE {
+  "ERROR" = "ERROR",
+  "SUCCESS" = "SUCCESS",
+  "NONE" = "NONE",
+  "LOADING" = "LOADING",
+}
+
+export {APP_LABELS, APP_ROUTES, GENDER, SCREEN_STATE, STORAGE_KEYS};
