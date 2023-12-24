@@ -13,6 +13,7 @@ enum APP_ROUTES {
   details = "Details",
   profile = "Profile",
   settings = "Settings",
+  onboarding = "Onboarding",
 }
 
 enum APP_LABELS {
