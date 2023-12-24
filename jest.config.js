@@ -5,10 +5,11 @@ module.exports = {
   cacheDirectory: "./jest/cache",
   clearMocks: true,
   collectCoverage: true,
+  testEnvironment: "node",
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": require.resolve("babel-jest"),
+    "^.+\\.[jt]sx?$": "babel-jest",
   },
-  transformIgnorePatterns: ["node_modules/(?!@react-native|react-native|@react-navigation)"],
+  transformIgnorePatterns: ["node_modules/(?!@react-native|react-nativ|@react-navigation)"],
   collectCoverageFrom: [
     "**/*.{ts,tsx}",
     "!**/android/**",
