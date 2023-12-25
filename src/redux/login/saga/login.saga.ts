@@ -1,14 +1,14 @@
-import {call, put, takeLatest} from "redux-saga/effects";
-import {GENDER} from "../../../constants/enums";
-import {loginActions} from "../login.store";
-import {LoginPayload} from "../types";
-import {loginSagaActions} from "./login.actions";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { GENDER } from '../../../constants/enums';
+import { loginActions } from '../login.store';
+import { LoginPayload } from '../types';
+import { loginSagaActions } from './login.actions';
 
 const onLogin = () => {
   return {
     allowLogin: true,
-    userId: "test-user-07",
-    userName: "CoinChums",
+    userId: 'test-user-07',
+    userName: 'CoinChums',
     gender: GENDER.MALE,
   };
 };
@@ -24,7 +24,7 @@ function* login() {
     }
   } catch (err) {
     yield put(loginActions.loginFailed());
-    console.error("error", err);
+    console.error('error', err);
   }
 }
 

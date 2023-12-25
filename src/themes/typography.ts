@@ -1,5 +1,5 @@
-import {RFValue} from "react-native-responsive-fontsize";
-import {getScreenHeight, getScreenWidth, isTablet} from "../utils/dimensions";
+import { RFValue } from 'react-native-responsive-fontsize';
+import { getScreenHeight, getScreenWidth, isTablet } from '../utils/dimensions';
 
 const baseHeight = getScreenHeight();
 const baseWidth = getScreenWidth();

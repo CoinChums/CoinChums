@@ -1,13 +1,13 @@
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import React, {FC} from "react";
-import {SVGImage} from "../components";
-import {APP_LABELS, APP_ROUTES} from "../constants/enums";
-import {Settings} from "../screens";
-import {theme} from "../themes";
-import {NavigationParams} from "../types/types";
-import dimensions from "../utils/dimensions";
-import {APP_IMAGES} from "../utils/imageMapper";
-import {HomeStack, ProfileStack} from "./AppStack";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React, { FC } from 'react';
+import { SVGImage } from '../components';
+import { APP_LABELS, APP_ROUTES } from '../constants/enums';
+import { Settings } from '../screens';
+import { theme } from '../themes';
+import { NavigationParams } from '../types/types';
+import dimensions from '../utils/dimensions';
+import { APP_IMAGES } from '../utils/imageMapper';
+import { HomeStack, ProfileStack } from './AppStack';
 
 const Tab = createBottomTabNavigator<NavigationParams>();
 
@@ -29,7 +29,7 @@ const tabBarOptions = {
 
 const tabConfig = {
   tabBarActiveTintColor: theme.palette.primary.medium,
-  tabBarLabelStyle: {fontSize: theme.typography.fontSize.small},
+  tabBarLabelStyle: { fontSize: theme.typography.fontSize.small },
 };
 
 export const AppTabs: FC = () => {

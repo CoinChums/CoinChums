@@ -3,8 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { FC, useEffect, useState } from 'react';
 import { IndicatorView } from '../components';
 import { APP_ROUTES } from '../constants/enums';
-import { Launch } from '../screens';
-import { OnboardingComponent } from '../screens/Onboarding/Onboarding';
+import { Launch, OnboardingComponent } from '../screens';
 import { NavigationParams } from '../types/types';
 
 const Stack = createNativeStackNavigator<NavigationParams>();

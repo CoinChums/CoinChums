@@ -1,12 +1,12 @@
-import React from "react";
-import {Text} from "react-native";
-import {Provider} from "react-redux";
-import {MainNavigator} from "./navigation";
-import reduxStore from "./redux/reduxStore";
+import React from 'react';
+import { Text } from 'react-native';
+import { Provider } from 'react-redux';
+import { MainNavigator } from './navigation';
+import reduxStore from './redux/reduxStore';
 
 //To disable App font scaling
 interface TextWithDefaultProps extends Text {
-  defaultProps?: {allowFontScaling?: boolean};
+  defaultProps?: { allowFontScaling?: boolean };
 }
 
 (Text as unknown as TextWithDefaultProps).defaultProps = (Text as unknown as TextWithDefaultProps).defaultProps ?? {};

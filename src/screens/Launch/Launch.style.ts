@@ -1,7 +1,7 @@
-import {ImageStyle, StyleSheet, ViewStyle} from "react-native";
-import {theme} from "../../themes";
-import {spacing} from "../../themes/spacing";
-import dimensions from "../../utils/dimensions";
+import { ImageStyle, StyleSheet, ViewStyle } from 'react-native';
+import { theme } from '../../themes';
+import { spacing } from '../../themes/spacing';
+import dimensions from '../../utils/dimensions';
 
 const containerStyle: ViewStyle = {
   flex: 1,
@@ -25,7 +25,7 @@ const termsStyle = {
   marginTop: spacing.smallHeight,
   fontSize: theme.typography.fontSize.small,
   color: theme.palette.black.dark,
-  textDecorationLine: "underline",
+  textDecorationLine: 'underline',
 };
 
 interface Styles {
@@ -43,8 +43,8 @@ export const styles = StyleSheet.create<Styles>({
   container: containerStyle,
   authContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingHorizontal: dimensions.viewWidth(70),
   },
   backgroundPrimary: backgroundPrimaryStyle,
@@ -53,11 +53,11 @@ export const styles = StyleSheet.create<Styles>({
     marginTop: spacing.mediumHeight,
     borderRadius: 10,
     height: dimensions.viewHeight(45),
-    width: "100%",
+    width: '100%',
   },
   title: {
     color: theme.palette.white.dark,
-    fontWeight: "500",
+    fontWeight: '500',
     fontSize: theme.typography.fontSize.average,
   },
   appIcon: appIconStyle,

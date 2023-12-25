@@ -1,4 +1,4 @@
-import {useRef} from "react";
+import { useRef } from 'react';
 
 export const useIsFirstRender = () => {
   const isFirstRender = useRef(true);

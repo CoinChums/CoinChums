@@ -3,8 +3,9 @@ import { Image } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 import { APP_ROUTES } from '../../constants/enums';
 import { NavigationParams } from '../../types/types';
+import React from 'react';
 
-export const OnboardingComponent = () => {
+const OnboardingComponent = () => {
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
   const handleNext = () => {
     navigation.navigate(APP_ROUTES.launch);
@@ -35,3 +36,5 @@ export const OnboardingComponent = () => {
     />
   );
 };
+
+export default React.memo(OnboardingComponent);

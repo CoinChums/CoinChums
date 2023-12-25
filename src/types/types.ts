@@ -1,4 +1,4 @@
-import {APP_ROUTES} from "../constants/enums";
+import { APP_ROUTES } from '../constants/enums';
 
 export type NavigationParams = {
   [APP_ROUTES.launch]: undefined;

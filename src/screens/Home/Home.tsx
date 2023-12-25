@@ -1,8 +1,8 @@
-import {API_URL} from "@env";
-import {NavigationProp, useNavigation} from "@react-navigation/native";
-import React, {useEffect} from "react";
-import {useTranslation} from "react-i18next";
-import {Text, View} from "react-native";
+import { API_URL } from '@env';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Text, View } from 'react-native';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -10,16 +10,16 @@ import Animated, {
   withRepeat,
   withSpring,
   withTiming,
-} from "react-native-reanimated";
-import {BaseLayout, Button, Header} from "../../components";
-import {IndicatorView} from "../../components/Indicator/Indicator";
-import {loader} from "../../utils/helper";
-import {styles} from "./Home.style";
-import {NavigationParams, THome} from "./types";
+} from 'react-native-reanimated';
+import { BaseLayout, Button, Header } from '../../components';
+import { IndicatorView } from '../../components/Indicator/Indicator';
+import { loader } from '../../utils/helper';
+import { styles } from './Home.style';
+import { NavigationParams, THome } from './types';
 
 const Home: React.FC<THome> = () => {
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const width = useSharedValue(100);
 
   const handlePress = () => {
@@ -48,26 +48,26 @@ const Home: React.FC<THome> = () => {
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      transform: [{rotate: `${rotation.value}deg`}],
+      transform: [{ rotate: `${rotation.value}deg` }],
     };
   });
 
   return (
     <BaseLayout>
-      <Header title={t("common:home")} />
+      <Header title={t('common:home')} />
       <Text>
-        {t("common:env")} {"->"} {API_URL}
+        {t('common:env')} {'->'} {API_URL}
       </Text>
-      <Button title={t("common:detailsNavigation")} onPress={() => navigation.navigate("Details")} />
+      <Button title={t('common:detailsNavigation')} onPress={() => navigation.navigate('Details')} />
       <IndicatorView isLoading={true} ref={loader} />
       <Animated.View
         style={{
           width,
           height: 100,
-          backgroundColor: "violet",
+          backgroundColor: 'violet',
         }}
       />
-      <Button onPress={handlePress} title={t("common:clickMe")} />
+      <Button onPress={handlePress} title={t('common:clickMe')} />
       <View style={styles.container}>
         <Animated.View style={[styles.square, animatedStyle]} />
       </View>

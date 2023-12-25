@@ -1,5 +1,5 @@
-import common from "./common";
-import language from "../language";
+import common from './common';
+import language from '../language';
 
 export default {
   common,
