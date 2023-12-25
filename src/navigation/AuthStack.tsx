@@ -17,9 +17,9 @@ export const AuthStack: FC = () => {
 
   return (
     <Stack.Navigator screenOptions={{ animation: 'slide_from_left' }}>
-      {/* {isFirstLaunch && ( */}
-      <Stack.Screen name={APP_ROUTES.onboarding} component={OnboardingComponent} options={{ headerShown: false }} />
-      {/* )} */}
+      {isFirstLaunch && (
+        <Stack.Screen name={APP_ROUTES.onboarding} component={OnboardingComponent} options={{ headerShown: false }} />
+      )}
       <Stack.Screen
         name={APP_ROUTES.launch}
         component={Launch}

@@ -3,6 +3,9 @@ export default {
   home: 'Home',
   settings: 'Settings',
 
+  welcome: 'Welcome to CoinChums!',
+  welcomeTitle: 'With CoinChums, Track balances effortlessly among friends or groups',
+  next: 'Next',
   change_language: 'Change Language',
   terms: 'Terms & Condition',
   detailsNavigation: 'Go to details',

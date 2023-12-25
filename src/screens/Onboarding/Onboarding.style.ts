@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { spacing } from '../../themes/spacing';
 import { theme } from '../../themes';
+import { spacing } from '../../themes/spacing';
 
 export const styles = StyleSheet.create({
   container: {
@@ -20,8 +20,10 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.palette.white.dark,
   },
   btn: {
+    paddingTop: spacing.normalHeight,
     color: theme.palette.primary.light,
     fontSize: theme.typography.fontSize.average,
+    textAlign: 'center',
     fontWeight: '500',
   },
   subTitle: {
@@ -31,5 +33,18 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '400',
     opacity: 0.6,
+  },
+  lineContainer: {
+    marginVertical: spacing.bigHeight,
+    backgroundColor: theme.palette.white.dark,
+  },
+  horizontalLine: {
+    backgroundColor: theme.palette.white.light,
+  },
+  linearGradient: {
+    borderRadius: 3,
+    height: 8,
+    alignSelf: 'center',
+    width: '90%',
   },
 });
