@@ -1,26 +1,15 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { IndicatorView } from '../components';
 import { APP_ROUTES } from '../constants/enums';
+import { useAppFirstLaunch } from '../hooks';
 import { Launch, OnboardingComponent } from '../screens';
 import { NavigationParams } from '../types/types';
 
 const Stack = createNativeStackNavigator<NavigationParams>();
 
 export const AuthStack: FC = () => {
-  const [isFirstLaunch, setIsFirstLaunch] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    AsyncStorage.getItem('appLaunched').then(value => {
-      if (value === null) {
-        AsyncStorage.setItem('appLaunched', 'true');
-        setIsFirstLaunch(true);
-      } else {
-        setIsFirstLaunch(false);
-      }
-    });
-  }, []);
+  const isFirstLaunch = useAppFirstLaunch();
 
   if (isFirstLaunch === null) {
     return <IndicatorView isLoading={true} />;
