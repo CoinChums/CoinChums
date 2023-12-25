@@ -8,6 +8,7 @@ import { APP_ROUTES } from '../../constants/enums';
 import { theme } from '../../themes';
 import { NavigationParams } from '../../types/types';
 import { styles } from './Onboarding.style';
+import { ExpenseExample } from './Card';
 
 const OnboardingComponent = () => {
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
@@ -27,11 +28,12 @@ const OnboardingComponent = () => {
         <View style={styles.lineContainer}>
           <LinearGradient
             style={styles.linearGradient}
-            colors={[theme.palette.warning.dark, theme.palette.warning.medium, theme.palette.warning.light]} // Yellow gradient colors
+            colors={[theme.palette.warning.dark, theme.palette.warning.light, theme.palette.white.dark]} // Yellow gradient colors
             start={{ x: 0, y: 0.1 }}
             end={{ x: 1, y: 0.1 }}
           />
         </View>
+        <ExpenseExample />
         <TouchableOpacity onPress={handleNext}>
           <Text style={styles.btn}>{t('common:next')}</Text>
         </TouchableOpacity>

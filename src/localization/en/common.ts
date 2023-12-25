@@ -6,6 +6,7 @@ export default {
   welcome: 'Welcome to CoinChums!',
   welcomeTitle: 'With CoinChums, Track balances effortlessly among friends or groups',
   next: 'Next',
+  addExpense: 'Add an expense',
   change_language: 'Change Language',
   terms: 'Terms & Condition',
   detailsNavigation: 'Go to details',

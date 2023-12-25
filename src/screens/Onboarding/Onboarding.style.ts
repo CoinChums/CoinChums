@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
+import dimensions from '../../utils/dimensions';
 
 export const styles = StyleSheet.create({
   container: {
@@ -46,5 +47,18 @@ export const styles = StyleSheet.create({
     height: 8,
     alignSelf: 'center',
     width: '90%',
+  },
+  headerContainer: {
+    borderWidth: 2,
+    borderRadius: 4,
+    paddingBottom: spacing.normalHeight,
+    borderColor: theme.palette.secondary.light,
+  },
+  header: {
+    flexDirection: 'row',
+    height: dimensions.viewHeight(44),
+    paddingHorizontal: spacing.normalWidth,
+    alignItems: 'center',
+    backgroundColor: theme.palette.primary.light,
   },
 });
