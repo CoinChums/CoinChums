@@ -1,18 +1,18 @@
-import React from "react";
-import {Text, TouchableOpacity, View} from "react-native";
-import Animated, {useAnimatedStyle, useSharedValue, withSpring} from "react-native-reanimated";
-import {styles} from "./styles";
-import {AnimatedButtonProps, TButtonProps} from "./types";
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import { styles } from './styles';
+import { AnimatedButtonProps, TButtonProps } from './types';
 
 const AnimatedButtonComponent = Animated.createAnimatedComponent(TouchableOpacity);
 
 export const AnimatedTouchableOpacity = React.memo((props: AnimatedButtonProps) => {
-  const {containerStyle} = props;
+  const { containerStyle } = props;
   const scaleValue = useSharedValue(1);
 
   const animatedButtonStyle = useAnimatedStyle(() => {
     return {
-      transform: [{scale: scaleValue.value}],
+      transform: [{ scale: scaleValue.value }],
     };
   });
 
@@ -29,7 +29,7 @@ export const AnimatedTouchableOpacity = React.memo((props: AnimatedButtonProps) 
 });
 
 export const Button = React.memo((props: TButtonProps) => {
-  const {buttonContainerStyle, title, titleContainerStyle, titleStyle} = props;
+  const { buttonContainerStyle, title, titleContainerStyle, titleStyle } = props;
 
   return (
     <AnimatedTouchableOpacity containerStyle={[styles.buttonContainer, buttonContainerStyle]} {...props}>

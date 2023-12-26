@@ -1,4 +1,4 @@
-import dimensions from "../utils/dimensions";
+import dimensions from '../utils/dimensions';
 
 export interface ISpacing {
   tinyHeight: number;

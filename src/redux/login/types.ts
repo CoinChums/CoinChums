@@ -1,4 +1,4 @@
-import {GENDER, SCREEN_STATE} from "../../constants/enums";
+import { GENDER, SCREEN_STATE } from '../../constants/enums';
 
 export type LoggedInUserDetails = {
   name: string;

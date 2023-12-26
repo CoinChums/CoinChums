@@ -1,11 +1,11 @@
-import React from "react";
-import NetworkLogger from "react-native-network-logger";
-import {BaseLayout} from "../../components";
+import React from 'react';
+import NetworkLogger from 'react-native-network-logger';
+import { BaseLayout } from '../../components';
 
 const NetworkLog = () => {
   return (
     <BaseLayout>
-      <NetworkLogger theme={"light"} />
+      <NetworkLogger theme={'light'} />
     </BaseLayout>
   );
 };

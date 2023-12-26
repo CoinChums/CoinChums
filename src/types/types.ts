@@ -1,4 +1,4 @@
-import {APP_ROUTES} from "../constants/enums";
+import { APP_ROUTES } from '../constants/enums';
 
 export type NavigationParams = {
   [APP_ROUTES.launch]: undefined;
@@ -8,4 +8,5 @@ export type NavigationParams = {
   [APP_ROUTES.homeStack]: undefined;
   [APP_ROUTES.profileStack]: undefined;
   [APP_ROUTES.settings]: undefined;
+  [APP_ROUTES.onboarding]: undefined;
 };

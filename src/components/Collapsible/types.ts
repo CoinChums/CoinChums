@@ -1,4 +1,4 @@
-import {StyleProp, TextStyle, ViewStyle} from "react-native";
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export interface ICollapsible {
   children: JSX.Element;

@@ -1,4 +1,4 @@
-import {StyleProp, TextStyle, TouchableOpacityProps, ViewStyle} from "react-native";
+import { StyleProp, TextStyle, TouchableOpacityProps, ViewStyle } from 'react-native';
 
 export interface ExtraButtonProps {
   buttonContainerStyle?: StyleProp<ViewStyle>;
@@ -9,7 +9,7 @@ export interface ExtraButtonProps {
   leftIcon?: JSX.Element;
 }
 
-export type AnimatedButtonProps = Omit<TouchableOpacityProps, "onPressIn" | "onPressOut" | "style"> & {
+export type AnimatedButtonProps = Omit<TouchableOpacityProps, 'onPressIn' | 'onPressOut' | 'style'> & {
   containerStyle?: StyleProp<ViewStyle>;
 };
 

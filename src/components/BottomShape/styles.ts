@@ -1,7 +1,7 @@
-import {StyleSheet, ViewStyle} from "react-native";
-import {theme} from "../../themes";
-import {spacing} from "../../themes/spacing";
-import dimensions from "../../utils/dimensions";
+import { StyleSheet, ViewStyle } from 'react-native';
+import { theme } from '../../themes';
+import { spacing } from '../../themes/spacing';
+import dimensions from '../../utils/dimensions';
 
 interface Styles {
   tricontainer: ViewStyle;
@@ -17,14 +17,14 @@ interface Styles {
 const triangleBaseStyle = {
   width: 0,
   height: 0,
-  borderStyle: "solid",
-  borderLeftColor: "transparent",
-  borderRightColor: "transparent",
+  borderStyle: 'solid',
+  borderLeftColor: 'transparent',
+  borderRightColor: 'transparent',
 };
 
 export const styles = StyleSheet.create<Styles>({
   tricontainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   triangleShape: {
     ...triangleBaseStyle,
@@ -49,7 +49,7 @@ export const styles = StyleSheet.create<Styles>({
     borderLeftWidth: 0,
     borderRightWidth: 60,
     borderBottomWidth: 60,
-    borderRightColor: "transparent",
+    borderRightColor: 'transparent',
     borderBottomColor: theme.palette.black.light,
   },
   triangleCenter: {

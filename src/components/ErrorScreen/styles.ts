@@ -1,26 +1,26 @@
-import {StyleSheet} from "react-native";
-import {theme} from "../../themes";
-import {spacing} from "../../themes/spacing";
-import dimensions from "../../utils/dimensions";
+import { StyleSheet } from 'react-native';
+import { theme } from '../../themes';
+import { spacing } from '../../themes/spacing';
+import dimensions from '../../utils/dimensions';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   description: {
     color: theme.palette.black.dark,
     opacity: 0.6,
     fontSize: theme.typography.fontSize.medium,
-    fontWeight: "500",
+    fontWeight: '500',
     marginBottom: spacing.titleHeight,
     marginHorizontal: spacing.titleWidth,
-    textAlign: "center",
+    textAlign: 'center',
   },
   icon: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: theme.palette.black.light,
     borderRadius: dimensions.viewWidth(200),
     height: dimensions.viewWidth(48),
@@ -28,9 +28,9 @@ export const styles = StyleSheet.create({
     marginBottom: dimensions.viewHeight(8),
   },
   btn: {
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
     paddingVertical: spacing.normalWidth,
     paddingHorizontal: spacing.titleWidth,
     marginLeft: spacing.titleWidth,
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
   },
   btnText: {
     color: theme.palette.white.dark,
-    fontWeight: "700",
+    fontWeight: '700',
     fontSize: theme.typography.fontSize.medium,
     marginLeft: spacing.normalWidth,
   },

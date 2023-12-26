@@ -1,4 +1,4 @@
-import {NavigationProp} from "@react-navigation/native";
+import { NavigationProp } from '@react-navigation/native';
 
 export type NavigationParams = {
   Home: undefined;

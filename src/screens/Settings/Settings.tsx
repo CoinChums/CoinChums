@@ -1,36 +1,36 @@
-import {DefaultTheme} from "@react-navigation/native";
-import {t} from "i18next";
-import React, {useState} from "react";
-import {useTranslation} from "react-i18next";
-import {Text, View} from "react-native";
-import {Accordion, BaseLayout, Header} from "../../components";
-import {theme} from "../../themes";
-import {styles} from "./Settings.style";
+import { DefaultTheme } from '@react-navigation/native';
+import { t } from 'i18next';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Text, View } from 'react-native';
+import { Accordion, BaseLayout, Header } from '../../components';
+import { theme } from '../../themes';
+import { styles } from './Settings.style';
 
 const languages = [
-  {code: "en", label: t("language:english")},
-  {code: "ka", label: t("language:kannada")},
+  { code: 'en', label: t('language:english') },
+  { code: 'ka', label: t('language:kannada') },
 ];
 
 const Settings = () => {
-  const {t, i18n} = useTranslation();
-  const [lang, setLang] = useState("en");
+  const { t, i18n } = useTranslation();
+  const [lang, setLang] = useState('en');
   const selectedLanguageCode = i18n.language;
 
   return (
     <BaseLayout>
-      <Header title={t("common:settings")} />
-      <Accordion loading={false} title={t("common:settings")}>
+      <Header title={t('common:settings')} />
+      <Accordion loading={false} title={t('common:settings')}>
         <>
-          <Text>{t("common:accExample")}</Text>
-          <Text>{t("common:accExample")}</Text>
-          <Text>{t("common:accExample")}</Text>
-          <Text>{t("common:accExample")}</Text>
+          <Text>{t('common:accExample')}</Text>
+          <Text>{t('common:accExample')}</Text>
+          <Text>{t('common:accExample')}</Text>
+          <Text>{t('common:accExample')}</Text>
         </>
       </Accordion>
       <View>
         <Text style={styles.language}>
-          {t("common:change_language")} ({lang})
+          {t('common:change_language')} ({lang})
         </Text>
         {languages.map(currentLang => {
           const selectedLanguage = currentLang.code === selectedLanguageCode;
@@ -42,7 +42,7 @@ const Settings = () => {
                 i18n.changeLanguage(currentLang.code);
               }}
               style={[
-                {color: selectedLanguage ? DefaultTheme.colors.primary : theme.palette.black.dark},
+                { color: selectedLanguage ? DefaultTheme.colors.primary : theme.palette.black.dark },
                 styles.languageText,
               ]}>
               {currentLang.label}
