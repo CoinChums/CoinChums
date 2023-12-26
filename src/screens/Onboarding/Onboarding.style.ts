@@ -3,41 +3,43 @@ import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
 import dimensions from '../../utils/dimensions';
 
+const { palette, typography } = theme;
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.palette.white.dark,
+    backgroundColor: palette.white.dark,
     paddingHorizontal: spacing.averageWidth,
     paddingVertical: spacing.heroHeight,
   },
   headerText: {
-    fontSize: theme.typography.fontSize.subTitle,
-    color: theme.palette.black.dark,
+    fontSize: typography.fontSize.subTitle,
+    color: palette.black.dark,
     textAlign: 'center',
     fontWeight: '500',
     opacity: 0.8,
   },
   bottomShape: {
-    backgroundColor: theme.palette.white.dark,
+    backgroundColor: palette.white.dark,
   },
   btn: {
     marginTop: spacing.heroHeight,
-    color: theme.palette.primary.light,
-    fontSize: theme.typography.fontSize.average,
+    color: palette.primary.light,
+    fontSize: typography.fontSize.average,
     textAlign: 'center',
     fontWeight: '500',
   },
   subTitle: {
     paddingTop: spacing.averageHeight,
-    fontSize: theme.typography.fontSize.big,
-    color: theme.palette.black.dark,
+    fontSize: typography.fontSize.big,
+    color: palette.black.dark,
     textAlign: 'center',
     fontWeight: '400',
     opacity: 0.6,
   },
   lineContainer: {
     marginVertical: spacing.heroHeight,
-    backgroundColor: theme.palette.white.dark,
+    backgroundColor: palette.white.dark,
   },
   linearGradient: {
     borderRadius: 3,
@@ -52,14 +54,14 @@ export const styles = StyleSheet.create({
     borderBottomRightRadius: 4,
     borderBottomLeftRadius: 4,
     paddingVertical: spacing.normalHeight,
-    borderColor: theme.palette.secondary.light,
+    borderColor: palette.secondary.light,
   },
   header: {
     flexDirection: 'row',
     height: dimensions.viewHeight(54),
     paddingHorizontal: spacing.normalWidth,
-    borderColor: theme.palette.primary.light,
-    backgroundColor: theme.palette.primary.light,
+    borderColor: palette.primary.light,
+    backgroundColor: palette.primary.light,
     alignItems: 'center',
     borderWidth: 2,
     borderTopRightRadius: 4,
@@ -67,8 +69,8 @@ export const styles = StyleSheet.create({
   },
   cardHeader: {
     flex: 1,
-    fontSize: theme.typography.fontSize.medium,
-    color: theme.palette.white.dark,
+    fontSize: typography.fontSize.medium,
+    color: palette.white.dark,
     textAlign: 'center',
     fontWeight: '500',
   },
@@ -78,18 +80,18 @@ export const styles = StyleSheet.create({
     paddingHorizontal: spacing.averageWidth,
   },
   divider: {
-    borderColor: theme.palette.secondary.light,
+    borderColor: palette.secondary.light,
     paddingBottom: spacing.normalHeight,
     borderBottomWidth: 0.5,
   },
   text: {
-    fontSize: theme.typography.fontSize.medium,
+    fontSize: typography.fontSize.medium,
     fontWeight: '400',
-    color: theme.palette.secondary.dark,
+    color: palette.secondary.dark,
     marginRight: spacing.tinyWidth,
   },
   bold: {
-    color: theme.palette.black.dark,
+    color: palette.black.dark,
     fontWeight: '700',
     opacity: 0.8,
   },
@@ -99,25 +101,25 @@ export const styles = StyleSheet.create({
     paddingHorizontal: spacing.tinyWidth,
     paddingVertical: spacing.tinyHeight,
     marginRight: spacing.tinyWidth,
-    borderColor: theme.palette.secondary.light,
+    borderColor: palette.secondary.light,
   },
   margin: {
     marginTop: spacing.normalHeight,
   },
   price: {
     borderBottomWidth: 1.5,
-    borderBottomColor: theme.palette.primary.light,
+    borderBottomColor: palette.primary.light,
     marginLeft: spacing.smallHeight,
-    fontSize: theme.typography.fontSize.big,
-    color: theme.palette.black.light,
+    fontSize: typography.fontSize.big,
+    color: palette.black.light,
     fontWeight: '500',
     width: '40%',
   },
   priceIcon: {
     borderWidth: 1.5,
-    paddingHorizontal: spacing.normalWidth,
+    paddingHorizontal: spacing.mediumWidth,
     paddingVertical: spacing.normalHeight,
-    borderColor: theme.palette.secondary.dark,
+    borderColor: palette.secondary.dark,
     borderRadius: 4,
   },
   spacing: {
