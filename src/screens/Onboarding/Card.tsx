@@ -9,14 +9,16 @@ export const ExpenseExample = () => {
   const { t } = useTranslation();
 
   return (
-    <View style={styles.headerContainer}>
+    <View>
       <View style={styles.header}>
         <SVGImage assetSrc={APP_IMAGES.xmark} height={spacing.bigHeight} width={spacing.bigWidth} />
-        <Text>{t('common:addExpense')}</Text>
+        <Text style={styles.cardHeader}>{t('common:addExpense')}</Text>
       </View>
-      <Text>
-        With <Text>you</Text> and: <Text>Avinash V.</Text> +2
-      </Text>
+      <View style={styles.headerContainer}>
+        <Text>
+          With <Text>you</Text> and: <Text>Avinash V.</Text> +2
+        </Text>
+      </View>
     </View>
   );
 };
