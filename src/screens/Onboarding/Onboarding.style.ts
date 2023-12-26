@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.palette.white.dark,
     paddingHorizontal: spacing.averageWidth,
-    paddingVertical: spacing.bigHeight,
+    paddingVertical: spacing.heroHeight,
   },
   headerText: {
     fontSize: theme.typography.fontSize.subTitle,
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.palette.white.dark,
   },
   btn: {
-    paddingTop: spacing.normalHeight,
+    marginTop: spacing.heroHeight,
     color: theme.palette.primary.light,
     fontSize: theme.typography.fontSize.average,
     textAlign: 'center',
@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
     opacity: 0.6,
   },
   lineContainer: {
-    marginVertical: spacing.bigHeight,
+    marginVertical: spacing.heroHeight,
     backgroundColor: theme.palette.white.dark,
   },
   linearGradient: {
@@ -53,11 +53,10 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: 4,
     paddingVertical: spacing.normalHeight,
     borderColor: theme.palette.secondary.light,
-    paddingHorizontal: spacing.averageWidth,
   },
   header: {
     flexDirection: 'row',
-    height: dimensions.viewHeight(44),
+    height: dimensions.viewHeight(54),
     paddingHorizontal: spacing.normalWidth,
     borderColor: theme.palette.primary.light,
     backgroundColor: theme.palette.primary.light,
@@ -72,5 +71,56 @@ export const styles = StyleSheet.create({
     color: theme.palette.white.dark,
     textAlign: 'center',
     fontWeight: '500',
+  },
+  textContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: spacing.averageWidth,
+  },
+  divider: {
+    borderColor: theme.palette.secondary.light,
+    paddingBottom: spacing.normalHeight,
+    borderBottomWidth: 0.5,
+  },
+  text: {
+    fontSize: theme.typography.fontSize.medium,
+    fontWeight: '400',
+    color: theme.palette.secondary.dark,
+    marginRight: spacing.tinyWidth,
+  },
+  bold: {
+    color: theme.palette.black.dark,
+    fontWeight: '700',
+    opacity: 0.8,
+  },
+  userName: {
+    borderWidth: 1,
+    borderRadius: dimensions.viewWidth(6),
+    paddingHorizontal: spacing.tinyWidth,
+    paddingVertical: spacing.tinyHeight,
+    marginRight: spacing.tinyWidth,
+    borderColor: theme.palette.secondary.light,
+  },
+  margin: {
+    marginTop: spacing.normalHeight,
+  },
+  price: {
+    borderBottomWidth: 1.5,
+    borderBottomColor: theme.palette.primary.light,
+    marginLeft: spacing.smallHeight,
+    fontSize: theme.typography.fontSize.big,
+    color: theme.palette.black.light,
+    fontWeight: '500',
+    width: '40%',
+  },
+  priceIcon: {
+    borderWidth: 1.5,
+    paddingHorizontal: spacing.normalWidth,
+    paddingVertical: spacing.normalHeight,
+    borderColor: theme.palette.secondary.dark,
+    borderRadius: 4,
+  },
+  spacing: {
+    marginVertical: spacing.normalHeight,
   },
 });

@@ -8,7 +8,7 @@ import { APP_ROUTES } from '../../constants/enums';
 import { theme } from '../../themes';
 import { NavigationParams } from '../../types/types';
 import { styles } from './Onboarding.style';
-import { ExpenseExample } from './Card';
+import { ExpenseExample } from './components/Card';
 
 const OnboardingComponent = () => {
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
@@ -21,10 +21,8 @@ const OnboardingComponent = () => {
   return (
     <>
       <View style={styles.container}>
-        <View>
-          <Text style={styles.headerText}>{t('common:welcome')}</Text>
-          <Text style={styles.subTitle}>{t('common:welcomeTitle')}</Text>
-        </View>
+        <Text style={styles.headerText}>{t('common:welcome')}</Text>
+        <Text style={styles.subTitle}>{t('common:welcomeTitle')}</Text>
         <View style={styles.lineContainer}>
           <LinearGradient
             style={styles.linearGradient}
