@@ -57,7 +57,7 @@ export const styles = StyleSheet.create<Styles>({
   },
   title: {
     color: theme.palette.white.dark,
-    fontWeight: '500',
+    fontFamily: theme.typography.fontFamily[700],
     fontSize: theme.typography.fontSize.average,
   },
   appIcon: appIconStyle,

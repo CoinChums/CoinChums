@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { spacing } from '../../themes/spacing';
-import dimensions from '../../utils/dimensions';
 import { theme } from '../../themes';
+import { spacing } from '../../themes/spacing';
 
 export const styles = StyleSheet.create({
   language: {
@@ -11,6 +10,6 @@ export const styles = StyleSheet.create({
   languageText: {
     padding: spacing.smallWidth,
     fontSize: theme.typography.fontSize.big,
-    fontWeight: '600',
+    fontFamily: theme.typography.fontFamily[700],
   },
 });

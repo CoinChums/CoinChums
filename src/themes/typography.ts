@@ -16,6 +16,13 @@ export interface ITypography {
     subTitle: number;
     hero: number;
   };
+  fontFamily: {
+    '100': string;
+    '300': string;
+    '400': string;
+    '700': string;
+    '900': string;
+  };
 }
 
 const fontSize = {
@@ -29,6 +36,16 @@ const fontSize = {
   subTitle: isTablet() ? Number(RFValue(32, baseWidth).toFixed(2)) : Number(RFValue(32, baseHeight).toFixed(2)),
   hero: isTablet() ? Number(RFValue(40, baseWidth).toFixed(2)) : Number(RFValue(40, baseHeight).toFixed(2)),
 };
+
+const fontFamily = {
+  '100': 'Lato-Thin',
+  '300': 'Lato-Light',
+  '400': 'Lato-Regular',
+  '700': 'Lato-Bold',
+  '900': 'Lato-Black',
+};
+
 export const typography: ITypography = {
   fontSize,
+  fontFamily,
 };

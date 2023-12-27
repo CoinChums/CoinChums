@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     color: theme.palette.black.dark,
     opacity: 0.6,
     fontSize: theme.typography.fontSize.medium,
-    fontWeight: '500',
+    fontFamily: theme.typography.fontFamily[700],
     marginBottom: spacing.titleHeight,
     marginHorizontal: spacing.titleWidth,
     textAlign: 'center',
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
   },
   btnText: {
     color: theme.palette.white.dark,
-    fontWeight: '700',
+    fontFamily: theme.typography.fontFamily[900],
     fontSize: theme.typography.fontSize.medium,
     marginLeft: spacing.normalWidth,
   },
