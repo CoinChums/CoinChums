@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.palette.primary.light,
   },
   headerText: {
-    fontSize: 16,
+    fontSize: theme.typography.fontSize.medium,
   },
   content: {
     padding: spacing.normalWidth,

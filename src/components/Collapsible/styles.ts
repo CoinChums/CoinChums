@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
   },
   sectionTitle: {
     color: theme.palette.black.medium,
-    fontWeight: '700',
+    fontFamily: theme.typography.fontFamily[700],
     fontSize: theme.typography.fontSize.medium,
   },
 });

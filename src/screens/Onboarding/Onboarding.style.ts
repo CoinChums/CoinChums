@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     fontSize: typography.fontSize.subTitle,
     color: palette.black.dark,
     textAlign: 'center',
-    fontWeight: '500',
+    fontFamily: theme.typography.fontFamily[700],
     opacity: 0.8,
   },
   bottomShape: {
@@ -27,14 +27,14 @@ export const styles = StyleSheet.create({
     color: palette.primary.light,
     fontSize: typography.fontSize.average,
     textAlign: 'center',
-    fontWeight: '500',
+    fontFamily: theme.typography.fontFamily[700],
   },
   subTitle: {
     paddingTop: spacing.averageHeight,
     fontSize: typography.fontSize.big,
     color: palette.black.dark,
     textAlign: 'center',
-    fontWeight: '400',
+    fontFamily: theme.typography.fontFamily[400],
     opacity: 0.6,
   },
   lineContainer: {
@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
     fontSize: typography.fontSize.medium,
     color: palette.white.dark,
     textAlign: 'center',
-    fontWeight: '500',
+    fontFamily: theme.typography.fontFamily[700],
   },
   textContainer: {
     flexDirection: 'row',
@@ -86,13 +86,13 @@ export const styles = StyleSheet.create({
   },
   text: {
     fontSize: typography.fontSize.medium,
-    fontWeight: '400',
+    fontFamily: theme.typography.fontFamily[400],
     color: palette.secondary.dark,
     marginRight: spacing.tinyWidth,
   },
   bold: {
     color: palette.black.dark,
-    fontWeight: '700',
+    fontFamily: theme.typography.fontFamily[900],
     opacity: 0.8,
   },
   userName: {
@@ -112,7 +112,7 @@ export const styles = StyleSheet.create({
     marginLeft: spacing.smallHeight,
     fontSize: typography.fontSize.big,
     color: palette.black.light,
-    fontWeight: '500',
+    fontFamily: theme.typography.fontFamily[700],
     width: '40%',
   },
   priceIcon: {

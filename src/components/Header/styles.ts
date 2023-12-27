@@ -15,6 +15,6 @@ export const styles = StyleSheet.create({
   title: {
     color: theme.palette.black.dark,
     fontSize: theme.typography.fontSize.average,
-    fontWeight: '500',
+    fontFamily: theme.typography.fontFamily[700],
   },
 });
