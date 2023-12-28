@@ -13,6 +13,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { BaseLayout, Button, Header } from '../../components';
 import { IndicatorView } from '../../components/Indicator/Indicator';
+import { APP_ROUTES } from '../../constants/enums';
 import { loader } from '../../utils/helper';
 import { styles } from './Home.style';
 import { NavigationParams, THome } from './types';
@@ -58,7 +59,7 @@ const Home: React.FC<THome> = () => {
       <Text>
         {t('common:env')} {'->'} {API_URL}
       </Text>
-      <Button title={t('common:detailsNavigation')} onPress={() => navigation.navigate('Details')} />
+      <Button title={t('common:detailsNavigation')} onPress={() => navigation.navigate(APP_ROUTES.details)} />
       <IndicatorView isLoading={true} ref={loader} />
       <Animated.View
         style={{

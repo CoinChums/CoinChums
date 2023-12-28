@@ -1,18 +1,19 @@
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Image, Text, View } from 'react-native';
 import { BaseLayout, BottomShape, Button } from '../../components';
-import { loginAction } from '../../redux/login/saga/login.actions';
-import { useAppDispatch } from '../../redux/reduxStore';
+import { APP_ROUTES } from '../../constants/enums';
+import { NavigationParams } from '../../types/types';
 import { styles } from './Launch.style';
 
 const Login: FC = () => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
+  const navigation = useNavigation<NavigationProp<NavigationParams>>();
   const iconSrc = require('../../assets/images/coinchums.png');
 
   const loginHandler = () => {
-    dispatch(loginAction.loginUser());
+    navigation.navigate(APP_ROUTES.auth);
   };
 
   return (
