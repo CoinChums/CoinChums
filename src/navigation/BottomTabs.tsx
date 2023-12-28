@@ -4,6 +4,7 @@ import { SVGImage } from '../components';
 import { APP_LABELS, APP_ROUTES } from '../constants/enums';
 import { Settings } from '../screens';
 import { theme } from '../themes';
+import { spacing } from '../themes/spacing';
 import { NavigationParams } from '../types/types';
 import dimensions from '../utils/dimensions';
 import { APP_IMAGES } from '../utils/imageMapper';
@@ -18,12 +19,11 @@ const renderTabBarIcon = (assetSrc: string) => () => (
 const tabBarOptions = {
   headerShown: false,
   tabBarStyle: {
-    height: dimensions.viewHeight(66),
+    minHeight: dimensions.viewHeight(70),
     backgroundColor: theme.palette.black.light,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    paddingBottom: dimensions.viewHeight(10),
-    paddingTop: dimensions.viewHeight(10),
+    paddingBottom: spacing.tinyHeight,
   },
 };
 
