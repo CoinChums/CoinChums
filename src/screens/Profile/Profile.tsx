@@ -8,13 +8,13 @@ const Profile = () => {
   const { t } = useTranslation();
   return (
     <BaseLayout>
-      <Header title={t('common:profile')} />
+      <Header title={t('profile')} />
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text>{t('common:profile')}</Text>
+          <Text>{t('profile')}</Text>
         </View>
         <View style={styles.header}>
-          <Text>{t('common:footer')}</Text>
+          <Text>{t('footer')}</Text>
         </View>
       </View>
     </BaseLayout>

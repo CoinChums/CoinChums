@@ -13,7 +13,7 @@ import { HomeStack, ProfileStack } from './AppStack';
 const Tab = createBottomTabNavigator<NavigationParams>();
 
 const renderTabBarIcon = (assetSrc: string) => () => (
-  <SVGImage assetSrc={assetSrc} width={dimensions.viewWidth(35)} height={dimensions.viewWidth(35)} />
+  <SVGImage assetSrc={assetSrc} width={dimensions.viewWidth(30)} height={dimensions.viewWidth(30)} />
 );
 
 const tabBarOptions = {
@@ -23,7 +23,8 @@ const tabBarOptions = {
     backgroundColor: theme.palette.black.light,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    paddingBottom: spacing.tinyHeight,
+    paddingTop: spacing.smallHeight,
+    paddingBottom: spacing.smallHeight,
   },
 };
 

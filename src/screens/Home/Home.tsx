@@ -54,11 +54,11 @@ const Home: React.FC<THome> = () => {
 
   return (
     <BaseLayout>
-      <Header title={t('common:home')} />
+      <Header title={t('home')} />
       <Text>
-        {t('common:env')} {'->'} {API_URL}
+        {t('env')} {'->'} {API_URL}
       </Text>
-      <Button title={t('common:detailsNavigation')} onPress={() => navigation.navigate('Details')} />
+      <Button title={t('detailsNavigation')} onPress={() => navigation.navigate('Details')} />
       <IndicatorView isLoading={true} ref={loader} />
       <Animated.View
         style={{
@@ -67,7 +67,7 @@ const Home: React.FC<THome> = () => {
           backgroundColor: 'violet',
         }}
       />
-      <Button onPress={handlePress} title={t('common:clickMe')} />
+      <Button onPress={handlePress} title={t('clickMe')} />
       <View style={styles.container}>
         <Animated.View style={[styles.square, animatedStyle]} />
       </View>
