@@ -26,7 +26,7 @@ export const ExpenseExample = () => {
     <View style={styles.margin}>
       <View style={styles.header}>
         <SVGImage assetSrc={APP_IMAGES.xmark} height={spacing.bigHeight} width={spacing.bigWidth} />
-        <Text style={styles.cardHeader}>{t('common:addExpense')}</Text>
+        <Text style={styles.cardHeader}>{t('addExpense')}</Text>
       </View>
       <View style={styles.headerContainer}>
         <View style={[styles.textContainer, styles.divider]}>

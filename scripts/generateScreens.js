@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
 // get folder name from terminal argument
 const folderName = process.argv[2];
 if (!folderName) {
-  console.error("Please provide a folder name");
+  console.error('Please provide a folder name');
   process.exit(1);
 }
 
@@ -23,13 +23,13 @@ fs.mkdir(`../src/screens/${capitalizeFirstLetter(folderName)}`, err => {
   const useHookFileName = capitalizeFirstLetter(fileName);
 
   // create styleFile.ts
-  const styleFile = `import {StyleSheet} from "react-native";
+  const styleFile = `import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
+    alignItems: 'center',
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 });
 `;
@@ -39,9 +39,9 @@ export const styles = StyleSheet.create({
   });
 
   // create defaultScreen.tsx
-  const defaultScreen = `import React from "react";
-import {View, Text} from "react-native";
-import {styles} from "./${folderName}.style";
+  const defaultScreen = `import React from 'react';
+import { View, Text } from 'react-native';
+import { styles } from './${folderName}.style';
 
 const ${useHookFileName} = () => {
   return (
@@ -61,7 +61,7 @@ export default React.memo(${useHookFileName});
 
   const exportToIndex = `export {default as ${useHookFileName}} from "./${fileName}/${fileName}";\n`;
 
-  fs.appendFile("../src/screens/index.ts", exportToIndex, errScreen => {
+  fs.appendFile('../src/screens/index.ts', exportToIndex, errScreen => {
     if (errScreen) throw errScreen;
     console.log(`${useHookFileName} file created successfully`);
   });

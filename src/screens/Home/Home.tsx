@@ -2,7 +2,7 @@ import { API_URL } from '@env';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -11,8 +11,9 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import { BaseLayout, Button, Header } from '../../components';
+import { BaseLayout, Button, GroupListTile, Header } from '../../components';
 import { IndicatorView } from '../../components/Indicator/Indicator';
+import { expense } from '../../mocks';
 import { loader } from '../../utils/helper';
 import { styles } from './Home.style';
 import { NavigationParams, THome } from './types';
@@ -54,11 +55,12 @@ const Home: React.FC<THome> = () => {
 
   return (
     <BaseLayout>
-      <Header title={t('common:home')} />
+      <Header title={t('home')} />
+      <FlatList data={expense.groups} renderItem={({ item }) => <GroupListTile node={item} />} />
       <Text>
-        {t('common:env')} {'->'} {API_URL}
+        {t('env')} {'->'} {API_URL}
       </Text>
-      <Button title={t('common:detailsNavigation')} onPress={() => navigation.navigate('Details')} />
+      <Button title={t('detailsNavigation')} onPress={() => navigation.navigate('Details')} />
       <IndicatorView isLoading={true} ref={loader} />
       <Animated.View
         style={{
@@ -67,7 +69,7 @@ const Home: React.FC<THome> = () => {
           backgroundColor: 'violet',
         }}
       />
-      <Button onPress={handlePress} title={t('common:clickMe')} />
+      <Button onPress={handlePress} title={t('clickMe')} />
       <View style={styles.container}>
         <Animated.View style={[styles.square, animatedStyle]} />
       </View>

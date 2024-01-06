@@ -4,14 +4,15 @@ import { theme } from '../../themes';
 
 export type BaseLayoutProps = React.PropsWithChildren & {
   style?: StyleProp<ViewStyle>;
+  statusColor?: string;
 };
 
-export const BaseLayout = React.memo(({ children, style }: BaseLayoutProps) => {
+export const BaseLayout = React.memo(({ children, style, statusColor }: BaseLayoutProps) => {
   const styles = baseLayoutStyles();
 
   return (
     <SafeAreaView style={[styles.safeAreaStyle, style]}>
-      <StatusBar backgroundColor={theme.palette.white.dark} />
+      <StatusBar backgroundColor={statusColor ?? theme.palette.primary.light} />
       {children}
     </SafeAreaView>
   );

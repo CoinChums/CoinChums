@@ -19,7 +19,7 @@ export const ErrorScreen: React.FC<IErrorScreen> = props => {
       {showButton && (
         <Pressable style={styles.btn ?? btnStyles} onPress={onBtnPress}>
           <SVGImage assetSrc={APP_IMAGES.reload} height={spacing.heroHeight} width={spacing.heroWidth} />
-          <Text style={styles.btnText}>{t('common:try')}</Text>
+          <Text style={styles.btnText}>{t('try')}</Text>
         </Pressable>
       )}
     </View>

@@ -1,4 +1,5 @@
 import { Pressable, Text, View } from 'react-native';
+import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { SVGImage } from '../ImageRender/Image';
@@ -15,7 +16,12 @@ export const Header: React.FC<IHeaderProps> = props => {
         </Pressable>
       )}
       <Text style={styles.title}>{title}</Text>
-      <SVGImage assetSrc={APP_IMAGES.search} height={spacing.bigHeight} width={spacing.bigWidth} />
+      <SVGImage
+        assetSrc={APP_IMAGES.search}
+        height={spacing.bigHeight}
+        width={spacing.bigWidth}
+        fill={theme.palette.white.dark}
+      />
     </View>
   );
 };
