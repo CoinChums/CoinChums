@@ -11,8 +11,9 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import { BaseLayout, Button, Header } from '../../components';
+import { BaseLayout, Button, GroupListTile, Header } from '../../components';
 import { IndicatorView } from '../../components/Indicator/Indicator';
+import { expense } from '../../mocks';
 import { loader } from '../../utils/helper';
 import { styles } from './Home.style';
 import { NavigationParams, THome } from './types';
@@ -55,6 +56,7 @@ const Home: React.FC<THome> = () => {
   return (
     <BaseLayout>
       <Header title={t('home')} />
+      <GroupListTile node={expense.groups[0]} />
       <Text>
         {t('env')} {'->'} {API_URL}
       </Text>

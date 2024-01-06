@@ -38,4 +38,39 @@ enum ASYNC_STORAGE {
   IS_FIRSTLAUNCH = 'appLaunched',
 }
 
-export { APP_LABELS, APP_ROUTES, GENDER, SCREEN_STATE, STORAGE_KEYS, ASYNC_STORAGE };
+enum STATUS {
+  ACTIVE = 'Active',
+  INACTIVE = 'Inactive',
+  ARCHIVED = 'Archived',
+}
+
+enum LANGUAGE {
+  EN = 'EN',
+  KA = 'KA',
+  HI = 'HI',
+}
+
+enum EXPENSE_STATUS {
+  DELETED = 'deleted',
+  ACTIVE = 'active',
+  PENDING = 'pending',
+}
+
+enum EXPENSE_SPLIT_OPTION {
+  EQUALLY = 'equally',
+  SHARE = 'share',
+  PERCENT = 'percent',
+}
+
+export {
+  APP_LABELS,
+  APP_ROUTES,
+  GENDER,
+  SCREEN_STATE,
+  STORAGE_KEYS,
+  ASYNC_STORAGE,
+  STATUS,
+  LANGUAGE,
+  EXPENSE_STATUS,
+  EXPENSE_SPLIT_OPTION,
+};
