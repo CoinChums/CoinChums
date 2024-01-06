@@ -3,6 +3,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { styles } from './styles';
 import { AnimatedButtonProps, TButtonProps } from './types';
+import { BUTTON_TYPE } from '../../constants/enums';
 
 const AnimatedButtonComponent = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -29,15 +30,45 @@ export const AnimatedTouchableOpacity = React.memo((props: AnimatedButtonProps) 
 });
 
 export const Button = React.memo((props: TButtonProps) => {
-  const { buttonContainerStyle, title, titleContainerStyle, titleStyle } = props;
+  const { buttonContainerStyle, title, titleContainerStyle, titleStyle, type, leftIcon, rightIcon } = props;
 
-  return (
-    <AnimatedTouchableOpacity containerStyle={[styles.buttonContainer, buttonContainerStyle]} {...props}>
-      <View style={[styles.titleContainer, titleContainerStyle]}>
-        {props.leftIcon}
-        <Text style={titleStyle}>{title}</Text>
-        {props.rightIcon}
-      </View>
-    </AnimatedTouchableOpacity>
-  );
+  let renderedButton;
+
+  switch (type) {
+    case BUTTON_TYPE.FILL:
+      return (
+        <AnimatedTouchableOpacity containerStyle={[styles.buttonContainer, buttonContainerStyle]} {...props}>
+          <View style={[styles.titleContainer, titleContainerStyle]}>
+            {leftIcon}
+            <Text style={titleStyle}>{title}</Text>
+            {rightIcon}
+          </View>
+        </AnimatedTouchableOpacity>
+      );
+
+    case BUTTON_TYPE.FILL_ROUNDED:
+      return (
+        <AnimatedTouchableOpacity containerStyle={[styles.buttonContainer, buttonContainerStyle]} {...props}>
+          <View style={[styles.titleContainer, titleContainerStyle]}>
+            {leftIcon}
+            <Text style={titleStyle}>{title}</Text>
+            {rightIcon}
+          </View>
+        </AnimatedTouchableOpacity>
+      );
+
+    case BUTTON_TYPE.OUTLINE_ICON:
+      return (
+        <AnimatedTouchableOpacity containerStyle={[styles.buttonContainer, buttonContainerStyle]} {...props}>
+          <View style={[styles.titleContainer, titleContainerStyle]}>
+            {leftIcon}
+            <Text style={titleStyle}>{title}</Text>
+            {rightIcon}
+          </View>
+        </AnimatedTouchableOpacity>
+      );
+
+    default:
+      return null;
+  }
 });

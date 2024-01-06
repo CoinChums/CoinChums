@@ -68,6 +68,12 @@ enum GROUP_STATUS {
   ARCHIVE = 'archive',
 }
 
+enum BUTTON_TYPE {
+  FILL = 'FILL',
+  OUTLINE_ICON = 'OUTLINE_ICON',
+  FILL_ROUNDED = 'FILL_ROUNDED',
+}
+
 export {
   APP_LABELS,
   APP_ROUTES,
@@ -80,4 +86,5 @@ export {
   EXPENSE_STATUS,
   EXPENSE_SPLIT_OPTION,
   GROUP_STATUS,
+  BUTTON_TYPE,
 };
