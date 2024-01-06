@@ -62,6 +62,12 @@ enum EXPENSE_SPLIT_OPTION {
   PERCENT = 'percent',
 }
 
+enum GROUP_STATUS {
+  SETTLED = 'settled',
+  UNSETTLED = 'unsettled',
+  ARCHIVE = 'archive',
+}
+
 export {
   APP_LABELS,
   APP_ROUTES,
@@ -73,4 +79,5 @@ export {
   LANGUAGE,
   EXPENSE_STATUS,
   EXPENSE_SPLIT_OPTION,
+  GROUP_STATUS,
 };

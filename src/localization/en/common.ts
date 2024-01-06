@@ -19,4 +19,7 @@ export default {
   accExample: 'This is the example usage of the Accordion Component.',
   signUp: 'Sign Up',
   login: 'Log in',
+  noExpense: 'no expenses',
+  owe: 'you owe',
+  owes: 'you are owed',
 };

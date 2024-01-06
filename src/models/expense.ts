@@ -1,4 +1,4 @@
-import { EXPENSE_SPLIT_OPTION, EXPENSE_STATUS, LANGUAGE, STATUS } from '../constants/enums';
+import { EXPENSE_SPLIT_OPTION, EXPENSE_STATUS, GROUP_STATUS, LANGUAGE, STATUS } from '../constants/enums';
 
 export type Member = {
   name: string;
@@ -22,7 +22,7 @@ export type TGroupListTile = {
   created_at: string;
   group_id: string;
   updated_at: string;
-  group_status: string;
+  group_status: GROUP_STATUS;
 };
 
 export type TExpense = {

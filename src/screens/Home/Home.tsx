@@ -2,7 +2,7 @@ import { API_URL } from '@env';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -56,7 +56,7 @@ const Home: React.FC<THome> = () => {
   return (
     <BaseLayout>
       <Header title={t('home')} />
-      <GroupListTile node={expense.groups[0]} />
+      <FlatList data={expense.groups} renderItem={({ item }) => <GroupListTile node={item} />} />
       <Text>
         {t('env')} {'->'} {API_URL}
       </Text>

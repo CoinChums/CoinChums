@@ -1,4 +1,4 @@
-import { LANGUAGE, STATUS } from '../../constants/enums';
+import { GROUP_STATUS, LANGUAGE, STATUS } from '../../constants/enums';
 
 export const members = [
   {
@@ -40,26 +40,25 @@ export const expense = {
       created_at: '<timestamp>',
       group_id: 'group1',
       updated_at: '<timestamp>',
-      group_status: 'settled',
+      group_status: GROUP_STATUS.SETTLED,
     },
     {
       icon: 'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      title: 'Bengaluru Homies',
+      title: 'Udupi',
       group_members: members,
       created_at: '<timestamp>',
       group_id: 'group2',
       updated_at: '<timestamp>',
-      group_status: 'unsettled',
+      group_status: GROUP_STATUS.UNSETTLED,
     },
-
     {
       icon: 'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      title: 'Bengaluru Homies',
-      group_members: [],
+      title: 'Manali',
+      group_members: members,
       created_at: '<timestamp>',
       group_id: 'group3',
       updated_at: '<timestamp>',
-      group_status: 'archive',
+      group_status: GROUP_STATUS.ARCHIVE,
     },
   ],
   expenses: {
@@ -74,7 +73,6 @@ export const expense = {
           '12AZ76': { name: 'Suraj B G', amount: 400, status: 'debt' },
         },
       },
-
       expense_list: [
         {
           icon: 'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -101,7 +99,6 @@ export const expense = {
           '12AZ76': { name: 'Suraj B G', amount: 400, status: 'debt' },
         },
       },
-
       expense_list: [
         {
           icon: 'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -128,7 +125,6 @@ export const expense = {
           '12AZ76': { name: 'Suraj B G', amount: 400, status: 'debt' },
         },
       },
-
       expense_list: [
         {
           icon: 'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
