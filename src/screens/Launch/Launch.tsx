@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Image, Text, View } from 'react-native';
 import { BaseLayout, BottomShape, Button } from '../../components';
+import { BUTTON_TYPE } from '../../constants/enums';
 import { loginAction } from '../../redux/login/saga/login.actions';
 import { useAppDispatch } from '../../redux/reduxStore';
 import { theme } from '../../themes';
@@ -25,12 +26,14 @@ const Login: FC = () => {
           buttonContainerStyle={[styles.loginBtn, styles.backgroundPrimary]}
           onPress={loginHandler}
           titleStyle={styles.title}
+          type={BUTTON_TYPE.FILL}
         />
         <Button
           title={t('login')}
           buttonContainerStyle={[styles.loginBtn, styles.backgroundBlack]}
           onPress={loginHandler}
           titleStyle={styles.title}
+          type={BUTTON_TYPE.FILL}
         />
         <Text style={styles.terms}>{t('terms')}</Text>
       </View>
