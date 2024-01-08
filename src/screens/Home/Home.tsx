@@ -4,6 +4,7 @@ import { FlatList, Text, View } from 'react-native';
 import { BaseLayout, Button, GroupListTile, Header } from '../../components';
 import { BUTTON_TYPE } from '../../constants/enums';
 import { expense } from '../../mocks';
+import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Home.style';
 import { THome } from './types';
 
@@ -17,7 +18,7 @@ const Home: React.FC<THome> = () => {
       <View style={styles.container}>
         <Text style={styles.title}>{header}</Text>
         <FlatList data={expense.groups} renderItem={({ item }) => <GroupListTile node={item} />} />
-        <Button title={'Create a new group'} type={BUTTON_TYPE.OUTLINE_ICON} />
+        <Button title={'Create a new group'} type={BUTTON_TYPE.OUTLINE} leftIcon={APP_IMAGES.userGroup} />
       </View>
     </BaseLayout>
   );

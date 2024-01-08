@@ -1,9 +1,11 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import { BUTTON_TYPE } from '../../constants/enums';
+import dimensions from '../../utils/dimensions';
+import { SVGImage } from '../ImageRender/Image';
 import { styles } from './styles';
 import { AnimatedButtonProps, TButtonProps } from './types';
-import { BUTTON_TYPE } from '../../constants/enums';
 
 const AnimatedButtonComponent = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -32,38 +34,30 @@ export const AnimatedTouchableOpacity = React.memo((props: AnimatedButtonProps) 
 export const Button = React.memo((props: TButtonProps) => {
   const { buttonContainerStyle, title, titleContainerStyle, titleStyle, type, leftIcon, rightIcon } = props;
 
-  let renderedButton;
-
   switch (type) {
     case BUTTON_TYPE.FILL:
       return (
-        <AnimatedTouchableOpacity containerStyle={[styles.buttonContainer, buttonContainerStyle]} {...props}>
+        <AnimatedTouchableOpacity containerStyle={[styles.fillBtnContainer, buttonContainerStyle]} {...props}>
           <View style={[styles.titleContainer, titleContainerStyle]}>
-            {leftIcon}
-            <Text style={titleStyle}>{title}</Text>
-            {rightIcon}
+            {leftIcon && (
+              <SVGImage assetSrc={leftIcon} height={dimensions.viewHeight(18)} width={dimensions.viewWidth(18)} />
+            )}
+            <Text style={[styles.title, titleStyle]}>{title}</Text>
+            {rightIcon && (
+              <SVGImage assetSrc={rightIcon} height={dimensions.viewHeight(18)} width={dimensions.viewWidth(18)} />
+            )}
           </View>
         </AnimatedTouchableOpacity>
       );
 
-    case BUTTON_TYPE.FILL_ROUNDED:
+    case BUTTON_TYPE.OUTLINE:
       return (
-        <AnimatedTouchableOpacity containerStyle={[styles.buttonContainer, buttonContainerStyle]} {...props}>
+        <AnimatedTouchableOpacity containerStyle={[styles.outlineBtn, buttonContainerStyle]} {...props}>
           <View style={[styles.titleContainer, titleContainerStyle]}>
-            {leftIcon}
-            <Text style={titleStyle}>{title}</Text>
-            {rightIcon}
-          </View>
-        </AnimatedTouchableOpacity>
-      );
-
-    case BUTTON_TYPE.OUTLINE_ICON:
-      return (
-        <AnimatedTouchableOpacity containerStyle={[styles.buttonContainer, buttonContainerStyle]} {...props}>
-          <View style={[styles.titleContainer, titleContainerStyle]}>
-            {leftIcon}
-            <Text style={titleStyle}>{title}</Text>
-            {rightIcon}
+            {leftIcon && (
+              <SVGImage assetSrc={leftIcon} height={dimensions.viewHeight(18)} width={dimensions.viewWidth(18)} />
+            )}
+            <Text style={[styles.title, titleStyle]}>{title}</Text>
           </View>
         </AnimatedTouchableOpacity>
       );
