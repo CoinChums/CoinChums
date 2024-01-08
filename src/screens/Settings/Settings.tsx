@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
 import { Accordion, BaseLayout, Header } from '../../components';
 import { theme } from '../../themes';
+import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Settings.style';
 
 const languages = [
@@ -20,7 +21,7 @@ const Settings = () => {
 
   return (
     <BaseLayout>
-      <Header title={t('settings')} />
+      <Header title={t('settings')} rightIcon={APP_IMAGES.search} />
       <Accordion loading={false} title={t('settings')}>
         <>
           <Text>{t('accExample')}</Text>
