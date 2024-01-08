@@ -10,6 +10,10 @@ export const styles = StyleSheet.create({
     fontSize: theme.typography.fontSize.big,
     fontFamily: theme.typography.fontFamily[700],
     color: theme.palette.secondary.dark,
-    marginVertical: spacing.smallHeight,
+    marginVertical: spacing.normalHeight,
+  },
+  btn: {
+    marginTop: spacing.smallHeight,
+    marginHorizontal: spacing.heroWidth,
   },
 });
