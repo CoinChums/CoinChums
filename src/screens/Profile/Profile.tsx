@@ -12,9 +12,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import { BaseLayout, Button, Header } from '../../components';
 import { IndicatorView } from '../../components/Indicator/Indicator';
-import { loader } from '../../utils/helper';
-import { styles } from './Profile.style';
 import { BUTTON_TYPE } from '../../constants/enums';
+import { loader } from '../../utils/helper';
+import { APP_IMAGES } from '../../utils/imageMapper';
+import { styles } from './Profile.style';
 
 const Profile = () => {
   const { t } = useTranslation();
@@ -52,7 +53,7 @@ const Profile = () => {
 
   return (
     <BaseLayout>
-      <Header title={t('profile')} />
+      <Header title={t('profile')} rightIcon={APP_IMAGES.search} />
       <View style={styles.container}>
         <View style={styles.header}>
           <Text>{t('profile')}</Text>
