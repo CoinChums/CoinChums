@@ -2,7 +2,7 @@ name: CoinChums CI
 
 on:
   pull_request:
-    branches: ["main"]
+    branches: ['main']
 
 jobs:
   build:
@@ -10,12 +10,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Install npm dependencies
+        run: npm install
+
+      - name: Configure Google Sign-In with webClientId
         run: |
-          npm install
+          echo "GoogleSignin.configure({ webClientId: '\${WEB_CLIENT_ID}', offlineAccess: true })" > google-signin-config.js
+        env:
+          WEB_CLIENT_ID: ${{ secrets.WEB_CLIENT_ID }}
+
       - name: Build Android Release
         run: |
           cd android && ./gradlew assembleRelease
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
