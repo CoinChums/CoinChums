@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: spacing.smallHeight,
+    marginBottom: spacing.normalHeight,
   },
   imageContainer: {
     marginRight: spacing.averageWidth,
