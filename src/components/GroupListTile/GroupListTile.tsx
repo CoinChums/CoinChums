@@ -1,16 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
+import { CURRENCY_SYMBOLS } from '../../constants/currency';
 import { GROUP_STATUS } from '../../constants/enums';
 import dimensions from '../../utils/dimensions';
+import { ConditionRenderer } from '../ConditionRenderer/ConditionRender';
 import { SVGImage } from '../ImageRender/Image';
 import { styles } from './styles';
 import { GroupListTileProps } from './types';
-import { ConditionRenderer } from '../ConditionRenderer/ConditionRender';
 
 export const GroupListTile: React.FC<GroupListTileProps> = ({ node }) => {
   const { t } = useTranslation();
   const { icon, title, group_status } = node;
-  const balance = '₹ 300'; //TODO GET FROM BACKEND
+  const balance = `${CURRENCY_SYMBOLS.INR} 300`; //TODO GET FROM BACKEND
   const isDebt = true; //TODO GET FROM BACKEND
   const groupState = group_status !== GROUP_STATUS.ARCHIVE;
 

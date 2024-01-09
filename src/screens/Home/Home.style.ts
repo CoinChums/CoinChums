@@ -4,6 +4,10 @@ import { spacing } from '../../themes/spacing';
 import dimensions from '../../utils/dimensions';
 
 export const styles = StyleSheet.create({
+  home: {
+    flex: 1,
+    backgroundColor: theme.palette.white.dark,
+  },
   container: {
     paddingHorizontal: spacing.normalWidth,
   },
