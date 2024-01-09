@@ -16,7 +16,7 @@ jobs:
 
       - name: Configure Google Sign-In with webClientId
         run: |
-          echo "GoogleSignin.configure({ webClientId: '\${WEB_CLIENT_ID}', offlineAccess: true })" > google-signin-config.js
+          echo "GoogleSignin.configure({ webClientId: '${{ secrets.WEB_CLIENT_ID }}', offlineAccess: true })" > google-signin-config.js
         env:
           WEB_CLIENT_ID: ${{ secrets.WEB_CLIENT_ID }}
 
