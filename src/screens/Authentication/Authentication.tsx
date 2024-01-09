@@ -5,6 +5,7 @@ import { Button } from '../../components';
 import { loginAction } from '../../redux/login/saga/login.actions';
 import { useAppDispatch } from '../../redux/reduxStore';
 import { styles } from './Authentication.style';
+import { BUTTON_TYPE } from '../../constants/enums';
 
 const Authentication = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +21,7 @@ const Authentication = () => {
   };
   return (
     <View style={styles.container}>
-      <Button title="Login as Guest" onPress={anonymousSignIn} />
+      <Button type={BUTTON_TYPE.FILL} title="Login as Guest" onPress={anonymousSignIn} />
     </View>
   );
 };

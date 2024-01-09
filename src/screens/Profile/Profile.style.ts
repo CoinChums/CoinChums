@@ -21,4 +21,14 @@ export const styles = StyleSheet.create({
     padding: spacing.normalWidth,
     backgroundColor: theme.palette.white.dark,
   },
+  square: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'blue',
+  },
+  rotation: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
