@@ -7,6 +7,7 @@ import { AppTabs } from './BottomTabs';
 
 export const MainNavigator = () => {
   const loginStatus = useAppSelector(getLoginStatus);
-  const isUserLoggedIn = loginStatus;
+  // const isUserLoggedIn = loginStatus;
+  const isUserLoggedIn = true;
   return <NavigationContainer>{isUserLoggedIn ? <AppTabs /> : <AuthStack />}</NavigationContainer>;
 };

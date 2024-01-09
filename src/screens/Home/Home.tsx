@@ -12,10 +12,11 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { BaseLayout, Button, Header } from '../../components';
-import { IndicatorView } from '../../components/Indicator/Indicator';
+
 import { loader } from '../../utils/helper';
 import { styles } from './Home.style';
 import { NavigationParams, THome } from './types';
+import { Input } from '../../components/Input/Input';
 
 const Home: React.FC<THome> = () => {
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
@@ -59,7 +60,7 @@ const Home: React.FC<THome> = () => {
         {t('common:env')} {'->'} {API_URL}
       </Text>
       <Button title={t('common:detailsNavigation')} onPress={() => navigation.navigate('Details')} />
-      <IndicatorView isLoading={true} ref={loader} />
+      <Input variant="outlined" type="text" placeholder={'enter text'} />
       <Animated.View
         style={{
           width,
