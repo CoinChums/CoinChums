@@ -29,9 +29,10 @@ const Authentication = () => {
 
   const signIn = async () => {
     try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo);
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      const { idToken } = await GoogleSignin.signIn();
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      return auth().signInWithCredential(googleCredential);
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('SIGN_IN_CANCELLED');
@@ -40,15 +41,35 @@ const Authentication = () => {
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         console.log('PLAY_SERVICES_NOT_AVAILABLE');
       } else {
-        console.log(error);
+        console.log('err =>', error.message);
       }
     }
+  };
+
+  const emailPass = () => {
+    auth()
+      .createUserWithEmailAndPassword('jane.doe@example.com', 'SuperSecretPassword!')
+      .then(() => {
+        console.log('User account created & signed in!');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+
+        console.error(error);
+      });
   };
 
   return (
     <View style={styles.container}>
       <Button type={BUTTON_TYPE.FILL} title="Login as Guest" onPress={anonymousSignIn} />
-      <GoogleSigninButton onPress={signIn} />
+      <GoogleSigninButton size={GoogleSigninButton.Size.Wide} color={GoogleSigninButton.Color.Dark} onPress={signIn} />
+      <Button type={BUTTON_TYPE.FILL} title="Login email pass" onPress={emailPass} />
     </View>
   );
 };
