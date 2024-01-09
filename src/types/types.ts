@@ -9,4 +9,5 @@ export type NavigationParams = {
   [APP_ROUTES.profileStack]: undefined;
   [APP_ROUTES.settings]: undefined;
   [APP_ROUTES.onboarding]: undefined;
+  [APP_ROUTES.auth]: undefined;
 };
