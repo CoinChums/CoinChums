@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Text, View } from 'react-native';
-import { BaseLayout, Button, GroupListTile, Header, OverlayModal } from '../../components';
+import { BaseLayout, Button, ExpenseTree, GroupListTile, Header, OverlayModal } from '../../components';
 import { BUTTON_TYPE } from '../../constants/enums';
-import { expense } from '../../mocks';
+import { expensTree, expense } from '../../mocks';
 import dimensions from '../../utils/dimensions';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Home.style';
@@ -15,7 +15,7 @@ const Home: React.FC<THome> = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   return (
-    <BaseLayout>
+    <BaseLayout style={styles.home}>
       <Header title={t('home')} rightIcon={APP_IMAGES.search} />
       <View style={styles.container}>
         <Text style={styles.title}>{header}</Text>
@@ -30,6 +30,7 @@ const Home: React.FC<THome> = () => {
           <Text>Modal Component Example</Text>
         </View>
       </OverlayModal>
+      <ExpenseTree iconSrc={APP_IMAGES.profile} title="suraj paid ₹900.00" expenseTree={expensTree} />
     </BaseLayout>
   );
 };
