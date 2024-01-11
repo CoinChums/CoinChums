@@ -144,4 +144,8 @@ export const expense = {
   },
 };
 
-export const expensTree = [`You owe ${CURRENCY_SYMBOLS.INR} 300`, `Jaya S owes ${CURRENCY_SYMBOLS.INR} 300`];
+export const expensTree = [
+  `You owe ${CURRENCY_SYMBOLS.INR} 300`,
+  `Jaya S owes ${CURRENCY_SYMBOLS.INR} 300`,
+  `Srikar owes ${CURRENCY_SYMBOLS.INR} 300`,
+];

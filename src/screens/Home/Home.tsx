@@ -30,7 +30,7 @@ const Home: React.FC<THome> = () => {
           <Text>Modal Component Example</Text>
         </View>
       </OverlayModal>
-      <ExpenseTree iconSrc={APP_IMAGES.profile} title="suraj paid ₹600.00" expenseTree={expensTree} />
+      <ExpenseTree iconSrc={APP_IMAGES.profile} title="suraj paid ₹900.00" expenseTree={expensTree} />
     </BaseLayout>
   );
 };

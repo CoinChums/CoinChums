@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: spacing.bigWidth,
+    zIndex: 10,
   },
   title: {
     paddingLeft: spacing.normalWidth,
@@ -26,14 +27,19 @@ export const styles = StyleSheet.create({
   },
   expenses: {
     backgroundColor: theme.palette.white.dark,
-    marginTop: spacing.tinyHeight,
+    marginTop: dimensions.viewHeight(9),
   },
   price: {
     color: theme.palette.black.dark,
     fontSize: theme.typography.fontSize.medium,
     fontFamily: theme.typography.fontFamily[400],
     lineHeight: spacing.averageHeight,
-    marginBottom: spacing.tinyHeight,
+    marginBottom: dimensions.viewHeight(2),
     opacity: 0.8,
+  },
+  levels: {
+    flexDirection: 'row',
+    marginLeft: spacing.averageWidth,
+    marginTop: -dimensions.viewHeight(3),
   },
 });

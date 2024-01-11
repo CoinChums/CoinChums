@@ -1,4 +1,5 @@
 export * from './BaseLayout/BaseLayout';
+export * from './Blocks/Blocks';
 export * from './BottomShape/BottomShape';
 export * from './Button/Button';
 export * from './Collapsible/Collapsible';
