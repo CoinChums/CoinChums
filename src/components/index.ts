@@ -11,3 +11,4 @@ export * from './Header/Header';
 export * from './ImageRender/Image';
 export * from './Indicator/Indicator';
 export * from './Modal/Modal';
+export * from './PayerTiles/PayerTiles';

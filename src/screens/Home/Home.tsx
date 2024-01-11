@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Text, View } from 'react-native';
-import { BaseLayout, Button, ExpenseTree, GroupListTile, Header, OverlayModal } from '../../components';
+import { BaseLayout, Button, ExpenseTree, GroupListTile, Header, OverlayModal, PayerTiles } from '../../components';
 import { BUTTON_TYPE } from '../../constants/enums';
 import { expensTree, expense } from '../../mocks';
 import dimensions from '../../utils/dimensions';
@@ -31,6 +31,7 @@ const Home: React.FC<THome> = () => {
         </View>
       </OverlayModal>
       <ExpenseTree iconSrc={APP_IMAGES.profile} title="suraj paid ₹900.00" expenseTree={expensTree} />
+      <PayerTiles />
     </BaseLayout>
   );
 };

@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
-import dimensions from '../../utils/dimensions';
-import { spacing } from '../../themes/spacing';
 import { theme } from '../../themes';
+import { spacing } from '../../themes/spacing';
+import dimensions from '../../utils/dimensions';
 
 export type TBlocks = {
   level: number;
