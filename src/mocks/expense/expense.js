@@ -1,3 +1,4 @@
+import { CURRENCY_SYMBOLS } from '../../constants/currency';
 import { GROUP_STATUS, LANGUAGE, STATUS } from '../../constants/enums';
 
 export const members = [
@@ -142,3 +143,5 @@ export const expense = {
     },
   },
 };
+
+export const expensTree = [`You owe ${CURRENCY_SYMBOLS.INR} 300`, `Jaya S owes ${CURRENCY_SYMBOLS.INR} 300`];

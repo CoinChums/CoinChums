@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FlatList, Text, View } from 'react-native';
 import { BaseLayout, Button, ExpenseTree, GroupListTile, Header, OverlayModal } from '../../components';
 import { BUTTON_TYPE } from '../../constants/enums';
-import { expense } from '../../mocks';
+import { expensTree, expense } from '../../mocks';
 import dimensions from '../../utils/dimensions';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Home.style';
@@ -30,7 +30,7 @@ const Home: React.FC<THome> = () => {
           <Text>Modal Component Example</Text>
         </View>
       </OverlayModal>
-      <ExpenseTree iconSrc={APP_IMAGES.profile} title="suraj paid ₹600.00" />
+      <ExpenseTree iconSrc={APP_IMAGES.profile} title="suraj paid ₹600.00" expenseTree={expensTree} />
     </BaseLayout>
   );
 };
