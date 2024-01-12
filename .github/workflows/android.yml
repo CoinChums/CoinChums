@@ -2,20 +2,32 @@ name: CoinChums CI
 
 on:
   pull_request:
-    branches: ["main"]
+    branches: ['main']
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+            ./node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install npm dependencies
         run: |
-          npm install
+          npm ci --prefer-offline
+
       - name: Build Android Release
         run: |
-          cd android && ./gradlew assembleRelease
+          cd android && ./gradlew --daemon assembleRelease
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
