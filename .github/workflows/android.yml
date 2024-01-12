@@ -12,17 +12,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Cache npm dependencies
+      - name: Cache Yarn dependencies
         uses: actions/cache@v2
         with:
           path: |
             ~/.npm
             ./node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/yarn.lock') }}
+            ./yarn.lock
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install npm dependencies
+      - name: Install Yarn dependencies
         run: |
-          npm ci --prefer-offline
+          yarn install --frozen-lockfile
 
       - name: Build Android Release
         run: |
