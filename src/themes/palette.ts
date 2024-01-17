@@ -13,33 +13,35 @@ export interface IPalette {
   black: IColor;
   white: IColor;
   accent: IColor;
+  text: IColor;
+  background: IColor;
 }
 
 export const palette: IPalette = {
   primary: {
-    dark: '#F94464',
+    dark: '#0EA47A',
     medium: '#0EA47A',
     light: '#12D39D',
   },
   secondary: {
-    dark: '#787878',
-    medium: '#B4BBB7',
-    light: '#B4BBB7',
-  },
-  success: {
-    dark: '#1FA73D',
-    medium: '#4CBD5E',
-    light: '#57EBA1',
-  },
-  warning: {
-    dark: '#FF8800',
-    medium: '#FDAC42',
-    light: '#FCCC75',
+    dark: '#4A90E2',
+    medium: '#4A90E2',
+    light: '#AED6F1',
   },
   error: {
-    dark: '#991B1B',
-    medium: '#DC2626',
-    light: '#F87171',
+    dark: '#E74C3C',
+    medium: '#E74C3C',
+    light: '#F1948A',
+  },
+  success: {
+    dark: '#2ECC71',
+    medium: '#2ECC71',
+    light: '#82E0AA',
+  },
+  warning: {
+    dark: '#F39C12',
+    medium: '#F39C12',
+    light: '#FAD02E',
   },
   black: {
     dark: '#000000',
@@ -52,8 +54,18 @@ export const palette: IPalette = {
     light: '#F5F5F5',
   },
   accent: {
-    dark: '#A40E38',
-    medium: '#A40E38',
-    light: '#A40E38',
+    dark: '#FFD700',
+    medium: '#FFD700',
+    light: '#FFECB3',
+  },
+  text: {
+    dark: '#ECF0F1',
+    medium: '#ECF0F1',
+    light: '#34495E',
+  },
+  background: {
+    dark: '#2C3E50',
+    medium: '#2C3E50',
+    light: '#34495E',
   },
 };
