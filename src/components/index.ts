@@ -1,3 +1,4 @@
+export * from './Badge/Badge';
 export * from './BaseLayout/BaseLayout';
 export * from './Blocks/Blocks';
 export * from './BottomShape/BottomShape';
