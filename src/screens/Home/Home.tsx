@@ -26,4 +26,4 @@ const Home: React.FC<THome> = () => {
   );
 };
 
-export default React.memo(Home);
+export default Home;

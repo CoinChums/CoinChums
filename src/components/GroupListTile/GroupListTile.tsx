@@ -1,7 +1,9 @@
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { CURRENCY_SYMBOLS } from '../../constants/currency';
-import { GROUP_STATUS } from '../../constants/enums';
+import { APP_ROUTES, GROUP_STATUS } from '../../constants/enums';
+import { NavigationParams } from '../../types/types';
 import dimensions from '../../utils/dimensions';
 import { ConditionRenderer } from '../ConditionRenderer/ConditionRender';
 import { SVGImage } from '../ImageRender/Image';
@@ -10,16 +12,18 @@ import { GroupListTileProps } from './types';
 
 export const GroupListTile: React.FC<GroupListTileProps> = ({ node }) => {
   const { t } = useTranslation();
+  const navigation = useNavigation<NavigationProp<NavigationParams>>();
   const { icon, title, group_status } = node;
   const balance = `${CURRENCY_SYMBOLS.INR} 300`; //TODO GET FROM BACKEND
   const isDebt = true; //TODO GET FROM BACKEND
   const groupState = group_status !== GROUP_STATUS.ARCHIVE;
+  const navigateToDetails = () => navigation.navigate(APP_ROUTES.details);
 
   return (
     <ConditionRenderer
       state={groupState}
       C1={
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={navigateToDetails}>
           <View style={styles.imageContainer}>
             <SVGImage
               url={icon}
@@ -37,7 +41,7 @@ export const GroupListTile: React.FC<GroupListTileProps> = ({ node }) => {
               </Text>
             )}
           </View>
-        </View>
+        </TouchableOpacity>
       }
       C2={<></>}
     />

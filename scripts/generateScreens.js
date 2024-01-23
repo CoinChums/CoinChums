@@ -51,7 +51,7 @@ const ${useHookFileName} = () => {
   );
 };
 
-export default React.memo(${useHookFileName});
+export default ${useHookFileName};
 `;
 
   fs.writeFileSync(path.join(`../src/screens/${fileName}`, `${fileName}.tsx`), defaultScreen, errScreen => {
