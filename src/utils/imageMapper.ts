@@ -1,4 +1,5 @@
 import Back from '../assets/images/back.svg';
+import Bill from '../assets/images/bill.svg';
 import Home from '../assets/images/home.svg';
 import Profile from '../assets/images/profile.svg';
 import Reload from '../assets/images/reload.svg';
@@ -18,4 +19,5 @@ export const APP_IMAGES = {
   reload: Reload,
   xmark: Xmark,
   userGroup: UserGroup,
+  bill: Bill,
 };

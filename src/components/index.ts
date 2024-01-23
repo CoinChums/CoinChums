@@ -6,6 +6,7 @@ export * from './Button/Button';
 export * from './Collapsible/Collapsible';
 export * from './ConditionRenderer/ConditionRender';
 export * from './ErrorScreen/ErrorScreen';
+export * from './ExpenseTile/ExpenseTile';
 export * from './ExpenseTree/ExpenseTree';
 export * from './GroupListTile/GroupListTile';
 export * from './Header/Header';
