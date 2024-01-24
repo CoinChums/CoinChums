@@ -6,4 +6,12 @@ module.exports = {
   trailingComma: 'all',
   quoteProps: 'consistent',
   endOfLine: 'auto',
+  importOrderSeparation: false,
+  jsxSingleQuote: false,
+
+  tabWidth: 2,
+  semi: true,
+  printWidth: 100,
+  importOrderGroupNamespaceSpecifiers: false,
+  importOrderSortSpecifiers: true,
 };
