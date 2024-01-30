@@ -9,25 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Cache Yarn dependencies
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.npm
-            ./node_modules
-            ./yarn.lock
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - uses: actions/checkout@v3
 
       - name: Install Yarn dependencies
         run: |
-          yarn install --frozen-lockfile
+          npm install
 
       - name: Build Android Release
         run: |
-          cd android && ./gradlew --daemon assembleRelease
+          cd android && ./gradlew assembleRelease
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
