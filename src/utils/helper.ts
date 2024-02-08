@@ -15,12 +15,6 @@ const delay = (ms: number) => {
   return new Promise(resolve => setTimeout(resolve as () => void, ms));
 };
 
-const logger = (...args: any) => {
-  if (__DEV__) {
-    console.log(...args); // eslint-disable-line no-console
-  }
-};
-
 const loader = createRef<IndicatorRef>();
 
-export { boxShadow, delay, loader, logger };
+export { boxShadow, delay, loader };
