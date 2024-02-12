@@ -36,6 +36,7 @@ enum SCREEN_STATE {
 
 enum ASYNC_STORAGE {
   IS_FIRSTLAUNCH = 'appLaunched',
+  FCM_TOKEN_KEY = 'fcmToken',
 }
 
 enum STATUS {
