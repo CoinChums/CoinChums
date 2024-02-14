@@ -9,7 +9,9 @@ import { styles } from '../Onboarding.style';
 export const ExpenseExample = () => {
   const { t } = useTranslation();
 
-  const renderTextItem = (text: string, style: TextStyle | TextStyle[]) => <Text style={style}>{text}</Text>;
+  const renderTextItem = (text: string, style: TextStyle | TextStyle[]) => (
+    <Text style={style}>{text}</Text>
+  );
 
   const renderPriceItem = (currency: string, label: string, value: string | number) => (
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -26,7 +28,7 @@ export const ExpenseExample = () => {
     <View style={styles.margin}>
       <View style={styles.header}>
         <SVGImage assetSrc={APP_IMAGES.xmark} height={spacing.bigHeight} width={spacing.bigWidth} />
-        <Text style={styles.cardHeader}>{t('common:addExpense')}</Text>
+        <Text style={styles.cardHeader}>{t('addExpense')}</Text>
       </View>
       <View style={styles.headerContainer}>
         <View style={[styles.textContainer, styles.divider]}>

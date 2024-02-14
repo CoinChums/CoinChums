@@ -9,12 +9,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     height: dimensions.viewHeight(50),
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.primary.medium,
     paddingHorizontal: spacing.normalWidth,
   },
   title: {
     color: theme.palette.black.dark,
-    fontSize: theme.typography.fontSize.average,
+    fontSize: theme.typography.fontSize.big,
     fontFamily: theme.typography.fontFamily[700],
   },
 });

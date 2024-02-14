@@ -21,19 +21,23 @@ const OnboardingComponent = () => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.headerText}>{t('common:welcome')}</Text>
-        <Text style={styles.subTitle}>{t('common:welcomeTitle')}</Text>
+        <Text style={styles.headerText}>{t('welcome')}</Text>
+        <Text style={styles.subTitle}>{t('welcomeTitle')}</Text>
         <View style={styles.lineContainer}>
           <LinearGradient
             style={styles.linearGradient}
-            colors={[theme.palette.warning.dark, theme.palette.warning.light, theme.palette.white.dark]} // Yellow gradient colors
+            colors={[
+              theme.palette.warning.dark,
+              theme.palette.warning.light,
+              theme.palette.white.dark,
+            ]} // Yellow gradient colors
             start={{ x: 0, y: 0.1 }}
             end={{ x: 1, y: 0.1 }}
           />
         </View>
         <ExpenseExample />
         <TouchableOpacity onPress={handleNext}>
-          <Text style={styles.btn}>{t('common:next')}</Text>
+          <Text style={styles.btn}>{t('next')}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.bottomShape}>
