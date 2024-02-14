@@ -44,7 +44,9 @@ const Settings = () => {
                 i18n.changeLanguage(currentLang.code);
               }}
               style={[
-                { color: selectedLanguage ? DefaultTheme.colors.primary : theme.palette.black.dark },
+                {
+                  color: selectedLanguage ? DefaultTheme.colors.primary : theme.palette.black.dark,
+                },
                 styles.languageText,
               ]}>
               {currentLang.label}

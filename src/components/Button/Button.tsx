@@ -32,19 +32,37 @@ export const AnimatedTouchableOpacity = React.memo((props: AnimatedButtonProps) 
 });
 
 export const Button = React.memo((props: TButtonProps) => {
-  const { buttonContainerStyle, title, titleContainerStyle, titleStyle, type, leftIcon, rightIcon } = props;
+  const {
+    buttonContainerStyle,
+    title,
+    titleContainerStyle,
+    titleStyle,
+    type,
+    leftIcon,
+    rightIcon,
+  } = props;
 
   switch (type) {
     case BUTTON_TYPE.FILL:
       return (
-        <AnimatedTouchableOpacity containerStyle={[styles.fillBtnContainer, buttonContainerStyle]} {...props}>
+        <AnimatedTouchableOpacity
+          containerStyle={[styles.fillBtnContainer, buttonContainerStyle]}
+          {...props}>
           <View style={[styles.titleContainer, titleContainerStyle]}>
             {leftIcon && (
-              <SVGImage assetSrc={leftIcon} height={dimensions.viewHeight(18)} width={dimensions.viewWidth(18)} />
+              <SVGImage
+                assetSrc={leftIcon}
+                height={dimensions.viewHeight(18)}
+                width={dimensions.viewWidth(18)}
+              />
             )}
             <Text style={[styles.title, titleStyle]}>{title}</Text>
             {rightIcon && (
-              <SVGImage assetSrc={rightIcon} height={dimensions.viewHeight(18)} width={dimensions.viewWidth(18)} />
+              <SVGImage
+                assetSrc={rightIcon}
+                height={dimensions.viewHeight(18)}
+                width={dimensions.viewWidth(18)}
+              />
             )}
           </View>
         </AnimatedTouchableOpacity>
@@ -52,10 +70,16 @@ export const Button = React.memo((props: TButtonProps) => {
 
     case BUTTON_TYPE.OUTLINE:
       return (
-        <AnimatedTouchableOpacity containerStyle={[styles.outlineBtn, buttonContainerStyle]} {...props}>
+        <AnimatedTouchableOpacity
+          containerStyle={[styles.outlineBtn, buttonContainerStyle]}
+          {...props}>
           <View style={[styles.titleContainer, titleContainerStyle]}>
             {leftIcon && (
-              <SVGImage assetSrc={leftIcon} height={dimensions.viewHeight(18)} width={dimensions.viewWidth(18)} />
+              <SVGImage
+                assetSrc={leftIcon}
+                height={dimensions.viewHeight(18)}
+                width={dimensions.viewWidth(18)}
+              />
             )}
             <Text style={[styles.title, titleStyle]}>{title}</Text>
           </View>

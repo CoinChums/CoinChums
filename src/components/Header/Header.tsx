@@ -12,7 +12,11 @@ export const Header: React.FC<IHeaderProps> = props => {
     <View style={styles.cardContainer}>
       {onPress && (
         <Pressable onPress={onPress}>
-          <SVGImage assetSrc={APP_IMAGES.back} height={spacing.bigHeight} width={spacing.bigWidth} />
+          <SVGImage
+            assetSrc={APP_IMAGES.back}
+            height={spacing.bigHeight}
+            width={spacing.bigWidth}
+          />
         </Pressable>
       )}
       <Text style={styles.title}>{title}</Text>

@@ -19,7 +19,11 @@ const Home: React.FC<THome> = () => {
         <Text style={styles.title}>{header}</Text>
         <FlatList data={expense.groups} renderItem={({ item }) => <GroupListTile node={item} />} />
         <View style={styles.btn}>
-          <Button title={'Create a new group'} type={BUTTON_TYPE.OUTLINE} leftIcon={APP_IMAGES.userGroup} />
+          <Button
+            title={'Create a new group'}
+            type={BUTTON_TYPE.OUTLINE}
+            leftIcon={APP_IMAGES.userGroup}
+          />
         </View>
       </View>
     </BaseLayout>
