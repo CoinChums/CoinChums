@@ -1,22 +1,20 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../themes';
+import { spacing } from '../../themes/spacing';
 import dimensions from '../../utils/dimensions';
 
 export const styles = StyleSheet.create({
-  input_outline: {
+  input: {
     borderWidth: 1,
-    borderColor: '#000',
-    borderRadius: 60,
+    borderColor: theme.palette.black.dark,
     height: dimensions.viewHeight(45),
-    paddingHorizontal: dimensions.viewWidth(15),
+    paddingHorizontal: spacing.mediumWidth,
     width: '100%',
   },
+  input_outline: {
+    borderRadius: spacing.mediumWidth,
+  },
   input_rounded: {
-    borderWidth: 1,
-    borderColor: '#000',
-    borderRadius: 60,
-    height: dimensions.viewHeight(45),
-    paddingHorizontal: dimensions.viewWidth(15),
-    width: '100%',
+    borderRadius: dimensions.viewWidth(40),
   },
 });

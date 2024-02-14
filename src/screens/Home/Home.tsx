@@ -15,7 +15,7 @@ const Home: React.FC<THome> = () => {
   return (
     <BaseLayout style={styles.home}>
       <Header title={t('home')} rightIcon={APP_IMAGES.search} />
-      <Input variant="outlined" type="text" placeholder="Enter Amount" />
+      <Input variant="rounded" type="text" placeholder="Enter Amount" />
       <View style={styles.container}>
         <Text style={styles.title}>{header}</Text>
         <FlatList data={expense.groups} renderItem={({ item }) => <GroupListTile node={item} />} />

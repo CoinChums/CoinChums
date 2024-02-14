@@ -1,6 +1,6 @@
 import { StyleProp, TextInputProps, TextStyle, ViewStyle } from 'react-native';
 
-export type TInputVariant = 'outlined' | 'filled' | 'underlined' | 'rounded' | 'unstyled';
+export type TInputVariant = 'outlined' | 'rounded';
 
 export type TInputTypes = 'email' | 'password' | 'text' | 'number' | 'phone' | 'url' | 'otp';
 

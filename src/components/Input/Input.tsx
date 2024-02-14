@@ -1,11 +1,12 @@
-import { KeyboardTypeOptions, Text, TextInput, View } from 'react-native';
-import { styles } from './styles';
 import React from 'react';
+import { KeyboardTypeOptions, TextInput, View } from 'react-native';
+import { styles } from './styles';
 import { TInputProps, TInputTypes } from './types';
 
 export const Input = React.memo((props: TInputProps) => {
   const [hidePassword, setHidePassword] = React.useState(true);
   const { variant, type, ...restProps } = props;
+  const inputType = variant === 'outlined' ? styles.input_outline : styles.input_rounded;
 
   let keyboardType: Record<TInputTypes, KeyboardTypeOptions> = {
     email: 'email-address',
@@ -20,7 +21,7 @@ export const Input = React.memo((props: TInputProps) => {
   return (
     <View>
       <TextInput
-        style={styles.input_outline}
+        style={[styles.input, inputType]}
         secureTextEntry={type === 'password' ? hidePassword : false}
         keyboardType={keyboardType[type]}
         {...restProps}
