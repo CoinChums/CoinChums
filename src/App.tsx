@@ -1,3 +1,4 @@
+import notifee from '@notifee/react-native';
 import messaging, { FirebaseMessagingTypes } from '@react-native-firebase/messaging';
 import React, { useEffect } from 'react';
 import { Alert, Text } from 'react-native';
@@ -19,7 +20,20 @@ const App = (): JSX.Element => {
   const setupBackgroundHandler = () => {
     messaging().setBackgroundMessageHandler(
       async (remoteMessage: FirebaseMessagingTypes.RemoteMessage) => {
-        console.log('Message handled in the background!', remoteMessage);
+        const channelId = await notifee.createChannel({
+          id: 'cc',
+          name: 'Coinchums Channel',
+        });
+        await notifee.displayNotification({
+          title: remoteMessage.notification?.title,
+          body: remoteMessage.notification?.body,
+          android: {
+            channelId,
+            pressAction: {
+              id: 'cc',
+            },
+          },
+        });
       },
     );
   };
