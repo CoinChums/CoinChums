@@ -9,7 +9,9 @@ export type TBlocks = {
 
 export const Blocks: React.FC<TBlocks> = props => {
   const { level } = props;
-  const treeViews = Array.from({ length: level }, (_, index) => <View key={index} style={styles.tree} />);
+  const treeViews = Array.from({ length: level }, (_, index) => (
+    <View key={index} style={styles.tree} />
+  ));
 
   return <View>{treeViews}</View>;
 };

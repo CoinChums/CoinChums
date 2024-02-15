@@ -26,7 +26,10 @@ export const ExpenseTree: React.FC<TExpenseTree> = props => {
       <View style={styles.levels}>
         <Blocks level={expenseTree.length} />
         <View style={styles.expenses}>
-          <FlatList data={expenseTree} renderItem={({ item }) => <Text style={styles.price}>{item}</Text>} />
+          <FlatList
+            data={expenseTree}
+            renderItem={({ item }) => <Text style={styles.price}>{item}</Text>}
+          />
         </View>
       </View>
     </React.Fragment>
