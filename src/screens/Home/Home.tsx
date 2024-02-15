@@ -1,78 +1,33 @@
-import {API_URL} from "@env";
-import {NavigationProp, useNavigation} from "@react-navigation/native";
-import React, {useEffect} from "react";
-import {useTranslation} from "react-i18next";
-import {Text, View} from "react-native";
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withRepeat,
-  withSpring,
-  withTiming,
-} from "react-native-reanimated";
-import {BaseLayout, Button, Header} from "../../components";
-import {IndicatorView} from "../../components/Indicator/Indicator";
-import {loader} from "../../utils/helper";
-import {styles} from "./Home.style";
-import {NavigationParams, THome} from "./types";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { FlatList, Text, View } from 'react-native';
+import { BaseLayout, Button, GroupListTile, Header } from '../../components';
+import { BUTTON_TYPE } from '../../constants/enums';
+import { expense } from '../../mocks';
+import { APP_IMAGES } from '../../utils/imageMapper';
+import { styles } from './Home.style';
+import { THome } from './types';
 
 const Home: React.FC<THome> = () => {
-  const navigation = useNavigation<NavigationProp<NavigationParams>>();
-  const {t} = useTranslation();
-  const width = useSharedValue(100);
-
-  const handlePress = () => {
-    width.value = withSpring(width.value + 50);
-  };
-
-  const rotation = useSharedValue(0);
-
-  useEffect(() => {
-    const rotateAnimation = () => {
-      rotation.value = withRepeat(
-        withTiming(360, {
-          duration: 2000,
-          easing: Easing.linear,
-        }),
-        -1,
-      );
-    };
-
-    rotateAnimation();
-
-    return () => {
-      rotation.value = 0;
-    };
-  }, [rotation]);
-
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{rotate: `${rotation.value}deg`}],
-    };
-  });
+  const { t } = useTranslation();
+  const header = 'Overall, you owe ₹ 300';
 
   return (
-    <BaseLayout>
-      <Header title={t("common:home")} />
-      <Text>
-        {t("common:env")} {"->"} {API_URL}
-      </Text>
-      <Button title={t("common:detailsNavigation")} onPress={() => navigation.navigate("Details")} />
-      <IndicatorView isLoading={true} ref={loader} />
-      <Animated.View
-        style={{
-          width,
-          height: 100,
-          backgroundColor: "violet",
-        }}
-      />
-      <Button onPress={handlePress} title={t("common:clickMe")} />
+    <BaseLayout style={styles.home}>
+      <Header title={t('home')} rightIcon={APP_IMAGES.search} />
       <View style={styles.container}>
-        <Animated.View style={[styles.square, animatedStyle]} />
+        <Text style={styles.title}>{header}</Text>
+        <FlatList data={expense.groups} renderItem={({ item }) => <GroupListTile node={item} />} />
+        <View style={styles.btn}>
+          <Button
+            title={'Create a new group'}
+            type={BUTTON_TYPE.OUTLINE}
+            leftIcon={APP_IMAGES.userGroup}
+          />
+        </View>
       </View>
     </BaseLayout>
   );
 };
 
-export default React.memo(Home);
+export default Home;

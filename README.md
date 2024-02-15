@@ -60,8 +60,9 @@ User Color Palette user `src/themes/palette.ts` for reference
 
 | Color          | Hex                                                              |
 | -------------- | ---------------------------------------------------------------- |
-| Primary Dark   | ![#0EA47A](https://via.placeholder.com/10/F94464?text=+) #0EA47A |
-| Secondary Dark | ![#B4BBB7](https://via.placeholder.com/10/787878?text=+) #B4BBB7 |
+| Primary Dark   | ![#0EA47A](https://via.placeholder.com/10/0EA47A?text=+) #0EA47A |
+| Secondary Dark | ![#787878](https://via.placeholder.com/10/787878?text=+) #787878 |
+| Accent Dark    | ![#A40E38](https://via.placeholder.com/10/A40E38?text=+) #A40E38 |
 | Success Dark   | ![#1FA73D](https://via.placeholder.com/10/1FA73D?text=+) #1FA73D |
 | Error Dark     | ![#991B1B](https://via.placeholder.com/10/991B1B?text=+) #991B1B |
 

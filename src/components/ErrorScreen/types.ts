@@ -1,4 +1,4 @@
-import {ViewStyle} from "react-native";
+import { ViewStyle } from 'react-native';
 
 export interface IErrorScreen {
   onBtnPress: () => void;

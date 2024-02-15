@@ -1,20 +1,20 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {SCREEN_STATE} from "../../constants/enums";
-import {LoginPayload, TLoginState} from "./types";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { SCREEN_STATE } from '../../constants/enums';
+import { LoginPayload, TLoginState } from './types';
 
 const initialStateData: TLoginState = {
   isUserLoggedIn: false,
   state: SCREEN_STATE.NONE,
   isLoggedOut: false,
   loggedInUserDetails: {
-    name: "",
-    email: "",
+    name: '',
+    email: '',
     mobileNumber: 0,
   },
 };
 
 const loginSlice = createSlice({
-  name: "loginSlice",
+  name: 'loginSlice',
   initialState: initialStateData,
   reducers: {
     loginLoading: (state: TLoginState) => {
@@ -35,4 +35,4 @@ const loginSlice = createSlice({
   },
 });
 
-export const {actions: loginActions, reducer: loginReducer} = loginSlice;
+export const { actions: loginActions, reducer: loginReducer } = loginSlice;

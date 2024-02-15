@@ -1,7 +1,7 @@
-import {createRef} from "react";
-import {IndicatorRef} from "../components/Indicator/Indicator";
+import { createRef } from 'react';
+import { IndicatorRef } from '../components/Indicator/Indicator';
 
-const boxShadow = (color: string, offset = {height: 2, width: 2}, radius = 8, opacity = 0.2) => {
+const boxShadow = (color: string, offset = { height: 2, width: 2 }, radius = 8, opacity = 0.2) => {
   return {
     elevation: radius,
     shadowColor: color,
@@ -23,4 +23,4 @@ const logger = (...args: any) => {
 
 const loader = createRef<IndicatorRef>();
 
-export {boxShadow, delay, loader, logger};
+export { boxShadow, delay, loader, logger };

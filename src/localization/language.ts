@@ -1,4 +1,5 @@
 export default {
-  english: "English",
-  kannada: "Kannada",
+  english: 'English',
+  kannada: 'Kannada',
+  hindi: 'Hindi',
 };

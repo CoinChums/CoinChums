@@ -1,8 +1,8 @@
-import React, {useCallback, useImperativeHandle, useRef, useState} from "react";
-import {ActivityIndicator, Pressable, View} from "react-native";
-import {theme} from "../../themes";
-import {styles} from "./styles";
-import {IndicatorProps} from "./types";
+import React, { useCallback, useImperativeHandle, useRef, useState } from 'react';
+import { ActivityIndicator, Pressable, View } from 'react-native';
+import { theme } from '../../themes';
+import { styles } from './styles';
+import { IndicatorProps } from './types';
 
 export type IndicatorRef = {
   hide: () => void;
@@ -10,7 +10,7 @@ export type IndicatorRef = {
 };
 
 export const IndicatorViewRef = (props: IndicatorProps, ref: React.Ref<IndicatorRef>) => {
-  const {isLoading = true} = props;
+  const { isLoading = true } = props;
   const [loading, setLoading] = useState(isLoading);
   const pressCount = useRef(0);
   const show = useCallback(() => setLoading(true), []);
@@ -41,7 +41,11 @@ export const IndicatorViewRef = (props: IndicatorProps, ref: React.Ref<Indicator
   return (
     <Pressable onPress={handlePressCount} style={styles.container}>
       <View style={styles.loaderContainer}>
-        <ActivityIndicator size={"large"} color={theme.palette.warning.medium} style={styles.loaderStyle} />
+        <ActivityIndicator
+          size={'large'}
+          color={theme.palette.warning.medium}
+          style={styles.loaderStyle}
+        />
       </View>
     </Pressable>
   );

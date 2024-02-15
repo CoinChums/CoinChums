@@ -1,9 +1,16 @@
-import React from "react";
-import {Image} from "react-native";
-import dimensions from "../../utils/dimensions";
-import {IImage} from "./types";
+import React from 'react';
+import { Image } from 'react-native';
+import dimensions from '../../utils/dimensions';
+import { IImage } from './types';
 
-export const SVGImage: React.FC<IImage> = ({assetSrc: RenderImage, width, height, fill, url}) => {
+export const SVGImage: React.FC<IImage> = ({
+  assetSrc: RenderImage,
+  width,
+  height,
+  fill,
+  url,
+  imageStyles,
+}) => {
   width = width ?? dimensions.viewWidth(22);
   height = height ?? dimensions.viewHeight(22);
 
@@ -15,6 +22,7 @@ export const SVGImage: React.FC<IImage> = ({assetSrc: RenderImage, width, height
           width: width,
           height: height,
         }}
+        style={imageStyles}
       />
     );
   }

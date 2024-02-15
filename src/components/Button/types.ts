@@ -1,4 +1,5 @@
-import {StyleProp, TextStyle, TouchableOpacityProps, ViewStyle} from "react-native";
+import { StyleProp, TextStyle, TouchableOpacityProps, ViewStyle } from 'react-native';
+import { BUTTON_TYPE } from '../../constants/enums';
 
 export interface ExtraButtonProps {
   buttonContainerStyle?: StyleProp<ViewStyle>;
@@ -7,9 +8,13 @@ export interface ExtraButtonProps {
   title?: React.ReactNode;
   rightIcon?: JSX.Element;
   leftIcon?: JSX.Element;
+  type: BUTTON_TYPE;
 }
 
-export type AnimatedButtonProps = Omit<TouchableOpacityProps, "onPressIn" | "onPressOut" | "style"> & {
+export type AnimatedButtonProps = Omit<
+  TouchableOpacityProps,
+  'onPressIn' | 'onPressOut' | 'style'
+> & {
   containerStyle?: StyleProp<ViewStyle>;
 };
 
