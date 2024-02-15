@@ -1,20 +1,13 @@
-import React from 'react';
-import { KeyboardTypeOptions, TextInput, View } from 'react-native';
-import { theme } from '../../themes';
+import React, { useState } from 'react';
+import { KeyboardTypeOptions, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from './styles';
 import { TInputProps, TInputTypes } from './types';
 
 export const Input = React.memo((props: TInputProps) => {
-  const [hidePassword, setHidePassword] = React.useState(true);
-  const { variant, type, isDisabled, isInvalid, ...restProps } = props;
-  const inputType =
-    variant === 'outlined'
-      ? styles.input_outline
-      : variant === 'underlined'
-        ? styles.input_underline
-        : styles.input_rounded;
+  const [hidePassword, setHidePassword] = useState(true);
+  const { variant, type, isDisabled, isInvalid, isReadOnly, ...restProps } = props;
 
-  let keyboardType: Record<TInputTypes, KeyboardTypeOptions> = {
+  const keyboardType: Record<TInputTypes, KeyboardTypeOptions> = {
     email: 'email-address',
     password: 'default',
     text: 'default',
@@ -26,20 +19,29 @@ export const Input = React.memo((props: TInputProps) => {
 
   const inputStyle = [
     styles.input,
-    inputType,
-    isDisabled && { opacity: 0.5, borderColor: theme.palette.black.light },
-    isInvalid && { borderColor: theme.palette.error.dark },
+    variant === 'outlined' && styles.input_outline,
+    variant === 'underlined' && styles.input_underline,
+    variant === 'rounded' && styles.input_rounded,
+    isDisabled && styles.input_disabled,
+    isInvalid && styles.input_invalid,
   ];
 
+  const togglePasswordVisibility = () => setHidePassword(!hidePassword);
+
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         style={inputStyle}
-        editable={!isDisabled}
+        editable={!isDisabled && !isReadOnly}
         secureTextEntry={type === 'password' ? hidePassword : false}
         keyboardType={keyboardType[type]}
         {...restProps}
       />
+      {type === 'password' && (
+        <TouchableOpacity onPress={togglePasswordVisibility}>
+          <Text style={styles.eyeIcon}>{hidePassword ? '👁️' : '🙈'}</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 });

@@ -13,18 +13,11 @@ export interface ExtraInputProps {
   input?: React.ReactNode;
   placeholder?: React.ReactNode;
   placeholderTextColor?: React.ReactNode;
-  rightIcon?: JSX.Element;
-  leftIcon?: JSX.Element;
+  icon?: JSX.Element;
   isDisabled?: boolean;
   isReadOnly?: boolean;
-  labelText?: React.ReactNode;
-  labelPosition?: 'top' | 'bottom' | 'left' | 'right';
   minLength?: number;
   maxLength?: number;
 }
-
-export type AnimatedInputProps = Omit<TextInputProps, 'style'> & {
-  containerStyle?: StyleProp<ViewStyle>;
-};
 
 export type TInputProps = TextInputProps & ExtraInputProps;
