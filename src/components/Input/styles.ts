@@ -10,10 +10,9 @@ export const styles = StyleSheet.create({
   },
   input: {
     borderColor: theme.palette.black.dark,
-    height: dimensions.viewHeight(46),
-    paddingHorizontal: spacing.mediumWidth,
+    height: dimensions.viewHeight(42),
+    paddingHorizontal: spacing.smallWidth,
     width: '100%',
-    color: 'red',
   },
   input_outline: {
     borderWidth: 1,
