@@ -34,7 +34,9 @@ export const GroupListTile: React.FC<GroupListTileProps> = ({ node }) => {
           </View>
           <View>
             <Text style={styles.title}>{title}</Text>
-            {group_status === GROUP_STATUS.SETTLED && <Text style={styles.subTitle}>{t('noExpense')}</Text>}
+            {group_status === GROUP_STATUS.SETTLED && (
+              <Text style={styles.subTitle}>{t('noExpense')}</Text>
+            )}
             {group_status === GROUP_STATUS.UNSETTLED && (
               <Text style={[styles.balance, isDebt ? styles.debt : styles.owes]}>
                 {isDebt ? t('owe') : t('owes')} {balance}

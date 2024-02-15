@@ -1,4 +1,10 @@
-import { EXPENSE_SPLIT_OPTION, EXPENSE_STATUS, GROUP_STATUS, LANGUAGE, STATUS } from '../constants/enums';
+import {
+  EXPENSE_SPLIT_OPTION,
+  EXPENSE_STATUS,
+  GROUP_STATUS,
+  LANGUAGE,
+  STATUS,
+} from '../constants/enums';
 
 export type Member = {
   name: string;
@@ -31,7 +37,10 @@ export type TExpense = {
 };
 
 export type TGroupExpense = {
-  group_balances: Record<string, Record<string, { name: string; amount: number; status: 'owes' | 'debt' }>>;
+  group_balances: Record<
+    string,
+    Record<string, { name: string; amount: number; status: 'owes' | 'debt' }>
+  >;
   expense_list: Array<TExpenseItem>;
 };
 

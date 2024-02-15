@@ -41,7 +41,11 @@ export const IndicatorViewRef = (props: IndicatorProps, ref: React.Ref<Indicator
   return (
     <Pressable onPress={handlePressCount} style={styles.container}>
       <View style={styles.loaderContainer}>
-        <ActivityIndicator size={'large'} color={theme.palette.warning.medium} style={styles.loaderStyle} />
+        <ActivityIndicator
+          size={'large'}
+          color={theme.palette.warning.medium}
+          style={styles.loaderStyle}
+        />
       </View>
     </Pressable>
   );

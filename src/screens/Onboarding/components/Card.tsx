@@ -9,7 +9,9 @@ import { styles } from '../Onboarding.style';
 export const ExpenseExample = () => {
   const { t } = useTranslation();
 
-  const renderTextItem = (text: string, style: TextStyle | TextStyle[]) => <Text style={style}>{text}</Text>;
+  const renderTextItem = (text: string, style: TextStyle | TextStyle[]) => (
+    <Text style={style}>{text}</Text>
+  );
 
   const renderPriceItem = (currency: string, label: string, value: string | number) => (
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
