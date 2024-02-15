@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Text, View } from 'react-native';
-import { BaseLayout, Button, GroupListTile, Header, Input } from '../../components';
+import { BaseLayout, Button, GroupListTile, Header } from '../../components';
 import { BUTTON_TYPE } from '../../constants/enums';
 import { expense } from '../../mocks';
 import { APP_IMAGES } from '../../utils/imageMapper';
