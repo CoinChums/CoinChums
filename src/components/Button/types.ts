@@ -11,7 +11,10 @@ export interface ExtraButtonProps {
   type: BUTTON_TYPE;
 }
 
-export type AnimatedButtonProps = Omit<TouchableOpacityProps, 'onPressIn' | 'onPressOut' | 'style'> & {
+export type AnimatedButtonProps = Omit<
+  TouchableOpacityProps,
+  'onPressIn' | 'onPressOut' | 'style'
+> & {
   containerStyle?: StyleProp<ViewStyle>;
 };
 

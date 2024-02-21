@@ -14,6 +14,7 @@ enum APP_ROUTES {
   profile = 'Profile',
   settings = 'Settings',
   onboarding = 'Onboarding',
+  auth = 'Authentication',
 }
 
 enum APP_LABELS {

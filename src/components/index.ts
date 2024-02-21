@@ -12,4 +12,6 @@ export * from './GroupListTile/GroupListTile';
 export * from './Header/Header';
 export * from './ImageRender/Image';
 export * from './Indicator/Indicator';
+export * from './Input/Input';
 export * from './Modal/Modal';
+export * from './PayerTiles/PayerTiles';

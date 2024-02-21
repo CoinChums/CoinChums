@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { IndicatorView } from '../components';
 import { APP_ROUTES } from '../constants/enums';
 import { useAppFirstLaunch } from '../hooks';
-import { Launch, OnboardingComponent } from '../screens';
+import { Authentication, Launch, OnboardingComponent } from '../screens';
 import { NavigationParams } from '../types/types';
 
 const Stack = createNativeStackNavigator<NavigationParams>();
@@ -16,13 +16,22 @@ export const AuthStack: FC = () => {
   }
 
   return (
-    <Stack.Navigator screenOptions={{ animation: 'slide_from_left' }}>
+    <Stack.Navigator>
       {isFirstLaunch && (
-        <Stack.Screen name={APP_ROUTES.onboarding} component={OnboardingComponent} options={{ headerShown: false }} />
+        <Stack.Screen
+          name={APP_ROUTES.onboarding}
+          component={OnboardingComponent}
+          options={{ headerShown: false }}
+        />
       )}
       <Stack.Screen
         name={APP_ROUTES.launch}
         component={Launch}
+        options={{ headerShown: false, animation: 'slide_from_right' }}
+      />
+      <Stack.Screen
+        name={APP_ROUTES.auth}
+        component={Authentication}
         options={{ headerShown: false, animation: 'slide_from_right' }}
       />
     </Stack.Navigator>

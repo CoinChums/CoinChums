@@ -12,7 +12,20 @@
           "package_name": "com.carpool"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "185559171788-4flgru2mtr3bflbbvpa3nr4a3dakiha0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carpool",
+            "certificate_hash": "e655fb63f362e8053cbbb8e944cf2c33250dc4d6"
+          }
+        },
+        {
+          "client_id": "185559171788-o61mq3jmbkhkf1q28p25np44o7v0a4og.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA28aI8G6BRWkJ5Gxl1iQL6QH2cWWrq4pg"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185559171788-o61mq3jmbkhkf1q28p25np44o7v0a4og.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "185559171788-7f7241ul0k5jetpiadv8do9urn94s760.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.CarPool"
+              }
+            }
+          ]
         }
       }
     }
