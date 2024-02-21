@@ -2,6 +2,10 @@ module.exports = {
   env: {
     node: true,
     es2021: true,
+    jest: true,
+  },
+  globals: {
+    __DEV__: true,
   },
   root: true,
   extends: ['eslint:recommended', 'prettier'],
