@@ -1,6 +1,7 @@
 # OSX
 #
 .DS_Store
+__snapshots__
 
 # Xcode
 #
@@ -21,6 +22,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 ios/.xcode.env.local
+/jest
 .env
 
 # Android/IntelliJ
