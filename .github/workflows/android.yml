@@ -11,14 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install npm dependencies
-        run: npm install
-
-      - name: Configure Google Sign-In with webClientId
+      - name: Install Yarn dependencies
         run: |
-          echo "GoogleSignin.configure({ webClientId: '${{ secrets.WEB_CLIENT_ID }}', offlineAccess: true })" > google-signin-config.js
-        env:
-          WEB_CLIENT_ID: ${{ secrets.WEB_CLIENT_ID }}
+          npm install
 
       - name: Build Android Release
         run: |

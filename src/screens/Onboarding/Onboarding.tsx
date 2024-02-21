@@ -26,7 +26,11 @@ const OnboardingComponent = () => {
         <View style={styles.lineContainer}>
           <LinearGradient
             style={styles.linearGradient}
-            colors={[theme.palette.warning.dark, theme.palette.warning.light, theme.palette.white.dark]} // Yellow gradient colors
+            colors={[
+              theme.palette.warning.dark,
+              theme.palette.warning.light,
+              theme.palette.white.dark,
+            ]} // Yellow gradient colors
             start={{ x: 0, y: 0.1 }}
             end={{ x: 1, y: 0.1 }}
           />

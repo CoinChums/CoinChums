@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     height: dimensions.viewHeight(50),
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.primary.medium,
     paddingHorizontal: spacing.normalWidth,
   },
   title: {

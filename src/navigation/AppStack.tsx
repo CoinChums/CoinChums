@@ -9,8 +9,16 @@ const Stack = createNativeStackNavigator<NavigationParams>();
 export const HomeStack: FC = () => {
   return (
     <Stack.Navigator screenOptions={{ animation: 'slide_from_left', headerShown: false }}>
-      <Stack.Screen name={APP_ROUTES.home} component={Home} options={{ animation: 'slide_from_right' }} />
-      <Stack.Screen name={APP_ROUTES.details} component={Details} options={{ animation: 'slide_from_right' }} />
+      <Stack.Screen
+        name={APP_ROUTES.home}
+        component={Home}
+        options={{ animation: 'slide_from_right' }}
+      />
+      <Stack.Screen
+        name={APP_ROUTES.details}
+        component={Details}
+        options={{ animation: 'slide_from_right' }}
+      />
     </Stack.Navigator>
   );
 };

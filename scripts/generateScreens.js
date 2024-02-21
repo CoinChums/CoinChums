@@ -33,10 +33,14 @@ export const styles = StyleSheet.create({
   },
 });
 `;
-  fs.writeFileSync(path.join(`../src/screens/${fileName}`, `${fileName}.style.ts`), styleFile, errStyles => {
-    if (errStyles) throw errStyles;
-    console.log(`${fileName}.style.ts file created successfully`);
-  });
+  fs.writeFileSync(
+    path.join(`../src/screens/${fileName}`, `${fileName}.style.ts`),
+    styleFile,
+    errStyles => {
+      if (errStyles) throw errStyles;
+      console.log(`${fileName}.style.ts file created successfully`);
+    },
+  );
 
   // create defaultScreen.tsx
   const defaultScreen = `import React from 'react';
@@ -51,13 +55,17 @@ const ${useHookFileName} = () => {
   );
 };
 
-export default React.memo(${useHookFileName});
+export default ${useHookFileName};
 `;
 
-  fs.writeFileSync(path.join(`../src/screens/${fileName}`, `${fileName}.tsx`), defaultScreen, errScreen => {
-    if (errScreen) throw errScreen;
-    console.log(`${fileName}.tsx file created successfully`);
-  });
+  fs.writeFileSync(
+    path.join(`../src/screens/${fileName}`, `${fileName}.tsx`),
+    defaultScreen,
+    errScreen => {
+      if (errScreen) throw errScreen;
+      console.log(`${fileName}.tsx file created successfully`);
+    },
+  );
 
   const exportToIndex = `export {default as ${useHookFileName}} from "./${fileName}/${fileName}";\n`;
 

@@ -18,7 +18,11 @@ export const AuthStack: FC = () => {
   return (
     <Stack.Navigator>
       {isFirstLaunch && (
-        <Stack.Screen name={APP_ROUTES.onboarding} component={OnboardingComponent} options={{ headerShown: false }} />
+        <Stack.Screen
+          name={APP_ROUTES.onboarding}
+          component={OnboardingComponent}
+          options={{ headerShown: false }}
+        />
       )}
       <Stack.Screen
         name={APP_ROUTES.launch}

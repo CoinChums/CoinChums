@@ -3,11 +3,12 @@ GEM
   specs:
     CFPropertyList (3.0.6)
       rexml
-    activesupport (7.0.8)
+    activesupport (6.1.7.6)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     algoliasearch (1.27.5)
@@ -53,7 +54,7 @@ GEM
       netrc (~> 0.11)
     cocoapods-try (1.2.0)
     colored2 (3.1.2)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     escape (0.0.4)
     ethon (0.16.0)
       ffi (>= 1.15.0)
@@ -65,7 +66,7 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     json (2.7.1)
-    minitest (5.20.0)
+    minitest (5.21.2)
     molinillo (0.8.0)
     nanaimo (0.3.0)
     nap (1.1.0)
@@ -84,6 +85,7 @@ GEM
       colored2 (~> 3.1)
       nanaimo (~> 0.3.0)
       rexml (~> 3.2.4)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   ruby
@@ -93,7 +95,7 @@ DEPENDENCIES
   cocoapods (~> 1.13)
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 2.6.10p210
 
 BUNDLED WITH
-   2.2.3
+   1.17.2
