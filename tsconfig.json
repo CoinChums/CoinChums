@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "target": "es2015", // Ensure that the target is set to ES2015 or later
+    "lib": ["es2015", "dom", "esnext.promise"],
     "allowJs": true /* Allow javascript files to be compiled. */,
     "jsx": "react-native",
     "noEmit": true /* Do not emit outputs. */,
