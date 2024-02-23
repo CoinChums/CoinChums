@@ -71,8 +71,4 @@ Usage -> color: theme.palette.primary.dark
 
 ## Contributing
 
-Contributions are always welcome❤️
-
-All contributions - including those of people having commit access - must go through a pull request and be approved before being merged. This is to ensure a proper review at all time.
-
-Pull requests are ❤️ If you wish to help, you get started by raising a PR.
+We encourage contributions to CoinChums. Whether you have ideas for new feature or want to fix a bug, we'd love to see your input! Please refer to our [contributing guide](CONTRIBUTING.md) for instructions on how to submit a pull request.

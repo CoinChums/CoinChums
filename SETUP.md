@@ -159,3 +159,39 @@ yarn android
 ```
 
 Congratulations! You've just run your first React Native app successfully! 🎉
+
+## Target OS - iOS
+
+Configuring Android target OS
+
+### Xcode
+
+The easiest way to install Xcode is via the Mac App Store. Installing Xcode will also install the iOS Simulator and all the necessary tools to build your iOS app.
+
+### Command Line Tools
+
+Open Xcode, then choose Settings... (or Preferences...) from the Xcode menu. Go to the Locations panel and install the tools by selecting the most recent version in the Command Line Tools dropdown.
+
+### Installing an iOS Simulator in Xcode
+
+If you're utilizing Xcode version 14.0 then to install a simulator, open Xcode > Settings > Platforms tab, then click "+" icon and select iOS… option.
+
+### CocoaPods
+
+CocoaPods is one of the dependency management system available for iOS. CocoaPods is a Ruby gem. You can install CocoaPods using the version of Ruby that ships with the latest version of macOS.
+
+```bash
+sudo gem install cocoapods
+```
+
+If you face issues, update your ruby version using [rvm](https://rvm.io/)
+
+With that done, you're all set to run iOS apps! 🥳
+
+### Running your React Native iOS application
+
+Once your application is initialized, you can run it using:
+
+```bash
+yarn ios
+```
