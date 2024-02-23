@@ -1,18 +1,15 @@
 # CoinChums
 
-### A React Native & Typescript powered app
+## Introduction
+
+CoinChums is a user-friendly mobile application designed to simplify expense tracking and management within friend groups or social circles. Say goodbye to the hassle of managing shared expenses manually – CoinChums streamlines the process.
 
 Built using React Native, Typescript, and Redux Saga.
 
-## Tech Stack
+## Installing CoinChums
 
-**Client:** React Native, Typescript, Redux Saga
-
-**Server:** Node, Express
-
-**Database:** MongoDB, Firebase
-
-## Run Locally
+If you're new to React Native, check out our [Setup Instructions](SETUP.md) to get started quickly
+or You can also refer to the official [React Native Development Environment](https://reactnative.dev/docs/environment-setup) documentation for detailed guidance.
 
 Clone the project
 
@@ -52,9 +49,9 @@ Start the server
   yarn ios
 ```
 
-New To React Native? [Setup Instructions](SETUP.md)
-or
-[React Native Environment Setup](https://reactnative.dev/docs/environment-setup)
+## Tech Stack
+
+React Native, Typescript, Redux Saga
 
 ## Color Reference
 

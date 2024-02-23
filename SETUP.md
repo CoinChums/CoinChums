@@ -8,7 +8,7 @@ Follow these steps to configure development for macOS.
 
 ## Development OS - macOS
 
-We'll be looking at Android Target OS setup first
+Configuring Android target OS
 
 ## Target OS - Android
 
@@ -16,37 +16,39 @@ You will need Node, Watchman, the React Native command line interface, a JDK, an
 
 ## Installing dependencies
 
-The project works on node version greater than 18 so if you have node versions below 18 you can use node version manager (nvm) which allows you to quickly install and use different versions of node via the command line.
+The project requires Node version 18 or higher. If you're using a Node version below 18, you can utilize Node Version Manager (nvm). This tool enables you to easily install and switch between different Node.js versions directly from the command line.
 
-### Node and Watchman
+### Node and Watchman Installation
+
+Follow the below steps for installing nvm if node version is below 18,
 
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 ```
 
-You can find the latest command on
+You can discover the most up-to-date command on the
 [Node version manager](https://github.com/nvm-sh/nvm)
 
-The below will be added to you ~/.zshrc or ~/.bashrc which you have created
+Below is the code snippet to be added to your `~/.zshrc` or `~/.bashrc` file, which you should have created:
 
 ```bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 ```
 
-If you don't have those file you can create it on root by,
+If you don't have those files yet, you can create them in the root directory by running:
 
 ```bash
 touch ~/.zshrc
 ```
 
-Once installed you can install any node version and switch to node version above 18 using below command
+Once installed, you can easily manage Node versions. To install and switch to a Node.js version above 18, use the following command:
 
 ```bash
 nvm install --lts
 ```
 
-You can verify your node version using,
+You can verify your Node version using:
 
 ```bash
 node -v
@@ -58,16 +60,15 @@ You can then switch versions using,
 nvm use 20.11.1
 ```
 
-For installing Watchman you need to install homebrew using the below command,
+For installing Watchman, we suggest using Homebrew, a package manager for macOS. You can install Homebrew by running the following command:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-You can always find the latest command on
-[Homebrew](https://brew.sh/)
+For the most current command, you can visit the [Homebrew](https://brew.sh/)
 
-Once installed you can install Watchman using following command,
+After installing Homebrew, you can then proceed to install Watchman with the following command:
 
 ```bash
 brew install watchman
@@ -119,7 +120,7 @@ Finally, click "Apply" to download and install the Android SDK and related build
 
 ### 3. Configure the ANDROID_HOME environment variable
 
-Add the following lines to your ~/.zprofile or ~/.zshrc config file
+Add the following lines to your `~/.zprofile` or `~/.zshrc` configuration file:
 
 ```bash
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -127,20 +128,23 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 ```
 
-Now run
-`source ~/.zprofile` or `source ~/.bash_profile` to load the config into your current shell.
+Now, to load the configuration into your current shell, run either:
 
-That's it you are all set to run android apps🥳
+```bash
+source ~/.zprofile` or `source ~/.bash_profile
+```
 
-## Creating a new application
+With that done, you're all set to run Android apps! 🥳
 
-If you previously installed a global react-native-cli package, please remove it as it may cause unexpected issues:
+## Setting Up a New Test Application
+
+If you have a global react-native-cli package installed, it's recommended to remove it to prevent any potential issues:
 
 ```bash
 npm uninstall -g react-native-cli @react-native-community/cli
 ```
 
-Installing new Apps,
+To create a new React Native application, run the following command:
 
 ```bash
 npx react-native@latest init ProjectName
@@ -148,8 +152,10 @@ npx react-native@latest init ProjectName
 
 ### Running your React Native Android application
 
+Once your application is initialized, you can run it using:
+
 ```bash
 yarn android
 ```
 
-Congratulations! You've successfully run your first React Native app.
+Congratulations! You've just run your first React Native app successfully! 🎉
