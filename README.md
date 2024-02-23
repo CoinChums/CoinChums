@@ -52,6 +52,8 @@ Start the server
   yarn ios
 ```
 
+New To React Native? [Setup Instructions](SETUP.md)
+or
 [React Native Environment Setup](https://reactnative.dev/docs/environment-setup)
 
 ## Color Reference
