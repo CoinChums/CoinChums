@@ -1,14 +1,18 @@
 import auth from '@react-native-firebase/auth';
 import React from 'react';
 import { View } from 'react-native';
-import { Button } from '../../components';
+import { BaseLayout, Button, Header, Input } from '../../components';
 import { BUTTON_TYPE } from '../../constants/enums';
 import { loginAction } from '../../redux/login/saga/login.actions';
 import { useAppDispatch } from '../../redux/reduxStore';
 import { styles } from './Authentication.style';
+import { t } from 'i18next';
+import { useNavigation } from '@react-navigation/native';
 
 const Authentication = () => {
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
+  const backPress = () => navigation.goBack();
   const anonymousSignIn = async () => {
     try {
       const response = await auth().signInAnonymously();
@@ -40,10 +44,25 @@ const Authentication = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Button type={BUTTON_TYPE.FILL} title="Login as Guest" onPress={anonymousSignIn} />
-      <Button type={BUTTON_TYPE.FILL} title="Login email pass" onPress={emailPass} />
-    </View>
+    <BaseLayout>
+      <Header title={t('login')} onPress={backPress} />
+      <View style={styles.container}>
+        <Input
+          type="text"
+          placeholder={'Your email address'}
+          variant={'underlined'}
+          label={'Email address'}
+        />
+        <Input
+          type="text"
+          placeholder={'Your password'}
+          variant={'underlined'}
+          label={'Password'}
+        />
+        <Button type={BUTTON_TYPE.FILL} title="Log In " onPress={emailPass} />
+        <Button type={BUTTON_TYPE.UNDERLINE} title="Login as Guest" onPress={anonymousSignIn} />
+      </View>
+    </BaseLayout>
   );
 };
 
