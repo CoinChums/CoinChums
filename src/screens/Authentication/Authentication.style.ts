@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import dimensions from '../../utils/dimensions';
-import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
 
 export const styles = StyleSheet.create({
@@ -9,6 +8,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: dimensions.viewWidth(10),
-    gap: 15,
+    gap: spacing.mediumHeight,
   },
 });
