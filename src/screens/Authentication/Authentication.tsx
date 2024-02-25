@@ -3,17 +3,20 @@ import React from 'react';
 import { View } from 'react-native';
 import { Button } from '../../components';
 import { BUTTON_TYPE } from '../../constants/enums';
-import { loginAction } from '../../redux/login/saga/login.actions';
-import { useAppDispatch } from '../../redux/reduxStore';
 import { styles } from './Authentication.style';
+import { useAuth } from '../../store/useAuth/useAuth';
+import { AuthActions } from '../../actions/auth';
 
 const Authentication = () => {
-  const dispatch = useAppDispatch();
+  const { loginSuccess } = useAuth();
   const anonymousSignIn = async () => {
     try {
-      const response = await auth().signInAnonymously();
-      if (response.user.uid) {
-        dispatch(loginAction.loginUser());
+      const user = await AuthActions.login();
+      if (user.id) {
+        loginSuccess({
+          user,
+          allowLogin: true,
+        });
       }
     } catch (err) {
       console.error(err);
