@@ -26,6 +26,7 @@ enum APP_LABELS {
 enum GENDER {
   MALE = 'MALE',
   FEMALE = 'FEMALE',
+  OTHER = 'OTHER',
 }
 
 enum SCREEN_STATE {
