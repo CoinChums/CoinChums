@@ -86,6 +86,9 @@ export const Button = React.memo((props: TButtonProps) => {
         </AnimatedTouchableOpacity>
       );
 
+    case BUTTON_TYPE.UNDERLINE:
+      return <Text style={[styles.underlineBtn, titleStyle]}>{title}</Text>;
+
     default:
       return null;
   }
