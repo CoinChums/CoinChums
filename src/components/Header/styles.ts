@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     height: dimensions.viewHeight(50),
     backgroundColor: theme.palette.primary.medium,
     paddingHorizontal: spacing.normalWidth,
@@ -16,5 +15,12 @@ export const styles = StyleSheet.create({
     color: theme.palette.black.dark,
     fontSize: theme.typography.fontSize.big,
     fontFamily: theme.typography.fontFamily[700],
+    lineHeight: spacing.bigHeight,
+    marginLeft: spacing.tinyWidth,
+  },
+  iconContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

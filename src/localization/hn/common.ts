@@ -22,4 +22,5 @@ export default {
   noExpense: 'खर्च नहीं',
   owe: 'तुम ऋणी हो',
   owes: 'तुम्हें ऋण दिया गया है',
+  groupCreation: 'ग्रुप बनाएं',
 };

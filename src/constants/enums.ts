@@ -12,6 +12,7 @@ enum APP_ROUTES {
   home = 'Home',
   details = 'Details',
   profile = 'Profile',
+  groups = 'Groups',
   settings = 'Settings',
   onboarding = 'Onboarding',
   auth = 'Authentication',
