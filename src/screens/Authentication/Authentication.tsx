@@ -1,9 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18next';
 import React from 'react';
 import { View } from 'react-native';
 import { AuthActions } from '../../actions/auth';
-import { BaseLayout, Button, Header, Input } from '../../components';
+import { BaseLayout, Button, Input } from '../../components';
 import { BUTTON_TYPE } from '../../constants/enums';
 import { useAuth } from '../../store/useAuth/useAuth';
 import { styles } from './Authentication.style';
@@ -29,7 +28,6 @@ const Authentication = () => {
 
   return (
     <BaseLayout>
-      <Header title={t('login')} onPress={backPress} />
       <View style={styles.container}>
         <Input
           type="text"
