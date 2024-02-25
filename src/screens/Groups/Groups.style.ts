@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
+import { spacing } from '../../themes/spacing';
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  groupContainer: {
+    paddingHorizontal: spacing.mediumWidth,
+    paddingVertical: spacing.mediumHeight,
   },
 });
