@@ -1,12 +1,5 @@
-import { GENDER, SCREEN_STATE } from '../../constants/enums';
-
-export type UserRole = {
-  id: string;
-  name: string;
-  gender?: GENDER;
-  email: string;
-  phone: string;
-};
+import { SCREEN_STATE } from '../../constants/enums';
+import { UserRole } from '../../types/models/user';
 
 export type LoginPayload = {
   user: UserRole;

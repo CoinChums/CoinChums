@@ -1,5 +1,5 @@
 import { GENDER } from '../constants/enums';
-import { UserRole } from '../store/useAuth/useAuth.types';
+import { UserRole } from '../types/models/user';
 
 export const AuthActions = {
   login: async (): Promise<UserRole> => {
