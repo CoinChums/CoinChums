@@ -37,7 +37,6 @@ export const Input = React.memo((props: TInputProps) => {
           editable={!isDisabled && !isReadOnly}
           secureTextEntry={type === 'password' ? hidePassword : false}
           keyboardType={keyboardType[type]}
-          autoFocus
           {...restProps}
         />
         {type === 'password' && (

@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native';
 import { AuthActions } from '../../actions/auth';
@@ -8,8 +7,6 @@ import { useAuth } from '../../store/useAuth/useAuth';
 import { styles } from './Authentication.style';
 
 const Authentication = () => {
-  const navigation = useNavigation();
-  const backPress = () => navigation.goBack();
   const { loginSuccess } = useAuth();
 
   const anonymousSignIn = async () => {
