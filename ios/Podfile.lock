@@ -1,10 +1,4 @@
 PODS:
-  - AppAuth (1.6.2):
-    - AppAuth/Core (= 1.6.2)
-    - AppAuth/ExternalUserAgent (= 1.6.2)
-  - AppAuth/Core (1.6.2)
-  - AppAuth/ExternalUserAgent (1.6.2):
-    - AppAuth/Core
   - boost (1.76.0)
   - BVLinearGradient (2.8.3):
     - React-Core
@@ -20,9 +14,6 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.72.7)
   - Firebase (10.20.0):
     - Firebase/Core (= 10.20.0)
-  - Firebase/Auth (10.20.0):
-    - Firebase/CoreOnly
-    - FirebaseAuth (~> 10.20.0)
   - Firebase/Core (10.20.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 10.20.0)
@@ -46,14 +37,6 @@ PODS:
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30910.0, >= 2.30908.0)
-  - FirebaseAppCheckInterop (10.21.0)
-  - FirebaseAuth (10.20.0):
-    - FirebaseAppCheckInterop (~> 10.17)
-    - FirebaseCore (~> 10.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
-    - GoogleUtilities/Environment (~> 7.8)
-    - GTMSessionFetcher/Core (< 4.0, >= 2.1)
-    - RecaptchaInterop (~> 100.0)
   - FirebaseCore (10.20.0):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.12)
@@ -145,10 +128,6 @@ PODS:
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GoogleSignIn (7.0.0):
-    - AppAuth (~> 1.5)
-    - GTMAppAuth (< 3.0, >= 1.3)
-    - GTMSessionFetcher/Core (< 4.0, >= 1.1)
   - GoogleUtilities (7.12.0):
     - GoogleUtilities/AppDelegateSwizzler (= 7.12.0)
     - GoogleUtilities/Environment (= 7.12.0)
@@ -182,10 +161,6 @@ PODS:
     - GoogleUtilities/MethodSwizzler
   - GoogleUtilities/UserDefaults (7.12.0):
     - GoogleUtilities/Logger
-  - GTMAppAuth (2.0.0):
-    - AppAuth/Core (~> 1.6)
-    - GTMSessionFetcher/Core (< 4.0, >= 1.5)
-  - GTMSessionFetcher/Core (3.3.1)
   - hermes-engine (0.72.7):
     - hermes-engine/Pre-built (= 0.72.7)
   - hermes-engine/Pre-built (0.72.7)
@@ -609,20 +584,9 @@ PODS:
     - React-jsi (= 0.72.7)
     - React-logger (= 0.72.7)
     - React-perflogger (= 0.72.7)
-  - RecaptchaInterop (100.0.0)
   - RNCAsyncStorage (1.22.2):
     - React-Core
   - RNDeviceInfo (10.13.0):
-    - React-Core
-  - RNFBApp (18.9.0):
-    - Firebase/CoreOnly (= 10.20.0)
-    - React-Core
-  - RNFBAuth (18.9.0):
-    - Firebase/Auth (= 10.20.0)
-    - React-Core
-    - RNFBApp
-  - RNGoogleSignin (11.0.0):
-    - GoogleSignIn (~> 7.0)
     - React-Core
   - RNReanimated (3.7.1):
     - RCT-Folly (= 2021.07.22.00)
@@ -709,9 +673,6 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
-  - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
-  - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
-  - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -719,12 +680,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - AppAuth
     - CocoaAsyncSocket
     - Firebase
     - FirebaseAnalytics
-    - FirebaseAppCheckInterop
-    - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreInternal
     - FirebaseInstallations
@@ -738,15 +696,11 @@ SPEC REPOS:
     - FlipperKit
     - fmt
     - GoogleAppMeasurement
-    - GoogleSignIn
     - GoogleUtilities
-    - GTMAppAuth
-    - GTMSessionFetcher
     - libevent
     - nanopb
     - OpenSSL-Universal
     - PromisesObjC
-    - RecaptchaInterop
     - SocketRocket
     - YogaKit
 
@@ -836,12 +790,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
-  RNFBApp:
-    :path: "../node_modules/@react-native-firebase/app"
-  RNFBAuth:
-    :path: "../node_modules/@react-native-firebase/auth"
-  RNGoogleSignin:
-    :path: "../node_modules/@react-native-google-signin/google-signin"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -852,7 +800,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
@@ -861,8 +808,6 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 638095fe8a01506634d77b260ef8a322019ac671
   Firebase: 10c8cb12fb7ad2ae0c09ffc86cd9c1ab392a0031
   FirebaseAnalytics: a2731bf3670747ce8f65368b118d18aa8e368246
-  FirebaseAppCheckInterop: 69fc7d8f6a1cbfa973efb8d1723651de30d12525
-  FirebaseAuth: 9c5c400d2c3055d8ae3a0284944c86fa95d48dac
   FirebaseCore: 28045c1560a2600d284b9c45a904fe322dc890b6
   FirebaseCoreInternal: 43c1788eaeee9d1b97caaa751af567ce11010d00
   FirebaseInstallations: 390ea1d10a4d02b20c965cbfd527ee9b3b412acb
@@ -877,10 +822,7 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   GoogleAppMeasurement: bb3c564c3efb933136af0e94899e0a46167466a8
-  GoogleSignIn: b232380cf495a429b8095d3178a8d5855b42e842
   GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34
-  GTMAppAuth: 99fb010047ba3973b7026e45393f51f27ab965ae
-  GTMSessionFetcher: 8a1b34ad97ebe6f909fb8b9b77fba99943007556
   hermes-engine: 9180d43df05c1ed658a87cc733dc3044cf90c00a
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
@@ -919,12 +861,8 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 7649c3b46c8dee1853691ecf60146a16ae59253c
   React-utils: 56838edeaaf651220d1e53cd0b8934fb8ce68415
   ReactCommon: 5f704096ccf7733b390f59043b6fa9cc180ee4f6
-  RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   RNCAsyncStorage: 014a78b2cc8cc107c9e92ee428dc0c1ac3223416
   RNDeviceInfo: 5e4695f906aeb624855cee8d568a46037e4a50f7
-  RNFBApp: a3e139715386fe79a09c387f2dbeb6890eb05b39
-  RNFBAuth: b967a31a2ce307557a4237564d8e5f7cd83a316f
-  RNGoogleSignin: fc408799f1990a12497a32f64280c0fe353ffcc1
   RNReanimated: 43675f1f0e704abe8ebf953fd79b00e66302cda2
   RNScreens: 3c5b9f4a9dcde752466854b6109b79c0e205dad3
   RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a
