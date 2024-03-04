@@ -73,6 +73,7 @@ enum GROUP_STATUS {
 enum BUTTON_TYPE {
   FILL = 'FILL',
   OUTLINE = 'OUTLINE',
+  UNDERLINE = 'UNDERLINE',
 }
 
 export {

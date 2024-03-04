@@ -9,7 +9,27 @@ import { AnimatedButtonProps, TButtonProps } from './types';
 
 const AnimatedButtonComponent = Animated.createAnimatedComponent(TouchableOpacity);
 
-export const AnimatedTouchableOpacity = React.memo((props: AnimatedButtonProps) => {
+const ButtonContent = ({ title, titleStyle, leftIcon, rightIcon }) => (
+  <View style={styles.titleContainer}>
+    {leftIcon && (
+      <SVGImage
+        assetSrc={leftIcon}
+        height={dimensions.viewHeight(18)}
+        width={dimensions.viewWidth(18)}
+      />
+    )}
+    <Text style={[styles.title, titleStyle]}>{title}</Text>
+    {rightIcon && (
+      <SVGImage
+        assetSrc={rightIcon}
+        height={dimensions.viewHeight(18)}
+        width={dimensions.viewWidth(18)}
+      />
+    )}
+  </View>
+);
+
+const AnimatedTouchableOpacity = React.memo((props: AnimatedButtonProps) => {
   const { containerStyle } = props;
   const scaleValue = useSharedValue(1);
 
@@ -25,22 +45,22 @@ export const AnimatedTouchableOpacity = React.memo((props: AnimatedButtonProps) 
       onPressIn={() => (scaleValue.value = withSpring(0.9))}
       onPressOut={() => (scaleValue.value = withSpring(1))}
       activeOpacity={0.8}
-      {...props}>
-      {props.children}
-    </AnimatedButtonComponent>
+      {...props}
+    />
   );
 });
 
 export const Button = React.memo((props: TButtonProps) => {
-  const {
-    buttonContainerStyle,
-    title,
-    titleContainerStyle,
-    titleStyle,
-    type,
-    leftIcon,
-    rightIcon,
-  } = props;
+  const { buttonContainerStyle, title, titleStyle, type, leftIcon, rightIcon } = props;
+
+  const renderButtonContent = () => (
+    <ButtonContent
+      title={title}
+      titleStyle={titleStyle}
+      leftIcon={leftIcon}
+      rightIcon={rightIcon}
+    />
+  );
 
   switch (type) {
     case BUTTON_TYPE.FILL:
@@ -48,23 +68,7 @@ export const Button = React.memo((props: TButtonProps) => {
         <AnimatedTouchableOpacity
           containerStyle={[styles.fillBtnContainer, buttonContainerStyle]}
           {...props}>
-          <View style={[styles.titleContainer, titleContainerStyle]}>
-            {leftIcon && (
-              <SVGImage
-                assetSrc={leftIcon}
-                height={dimensions.viewHeight(18)}
-                width={dimensions.viewWidth(18)}
-              />
-            )}
-            <Text style={[styles.title, titleStyle]}>{title}</Text>
-            {rightIcon && (
-              <SVGImage
-                assetSrc={rightIcon}
-                height={dimensions.viewHeight(18)}
-                width={dimensions.viewWidth(18)}
-              />
-            )}
-          </View>
+          {renderButtonContent()}
         </AnimatedTouchableOpacity>
       );
 
@@ -73,16 +77,14 @@ export const Button = React.memo((props: TButtonProps) => {
         <AnimatedTouchableOpacity
           containerStyle={[styles.outlineBtn, buttonContainerStyle]}
           {...props}>
-          <View style={[styles.titleContainer, titleContainerStyle]}>
-            {leftIcon && (
-              <SVGImage
-                assetSrc={leftIcon}
-                height={dimensions.viewHeight(18)}
-                width={dimensions.viewWidth(18)}
-              />
-            )}
-            <Text style={[styles.title, titleStyle]}>{title}</Text>
-          </View>
+          {renderButtonContent()}
+        </AnimatedTouchableOpacity>
+      );
+
+    case BUTTON_TYPE.UNDERLINE:
+      return (
+        <AnimatedTouchableOpacity {...props}>
+          <Text style={[styles.underlineBtn, titleStyle]}>{title}</Text>
         </AnimatedTouchableOpacity>
       );
 
