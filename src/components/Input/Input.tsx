@@ -5,7 +5,7 @@ import { TInputProps, TInputTypes } from './types';
 
 export const Input = React.memo((props: TInputProps) => {
   const [hidePassword, setHidePassword] = useState(true);
-  const { variant, type, isDisabled, isInvalid, isReadOnly, ...restProps } = props;
+  const { variant, type, isDisabled, isInvalid, isReadOnly, label, ...restProps } = props;
 
   const keyboardType: Record<TInputTypes, KeyboardTypeOptions> = {
     email: 'email-address',
@@ -29,20 +29,22 @@ export const Input = React.memo((props: TInputProps) => {
   const togglePasswordVisibility = () => setHidePassword(!hidePassword);
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={inputStyle}
-        editable={!isDisabled && !isReadOnly}
-        secureTextEntry={type === 'password' ? hidePassword : false}
-        keyboardType={keyboardType[type]}
-        autoFocus
-        {...restProps}
-      />
-      {type === 'password' && (
-        <TouchableOpacity onPress={togglePasswordVisibility}>
-          <Text style={styles.eyeIcon}>{hidePassword ? '👁️' : '🙈'}</Text>
-        </TouchableOpacity>
-      )}
+    <View style={styles.labelContainer}>
+      {label && <Text style={styles.label}>{label}</Text>}
+      <View style={styles.container}>
+        <TextInput
+          style={inputStyle}
+          editable={!isDisabled && !isReadOnly}
+          secureTextEntry={type === 'password' ? hidePassword : false}
+          keyboardType={keyboardType[type]}
+          {...restProps}
+        />
+        {type === 'password' && (
+          <TouchableOpacity onPress={togglePasswordVisibility}>
+            <Text style={styles.eyeIcon}>{hidePassword ? '👁️' : '🙈'}</Text>
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 });

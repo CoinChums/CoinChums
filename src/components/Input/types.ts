@@ -18,6 +18,7 @@ export interface ExtraInputProps {
   isReadOnly?: boolean;
   minLength?: number;
   maxLength?: number;
+  label?: string;
 }
 
 export type TInputProps = TextInputProps & ExtraInputProps;

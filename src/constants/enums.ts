@@ -27,6 +27,7 @@ enum APP_LABELS {
 enum GENDER {
   MALE = 'MALE',
   FEMALE = 'FEMALE',
+  OTHER = 'OTHER',
 }
 
 enum SCREEN_STATE {
@@ -73,6 +74,7 @@ enum GROUP_STATUS {
 enum BUTTON_TYPE {
   FILL = 'FILL',
   OUTLINE = 'OUTLINE',
+  UNDERLINE = 'UNDERLINE',
 }
 
 export {

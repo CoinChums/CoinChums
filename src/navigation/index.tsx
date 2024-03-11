@@ -1,11 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { getLoginStatus } from '../redux/login/login.selector';
-import { useAppSelector } from '../redux/reduxStore';
 import { AuthStack } from './AuthStack';
 import { AppTabs } from './BottomTabs';
+import { useAuth } from '../store/useAuth/useAuth';
 
 export const MainNavigator = () => {
-  const loginStatus = useAppSelector(getLoginStatus);
-  return <NavigationContainer>{loginStatus ? <AppTabs /> : <AuthStack />}</NavigationContainer>;
+  const { isUserLoggedIn } = useAuth();
+  return <NavigationContainer>{isUserLoggedIn ? <AppTabs /> : <AuthStack />}</NavigationContainer>;
 };

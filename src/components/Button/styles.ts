@@ -30,4 +30,7 @@ export const styles = StyleSheet.create({
     fontSize: theme.typography.fontSize.average,
     marginHorizontal: spacing.smallWidth,
   },
+  underlineBtn: {
+    textDecorationLine: 'underline',
+  },
 });

@@ -4,7 +4,7 @@ import {
   GROUP_STATUS,
   LANGUAGE,
   STATUS,
-} from '../constants/enums';
+} from '../../constants/enums';
 
 export type Member = {
   name: string;

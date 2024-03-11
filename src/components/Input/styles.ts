@@ -37,4 +37,16 @@ export const styles = StyleSheet.create({
     right: spacing.mediumWidth,
     transform: [{ translateY: -10 }],
   },
+  labelContainer: {
+    flexDirection: 'column',
+    width: '100%',
+  },
+  label: {
+    color: theme.palette.black.dark,
+    opacity: 0.6,
+    fontSize: theme.typography.fontSize.medium,
+    fontFamily: theme.typography.fontFamily[700],
+    marginHorizontal: spacing.smallWidth,
+    textAlign: 'left',
+  },
 });
