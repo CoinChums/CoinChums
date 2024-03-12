@@ -13,28 +13,34 @@ const Login: FC = () => {
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
   const iconSrc = require('../../assets/images/coinchums.png');
 
-  const loginHandler = () => {
-    navigation.navigate(APP_ROUTES.auth);
+  const navigateToAuth = (isSignup: boolean) => {
+    navigation.navigate(APP_ROUTES.auth, { isSignup });
+  };
+
+  const renderAuthButton = (title: string, isSignup: boolean) => {
+    const buttonContainerStyle = [
+      styles.loginBtn,
+      isSignup ? styles.backgroundPrimary : styles.backgroundBlack,
+    ];
+
+    return (
+      <Button
+        key={title}
+        title={title}
+        buttonContainerStyle={buttonContainerStyle}
+        onPress={() => navigateToAuth(isSignup)}
+        titleStyle={styles.title}
+        type={BUTTON_TYPE.FILL}
+      />
+    );
   };
 
   return (
     <BaseLayout style={styles.container} statusColor={theme.palette.white.dark}>
       <View style={styles.authContainer}>
         <Image source={iconSrc} style={styles.appIcon} />
-        <Button
-          title={t('signUp')}
-          buttonContainerStyle={[styles.loginBtn, styles.backgroundPrimary]}
-          onPress={loginHandler}
-          titleStyle={styles.title}
-          type={BUTTON_TYPE.FILL}
-        />
-        <Button
-          title={t('login')}
-          buttonContainerStyle={[styles.loginBtn, styles.backgroundBlack]}
-          onPress={loginHandler}
-          titleStyle={styles.title}
-          type={BUTTON_TYPE.FILL}
-        />
+        {renderAuthButton(t('signUp'), true)}
+        {renderAuthButton(t('login'), false)}
         <Text style={styles.terms}>{t('terms')}</Text>
       </View>
       <BottomShape />

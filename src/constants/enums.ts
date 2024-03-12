@@ -97,6 +97,13 @@ enum EReqMethod {
   PATCH = 'PATCH',
 }
 
+enum AUTH_ACTIONS {
+  SET_FULL_NAME = 'SET_FULL_NAME',
+  SET_EMAIL = 'SET_EMAIL',
+  SET_PASSWORD = 'SET_PASSWORD',
+  SET_IS_FULL_NAME_ENTERED = 'SET_IS_FULL_NAME_ENTERED',
+}
+
 export {
   APP_LABELS,
   APP_ROUTES,
@@ -113,4 +120,5 @@ export {
   TOAST_TYPE,
   CONSTANTS,
   EReqMethod,
+  AUTH_ACTIONS,
 };

@@ -30,4 +30,6 @@ const validateTextInput = (name: string) => {
   return '';
 };
 
-export { boxShadow, delay, loader, logger, validateTextInput };
+const emptyFunction = () => {};
+
+export { boxShadow, delay, loader, logger, validateTextInput, emptyFunction };
