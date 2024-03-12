@@ -1,18 +1,39 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
-import { Button, Header, Input } from '../../components';
+import { Keyboard, Text, View } from 'react-native';
+import { BaseLayout, Button, ConditionRenderer, Header, Input } from '../../components';
+import { BUTTON_TYPE } from '../../constants/enums';
+import { validateTextInput } from '../../utils/helper';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Groups.style';
 
 const Groups = () => {
   const navigation = useNavigation();
   const { t } = useTranslation();
+
+  const [groupName, setGroupName] = useState('');
+  const [error, setError] = useState('');
+
   const backPress = () => navigation.goBack();
 
+  const handleGroupNameChange = (text: string) => {
+    setGroupName(text);
+    setError('');
+  };
+
+  const createGroup = () => {
+    Keyboard.dismiss();
+    const validationError = validateTextInput(groupName);
+    setError(validationError || '');
+    if (!validationError) {
+      console.log('Group Created:', groupName);
+      navigation.goBack();
+    }
+  };
+
   return (
-    <View>
+    <BaseLayout>
       <Header
         title={t('groupCreation')}
         onPress={backPress}
@@ -20,10 +41,18 @@ const Groups = () => {
         iconAction={backPress} //TODO: CLEAR STATE ON CLOSE
       />
       <View style={styles.groupContainer}>
-        <Text>Groups name</Text>
-        <Input type="text" variant="underlined" />
+        <View style={styles.input}>
+          <Text>{t('groupName')}</Text>
+          <Input type="text" variant="underlined" onChangeText={handleGroupNameChange} />
+          <ConditionRenderer
+            state={!error}
+            C1={<></>}
+            C2={<Text style={styles.error}>{error}</Text>}
+          />
+        </View>
+        <Button type={BUTTON_TYPE.FILL} title="Create Group" onPress={createGroup} />
       </View>
-    </View>
+    </BaseLayout>
   );
 };
 

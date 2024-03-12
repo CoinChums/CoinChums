@@ -23,4 +23,5 @@ export default {
   owe: 'तुम ऋणी हो',
   owes: 'तुम्हें ऋण दिया गया है',
   groupCreation: 'ग्रुप बनाएं',
+  groupName: 'समूह का नाम',
 };

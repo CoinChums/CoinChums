@@ -22,4 +22,5 @@ export default {
   owe: 'ನೀನು ಋಣಿಸಿದ್ದೀ',
   owes: 'ನೀನು ಅನುಕೂಲಿಸುತ್ತಿದ್ದೀ',
   groupCreation: 'ಗುಂಪು ರಚಿಸಿ',
+  groupName: 'समूह का नाम',
 };
