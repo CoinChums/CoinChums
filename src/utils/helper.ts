@@ -24,7 +24,7 @@ const logger = (...args: any) => {
 const loader = createRef<IndicatorRef>();
 
 const validateTextInput = (name: string) => {
-  if (!name.trim()) return 'Group name cannot be empty';
+  if (!name.trim()) return `You haven't entered a name for your group yet!`;
   if (name.length < 3 || name.length > 20) return 'Group name must be between 3 and 20 characters';
   if (!/^[a-zA-Z0-9 ]+$/.test(name)) return 'Group name should not contain special characters';
   return '';

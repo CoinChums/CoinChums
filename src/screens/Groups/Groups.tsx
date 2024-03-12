@@ -3,14 +3,16 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Keyboard, Text, View } from 'react-native';
 import { BaseLayout, Button, ConditionRenderer, Header, Input } from '../../components';
-import { BUTTON_TYPE } from '../../constants/enums';
+import { BUTTON_TYPE, TOAST_TYPE } from '../../constants/enums';
 import { validateTextInput } from '../../utils/helper';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Groups.style';
+import { useToast } from 'react-native-toast-notifications';
 
 const Groups = () => {
   const navigation = useNavigation();
   const { t } = useTranslation();
+  const toast = useToast();
 
   const [groupName, setGroupName] = useState('');
   const [error, setError] = useState('');
@@ -27,7 +29,9 @@ const Groups = () => {
     const validationError = validateTextInput(groupName);
     setError(validationError || '');
     if (!validationError) {
-      console.log('Group Created:', groupName);
+      toast.show(`${groupName} Group created successful!`, {
+        type: TOAST_TYPE.SUCCESS,
+      });
       navigation.goBack();
     }
   };
