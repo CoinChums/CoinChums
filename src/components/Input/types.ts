@@ -19,6 +19,7 @@ export interface ExtraInputProps {
   minLength?: number;
   maxLength?: number;
   label?: string;
+  onChangeText: (text: string) => void;
 }
 
 export type TInputProps = TextInputProps & ExtraInputProps;

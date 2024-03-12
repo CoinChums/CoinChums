@@ -1,16 +1,21 @@
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Text, View } from 'react-native';
 import { BaseLayout, Button, GroupListTile, Header } from '../../components';
-import { BUTTON_TYPE } from '../../constants/enums';
+import { APP_ROUTES, BUTTON_TYPE } from '../../constants/enums';
 import { expense } from '../../mocks';
+import { NavigationParams } from '../../types/types';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Home.style';
 import { THome } from './types';
 
 const Home: React.FC<THome> = () => {
   const { t } = useTranslation();
+  const navigation = useNavigation<NavigationProp<NavigationParams>>();
   const header = 'Overall, you owe ₹ 300';
+
+  const handleNavigation = () => navigation.navigate(APP_ROUTES.groups);
 
   return (
     <BaseLayout style={styles.home}>
@@ -20,6 +25,7 @@ const Home: React.FC<THome> = () => {
         <FlatList data={expense.groups} renderItem={({ item }) => <GroupListTile node={item} />} />
         <View style={styles.btn}>
           <Button
+            onPress={handleNavigation}
             title={'Create a new group'}
             type={BUTTON_TYPE.OUTLINE}
             leftIcon={APP_IMAGES.userGroup}

@@ -10,4 +10,5 @@ export type NavigationParams = {
   [APP_ROUTES.settings]: undefined;
   [APP_ROUTES.onboarding]: undefined;
   [APP_ROUTES.auth]: undefined;
+  [APP_ROUTES.groups]: undefined;
 };

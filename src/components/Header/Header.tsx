@@ -19,17 +19,19 @@ export const Header: React.FC<IHeaderProps> = props => {
           />
         </Pressable>
       )}
-      <Text style={styles.title}>{title}</Text>
-      {rightIcon && (
-        <TouchableOpacity onPress={iconAction}>
-          <SVGImage
-            assetSrc={rightIcon}
-            height={spacing.averageHeight}
-            width={spacing.averageWidth}
-            fill={theme.palette.white.dark}
-          />
-        </TouchableOpacity>
-      )}
+      <View style={styles.iconContainer}>
+        <Text style={styles.title}>{title}</Text>
+        {rightIcon && (
+          <TouchableOpacity onPress={iconAction}>
+            <SVGImage
+              assetSrc={rightIcon}
+              height={spacing.averageHeight}
+              width={spacing.averageWidth}
+              fill={theme.palette.white.dark}
+            />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };

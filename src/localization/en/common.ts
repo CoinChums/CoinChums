@@ -22,4 +22,6 @@ export default {
   noExpense: 'no expenses',
   owe: 'you owe',
   owes: 'you are owed',
+  groupCreation: 'Create a group',
+  groupName: 'Group name',
 };

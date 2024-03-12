@@ -12,6 +12,7 @@ enum APP_ROUTES {
   home = 'Home',
   details = 'Details',
   profile = 'Profile',
+  groups = 'Groups',
   settings = 'Settings',
   onboarding = 'Onboarding',
   auth = 'Authentication',
@@ -76,6 +77,13 @@ enum BUTTON_TYPE {
   UNDERLINE = 'UNDERLINE',
 }
 
+enum TOAST_TYPE {
+  NORMAL = 'normal',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  DANGER = 'danger',
+}
+
 export {
   APP_LABELS,
   APP_ROUTES,
@@ -89,4 +97,5 @@ export {
   EXPENSE_SPLIT_OPTION,
   GROUP_STATUS,
   BUTTON_TYPE,
+  TOAST_TYPE,
 };

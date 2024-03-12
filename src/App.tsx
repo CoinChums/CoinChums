@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text } from 'react-native';
+import { ToastProvider } from 'react-native-toast-notifications';
 import { MainNavigator } from './navigation';
+import { theme } from './themes';
 
 //To disable App font scaling
 interface TextWithDefaultProps extends Text {
@@ -12,7 +14,19 @@ interface TextWithDefaultProps extends Text {
 (Text as unknown as TextWithDefaultProps).defaultProps!.allowFontScaling = false;
 
 const App = (): JSX.Element => {
-  return <MainNavigator />;
+  return (
+    <ToastProvider
+      offset={100}
+      animationType="slide-in"
+      swipeEnabled={true}
+      successColor={theme.palette.success.dark}
+      dangerColor={theme.palette.error.dark}
+      warningColor={theme.palette.warning.dark}
+      duration={3000}
+      textStyle={{ fontSize: theme.typography.fontSize.small }}>
+      <MainNavigator />
+    </ToastProvider>
+  );
 };
 
 export default App;
