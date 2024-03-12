@@ -24,6 +24,10 @@ enum APP_LABELS {
   SETTINGS = 'Settings',
 }
 
+enum CONSTANTS {
+  SERVER_RESOURCE_NOT_FOUND = "Oops! our system's are fluctuating. Do not worry, Best minds are at work.",
+}
+
 enum GENDER {
   MALE = 'MALE',
   FEMALE = 'FEMALE',
@@ -39,6 +43,7 @@ enum SCREEN_STATE {
 
 enum ASYNC_STORAGE {
   IS_FIRSTLAUNCH = 'appLaunched',
+  ACCESS_TOKEN = 'accessToken',
 }
 
 enum STATUS {
@@ -84,6 +89,14 @@ enum TOAST_TYPE {
   DANGER = 'danger',
 }
 
+enum EReqMethod {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+  PATCH = 'PATCH',
+}
+
 export {
   APP_LABELS,
   APP_ROUTES,
@@ -98,4 +111,6 @@ export {
   GROUP_STATUS,
   BUTTON_TYPE,
   TOAST_TYPE,
+  CONSTANTS,
+  EReqMethod,
 };
