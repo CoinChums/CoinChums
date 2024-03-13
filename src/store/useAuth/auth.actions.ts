@@ -1,16 +1,16 @@
 import { create } from 'zustand';
 import { SCREEN_STATE } from '../../constants/enums';
-import { LoginPayload, UseAuthStore, InitialAuthState } from './useAuth.types';
+import { InitialAuthState, LoginPayload, LogoutPayload, UseAuthStore } from './useAuth.types';
 
 const initialStateData: InitialAuthState = {
   isUserLoggedIn: false,
   state: SCREEN_STATE.NONE,
-  isLoggedOut: false,
   loggedInUserDetails: {
     id: '',
-    name: '',
+    fullName: '',
     email: '',
-    phone: '0',
+    phone: '',
+    couponCode: '',
   },
 };
 
@@ -24,9 +24,11 @@ export const useAuth = create<UseAuthStore>((set, get) => ({
     set({
       loggedInUserDetails: user,
       isUserLoggedIn: allowLogin,
-      isLoggedOut: false,
       state: SCREEN_STATE.NONE,
     });
   },
   loginFailed: () => set({ state: SCREEN_STATE.ERROR }),
+  logoutUser: () => {
+    set({ isUserLoggedIn: false });
+  },
 }));

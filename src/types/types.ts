@@ -9,6 +9,10 @@ export type NavigationParams = {
   [APP_ROUTES.profileStack]: undefined;
   [APP_ROUTES.settings]: undefined;
   [APP_ROUTES.onboarding]: undefined;
-  [APP_ROUTES.auth]: undefined;
+  [APP_ROUTES.auth]: { isSignup: boolean };
   [APP_ROUTES.groups]: undefined;
+};
+
+export type TNavRoutes = {
+  Authentication: { isSignup: boolean };
 };

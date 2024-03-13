@@ -26,6 +26,10 @@ enum APP_LABELS {
 
 enum CONSTANTS {
   SERVER_RESOURCE_NOT_FOUND = "Oops! our system's are fluctuating. Do not worry, Best minds are at work.",
+  MOCK_COUPON = 'ABCD',
+  COUPON_ERROR = 'Please enter a valid Coupon Code',
+  GENERIC_ERROR_MESSAGE = 'Something went wrong!',
+  INVALID_CRED = 'Invalid email or password. Please provide valid credentials.',
 }
 
 enum GENDER {
@@ -97,6 +101,16 @@ enum EReqMethod {
   PATCH = 'PATCH',
 }
 
+enum AUTH_ACTIONS {
+  SET_FULL_NAME = 'SET_FULL_NAME',
+  SET_EMAIL = 'SET_EMAIL',
+  SET_PASSWORD = 'SET_PASSWORD',
+  SET_IS_FULL_NAME_ENTERED = 'SET_IS_FULL_NAME_ENTERED',
+  SHOW_MODAL = 'SHOW_MODAL',
+  COUPON_CODE = 'COUPON_CODE',
+  ERROR_MSG = 'ERROR_MSG',
+}
+
 export {
   APP_LABELS,
   APP_ROUTES,
@@ -113,4 +127,5 @@ export {
   TOAST_TYPE,
   CONSTANTS,
   EReqMethod,
+  AUTH_ACTIONS,
 };

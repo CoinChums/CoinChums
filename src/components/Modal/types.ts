@@ -5,5 +5,5 @@ export type TModal = {
   visible: boolean;
   children: JSX.Element;
   containerStyle?: StyleProp<ViewStyle>;
-  onRequestClose?: () => void;
+  onRequestClose: () => void;
 };

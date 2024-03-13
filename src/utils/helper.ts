@@ -15,12 +15,6 @@ const delay = (ms: number) => {
   return new Promise(resolve => setTimeout(resolve as () => void, ms));
 };
 
-const logger = (...args: any) => {
-  if (__DEV__) {
-    console.log(...args); // eslint-disable-line no-console
-  }
-};
-
 const loader = createRef<IndicatorRef>();
 
 const validateTextInput = (name: string) => {
@@ -30,4 +24,33 @@ const validateTextInput = (name: string) => {
   return '';
 };
 
-export { boxShadow, delay, loader, logger, validateTextInput };
+const emptyFunction = () => {};
+
+const generateRandomId = () => {
+  return Math.floor(Math.random() * 10000).toString();
+};
+
+const validateCredentials = (email: string, password: string) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const passwordRegex = /^(?=.*[!@#$%^&*])(?=.{6,})/;
+
+  const isEmailValid = emailRegex.test(email);
+
+  const isPasswordValid = passwordRegex.test(password);
+
+  return {
+    isEmailValid,
+    isPasswordValid,
+  };
+};
+
+export {
+  boxShadow,
+  delay,
+  emptyFunction,
+  generateRandomId,
+  loader,
+  validateTextInput,
+  validateCredentials,
+};

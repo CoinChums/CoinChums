@@ -1,9 +1,12 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DefaultTheme } from '@react-navigation/native';
 import { t } from 'i18next';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
-import { Accordion, BaseLayout, Header } from '../../components';
+import { Accordion, BaseLayout, Button, Header } from '../../components';
+import { ASYNC_STORAGE, BUTTON_TYPE } from '../../constants/enums';
+import { useAuth } from '../../store/useAuth/auth.actions';
 import { theme } from '../../themes';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Settings.style';
@@ -16,8 +19,18 @@ const languages = [
 
 const Settings = () => {
   const { t, i18n } = useTranslation();
+  const { logoutUser } = useAuth();
   const [lang, setLang] = useState('en');
   const selectedLanguageCode = i18n.language;
+
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.removeItem(ASYNC_STORAGE.ACCESS_TOKEN);
+      logoutUser();
+    } catch (error) {
+      console.error('Failed to remove item:', error);
+    }
+  };
 
   return (
     <BaseLayout>
@@ -54,6 +67,7 @@ const Settings = () => {
           );
         })}
       </View>
+      <Button onPress={handleLogout} title={'Logout'} type={BUTTON_TYPE.FILL} />
     </BaseLayout>
   );
 };

@@ -2,8 +2,10 @@ import { GENDER } from '../../constants/enums';
 
 export type UserRole = {
   id: string;
-  name: string;
   gender?: GENDER;
+  fullName?: string;
+  password?: string;
+  phone?: string;
   email: string;
-  phone: string;
+  couponCode: string;
 };
