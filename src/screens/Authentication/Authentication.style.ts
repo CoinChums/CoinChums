@@ -21,4 +21,9 @@ export const styles = StyleSheet.create({
     top: 0,
     right: 0,
   },
+  error: {
+    color: theme.palette.error.dark,
+    fontFamily: theme.typography.fontFamily[700],
+    marginVertical: spacing.tinyHeight,
+  },
 });

@@ -26,8 +26,8 @@ const validateTextInput = (name: string) => {
 
 const emptyFunction = () => {};
 
-const getUUIDv4 = () => {
+const generateRandomId = () => {
   return Math.floor(Math.random() * 10000).toString();
 };
 
-export { boxShadow, delay, emptyFunction, getUUIDv4, loader, validateTextInput };
+export { boxShadow, delay, emptyFunction, generateRandomId, loader, validateTextInput };

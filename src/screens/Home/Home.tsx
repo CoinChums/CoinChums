@@ -3,20 +3,17 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Text, View } from 'react-native';
 import { BaseLayout, Button, GroupListTile, Header } from '../../components';
-import { APP_ROUTES, ASYNC_STORAGE, BUTTON_TYPE } from '../../constants/enums';
+import { APP_ROUTES, BUTTON_TYPE } from '../../constants/enums';
 import { expense } from '../../mocks';
 import { NavigationParams } from '../../types/types';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Home.style';
 import { THome } from './types';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useAuth } from '../../store/useAuth/auth.actions';
 
 const Home: React.FC<THome> = () => {
   const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
   const header = 'Overall, you owe ₹ 300';
-  const { logoutUser } = useAuth();
 
   const handleNavigation = () => navigation.navigate(APP_ROUTES.groups);
 
@@ -34,18 +31,6 @@ const Home: React.FC<THome> = () => {
             leftIcon={APP_IMAGES.userGroup}
           />
         </View>
-        <Button
-          onPress={async () => {
-            try {
-              await AsyncStorage.removeItem(ASYNC_STORAGE.ACCESS_TOKEN);
-              logoutUser();
-            } catch (error) {
-              console.error('Failed to remove item:', error);
-            }
-          }}
-          title={'Logout'}
-          type={BUTTON_TYPE.FILL}
-        />
       </View>
     </BaseLayout>
   );

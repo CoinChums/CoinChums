@@ -1,6 +1,6 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
 import React, { useCallback, useReducer } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
 import {
   BaseLayout,
@@ -33,6 +33,8 @@ const Authentication = () => {
     const { couponCode } = state;
     if (couponCode.trim() && couponCode === CONSTANTS.MOCK_COUPON) {
       handleLogin(state);
+    } else {
+      dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: CONSTANTS.COUPON_ERROR });
     }
   };
 
@@ -52,8 +54,14 @@ const Authentication = () => {
   };
 
   const toggleModal = useCallback(() => {
+    dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: '' });
     dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
   }, [state.showModal]);
+
+  const readCouponCode = (text: string) => {
+    dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: '' });
+    dispatch({ type: AUTH_ACTIONS.COUPON_CODE, payload: text });
+  };
 
   return (
     <BaseLayout statusColor={statusBarColor}>
@@ -69,8 +77,9 @@ const Authentication = () => {
                 placeholder="Coupon Code"
                 variant="underlined"
                 label="Coupon Code"
-                onChangeText={text => dispatch({ type: AUTH_ACTIONS.COUPON_CODE, payload: text })}
+                onChangeText={readCouponCode}
               />
+              {!!state.errorMessage && <Text style={styles.error}>{state.errorMessage}</Text>}
               <TouchableOpacity style={styles.closeIcon} onPress={toggleModal}>
                 <SVGImage
                   assetSrc={APP_IMAGES.cross}
@@ -118,7 +127,6 @@ const Authentication = () => {
             </>
           }
         />
-        <Button type={BUTTON_TYPE.UNDERLINE} title="Login as Guest" onPress={toggleModal} />
       </View>
     </BaseLayout>
   );

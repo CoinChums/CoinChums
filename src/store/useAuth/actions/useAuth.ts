@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ASYNC_STORAGE } from '../../../constants/enums';
 import { TUserState } from '../../../screens/Authentication/types';
-import { getUUIDv4 } from '../../../utils/helper';
+import { generateRandomId } from '../../../utils/helper';
 import { useAuth } from '../auth.actions';
 
 export const useAuthActions = () => {
@@ -29,7 +29,7 @@ export const useAuthActions = () => {
         throw new Error('Email and password are required.');
       }
 
-      const userId = getUUIDv4();
+      const userId = generateRandomId();
       loginSuccess({
         user: {
           id: userId,

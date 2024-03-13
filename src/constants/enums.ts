@@ -27,6 +27,8 @@ enum APP_LABELS {
 enum CONSTANTS {
   SERVER_RESOURCE_NOT_FOUND = "Oops! our system's are fluctuating. Do not worry, Best minds are at work.",
   MOCK_COUPON = 'ABCD',
+  COUPON_ERROR = 'Please enter a valid Coupon Code',
+  GENERIC_ERROR_MESSAGE = 'Something went wrong!',
 }
 
 enum GENDER {
@@ -105,6 +107,7 @@ enum AUTH_ACTIONS {
   SET_IS_FULL_NAME_ENTERED = 'SET_IS_FULL_NAME_ENTERED',
   SHOW_MODAL = 'SHOW_MODAL',
   COUPON_CODE = 'COUPON_CODE',
+  ERROR_MSG = 'ERROR_MSG',
 }
 
 export {

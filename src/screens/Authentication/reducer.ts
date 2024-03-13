@@ -8,6 +8,7 @@ export const initialState: TUserState = {
   isFullNameEntered: false,
   showModal: false,
   couponCode: '',
+  errorMessage: '',
 };
 
 export const reducer = (state: TUserState, action: Action): TUserState => {
@@ -24,6 +25,8 @@ export const reducer = (state: TUserState, action: Action): TUserState => {
       return { ...state, showModal: action.payload };
     case AUTH_ACTIONS.COUPON_CODE:
       return { ...state, couponCode: action.payload };
+    case AUTH_ACTIONS.ERROR_MSG:
+      return { ...state, errorMessage: action.payload };
     default:
       return state;
   }
