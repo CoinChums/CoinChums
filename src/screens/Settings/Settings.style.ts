@@ -8,8 +8,13 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   languageText: {
-    padding: spacing.smallWidth,
+    paddingVertical: spacing.tinyHeight,
     fontSize: theme.typography.fontSize.big,
     fontFamily: theme.typography.fontFamily[700],
+  },
+  container: {
+    flex: 1,
+    backgroundColor: theme.palette.white.dark,
+    paddingHorizontal: spacing.mediumWidth,
   },
 });

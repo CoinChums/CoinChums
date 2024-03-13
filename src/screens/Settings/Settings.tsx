@@ -34,16 +34,8 @@ const Settings = () => {
 
   return (
     <BaseLayout>
-      <Header title={t('settings')} rightIcon={APP_IMAGES.search} />
-      <Accordion loading={false} title={t('settings')}>
-        <>
-          <Text>{t('accExample')}</Text>
-          <Text>{t('accExample')}</Text>
-          <Text>{t('accExample')}</Text>
-          <Text>{t('accExample')}</Text>
-        </>
-      </Accordion>
-      <View>
+      <Header title={t('settings')} />
+      <View style={styles.container}>
         <Text style={styles.language}>
           {t('change_language')} ({lang})
         </Text>
@@ -66,8 +58,8 @@ const Settings = () => {
             </Text>
           );
         })}
+        <Button onPress={handleLogout} title={'Logout'} type={BUTTON_TYPE.FILL} />
       </View>
-      <Button onPress={handleLogout} title={'Logout'} type={BUTTON_TYPE.FILL} />
     </BaseLayout>
   );
 };
