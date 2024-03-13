@@ -6,15 +6,19 @@ export type LoginPayload = {
   allowLogin: boolean;
 };
 
+export type LogoutPayload = {
+  allowLogin: boolean;
+};
+
 export type InitialAuthState = {
   isUserLoggedIn: boolean;
   state: SCREEN_STATE;
-  isLoggedOut: boolean;
-  loggedInUserDetails?: UserRole;
+  loggedInUserDetails: UserRole;
 };
 
 export type UseAuthStore = InitialAuthState & {
   loginLoading: () => void;
   loginSuccess: (payload: LoginPayload) => void;
   loginFailed: () => void;
+  logoutUser: () => void;
 };

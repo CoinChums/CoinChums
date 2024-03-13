@@ -1,12 +1,22 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
-import React, { useReducer } from 'react';
-import { View } from 'react-native';
+import React, { useCallback, useReducer } from 'react';
+import { TouchableOpacity, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
-import { AuthActions } from '../../actions/auth';
-import { BaseLayout, Button, ConditionRenderer, Input } from '../../components';
-import { AUTH_ACTIONS, BUTTON_TYPE, TOAST_TYPE } from '../../constants/enums';
-import { useAuth } from '../../store/useAuth/useAuth';
+import {
+  BaseLayout,
+  Button,
+  ConditionRenderer,
+  Input,
+  OverlayModal,
+  SVGImage,
+} from '../../components';
+import { AUTH_ACTIONS, BUTTON_TYPE, CONSTANTS, TOAST_TYPE } from '../../constants/enums';
+import { useAuthActions } from '../../store/useAuth/actions/useAuth';
+import { theme } from '../../themes';
+import { spacing } from '../../themes/spacing';
 import { TNavRoutes } from '../../types/types';
+import dimensions from '../../utils/dimensions';
+import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Authentication.style';
 import { initialState, reducer } from './reducer';
 
@@ -14,27 +24,21 @@ const Authentication = () => {
   const toast = useToast();
   const route = useRoute<RouteProp<TNavRoutes, 'Authentication'>>();
   const { isSignup } = route.params;
-  const { loginSuccess } = useAuth();
-
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { handleLogin } = useAuthActions();
+  const screenWindowWidth = dimensions.screenWidth / 1.5;
+  const statusBarColor = state.showModal ? theme.palette.black.light : theme.palette.white.dark;
 
-  const anonymousSignIn = async () => {
-    try {
-      const user = await AuthActions.login();
-      if (user.id) {
-        loginSuccess({
-          user,
-          allowLogin: true,
-        });
-      }
-    } catch (err) {
-      console.error(err);
+  const submitCouponCode = () => {
+    const { couponCode } = state;
+    if (couponCode.trim() && couponCode === CONSTANTS.MOCK_COUPON) {
+      handleLogin(state);
     }
   };
 
   const handleContinuation = () => {
     if (!isSignup) {
-      anonymousSignIn();
+      dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: true });
     } else {
       const { fullName } = state;
       if (!fullName.trim()) {
@@ -47,9 +51,37 @@ const Authentication = () => {
     }
   };
 
+  const toggleModal = useCallback(() => {
+    dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
+  }, [state.showModal]);
+
   return (
-    <BaseLayout>
+    <BaseLayout statusColor={statusBarColor}>
       <View style={styles.container}>
+        <OverlayModal
+          visible={state.showModal}
+          width={screenWindowWidth}
+          onRequestClose={toggleModal}>
+          <View style={styles.modal}>
+            <View>
+              <Input
+                type="text"
+                placeholder="Coupon Code"
+                variant="underlined"
+                label="Coupon Code"
+                onChangeText={text => dispatch({ type: AUTH_ACTIONS.COUPON_CODE, payload: text })}
+              />
+              <TouchableOpacity style={styles.closeIcon} onPress={toggleModal}>
+                <SVGImage
+                  assetSrc={APP_IMAGES.cross}
+                  height={spacing.bigHeight}
+                  width={spacing.bigWidth}
+                />
+              </TouchableOpacity>
+            </View>
+            <Button type={BUTTON_TYPE.FILL} title="Submit" onPress={submitCouponCode} />
+          </View>
+        </OverlayModal>
         <ConditionRenderer
           state={isSignup && !state.isFullNameEntered}
           C1={
@@ -82,11 +114,11 @@ const Authentication = () => {
                 label={'Password'}
                 onChangeText={text => dispatch({ type: AUTH_ACTIONS.SET_PASSWORD, payload: text })}
               />
-              <Button type={BUTTON_TYPE.FILL} title="Login" onPress={anonymousSignIn} />
+              <Button type={BUTTON_TYPE.FILL} title="Login" onPress={toggleModal} />
             </>
           }
         />
-        <Button type={BUTTON_TYPE.UNDERLINE} title="Login as Guest" onPress={anonymousSignIn} />
+        <Button type={BUTTON_TYPE.UNDERLINE} title="Login as Guest" onPress={toggleModal} />
       </View>
     </BaseLayout>
   );

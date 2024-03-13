@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.black.light,
   },
   popUpScreen: {
     borderRadius: spacing.bigWidth,

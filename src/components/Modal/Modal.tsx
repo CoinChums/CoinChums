@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, TouchableOpacity } from 'react-native';
+import { Modal, View } from 'react-native';
 import { styles } from './styles';
 import { TModal } from './types';
 
@@ -8,17 +8,13 @@ export const OverlayModal: React.FC<TModal> = props => {
 
   return (
     <Modal
-      animationType="fade"
+      animationType="slide"
       transparent={true}
       visible={visible}
       onRequestClose={onRequestClose}>
-      <TouchableOpacity style={styles.background} activeOpacity={1} onPress={onRequestClose}>
-        <TouchableOpacity
-          activeOpacity={1}
-          style={[styles.popUpScreen, { width: width }, containerStyle]}>
-          {children}
-        </TouchableOpacity>
-      </TouchableOpacity>
+      <View style={styles.background}>
+        <View style={[styles.popUpScreen, { width: width }, containerStyle]}>{children}</View>
+      </View>
     </Modal>
   );
 };

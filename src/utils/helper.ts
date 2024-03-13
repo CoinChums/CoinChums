@@ -15,12 +15,6 @@ const delay = (ms: number) => {
   return new Promise(resolve => setTimeout(resolve as () => void, ms));
 };
 
-const logger = (...args: any) => {
-  if (__DEV__) {
-    console.log(...args); // eslint-disable-line no-console
-  }
-};
-
 const loader = createRef<IndicatorRef>();
 
 const validateTextInput = (name: string) => {
@@ -32,4 +26,8 @@ const validateTextInput = (name: string) => {
 
 const emptyFunction = () => {};
 
-export { boxShadow, delay, loader, logger, validateTextInput, emptyFunction };
+const getUUIDv4 = () => {
+  return Math.floor(Math.random() * 10000).toString();
+};
+
+export { boxShadow, delay, emptyFunction, getUUIDv4, loader, validateTextInput };
