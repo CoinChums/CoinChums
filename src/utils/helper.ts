@@ -30,4 +30,27 @@ const generateRandomId = () => {
   return Math.floor(Math.random() * 10000).toString();
 };
 
-export { boxShadow, delay, emptyFunction, generateRandomId, loader, validateTextInput };
+const validateCredentials = (email: string, password: string) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const passwordRegex = /^(?=.*[!@#$%^&*])(?=.{6,})/;
+
+  const isEmailValid = emailRegex.test(email);
+
+  const isPasswordValid = passwordRegex.test(password);
+
+  return {
+    isEmailValid,
+    isPasswordValid,
+  };
+};
+
+export {
+  boxShadow,
+  delay,
+  emptyFunction,
+  generateRandomId,
+  loader,
+  validateTextInput,
+  validateCredentials,
+};

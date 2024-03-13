@@ -29,6 +29,7 @@ enum CONSTANTS {
   MOCK_COUPON = 'ABCD',
   COUPON_ERROR = 'Please enter a valid Coupon Code',
   GENERIC_ERROR_MESSAGE = 'Something went wrong!',
+  INVALID_CRED = 'Invalid email or password. Please provide valid credentials.',
 }
 
 enum GENDER {

@@ -19,6 +19,7 @@ import dimensions from '../../utils/dimensions';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Authentication.style';
 import { initialState, reducer } from './reducer';
+import { validateCredentials } from '../../utils/helper';
 
 const Authentication = () => {
   const toast = useToast();
@@ -31,11 +32,11 @@ const Authentication = () => {
 
   const submitCouponCode = () => {
     const { couponCode } = state;
-    if (couponCode.trim() && couponCode === CONSTANTS.MOCK_COUPON) {
-      handleLogin(state);
-    } else {
+    if (couponCode.trim() !== CONSTANTS.MOCK_COUPON) {
       dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: CONSTANTS.COUPON_ERROR });
+      return;
     }
+    handleLogin(state);
   };
 
   const handleContinuation = () => {
@@ -51,6 +52,16 @@ const Authentication = () => {
       }
       dispatch({ type: AUTH_ACTIONS.SET_IS_FULL_NAME_ENTERED, payload: true });
     }
+  };
+
+  const handleLoginCall = () => {
+    const { email, password } = state;
+    const { isEmailValid, isPasswordValid } = validateCredentials(email, password);
+    if (!isEmailValid || !isPasswordValid) {
+      toast.show(CONSTANTS.INVALID_CRED, { type: TOAST_TYPE.DANGER });
+      return;
+    }
+    dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
   };
 
   const toggleModal = useCallback(() => {
@@ -123,7 +134,7 @@ const Authentication = () => {
                 label={'Password'}
                 onChangeText={text => dispatch({ type: AUTH_ACTIONS.SET_PASSWORD, payload: text })}
               />
-              <Button type={BUTTON_TYPE.FILL} title="Login" onPress={toggleModal} />
+              <Button type={BUTTON_TYPE.FILL} title="Login" onPress={handleLoginCall} />
             </>
           }
         />
