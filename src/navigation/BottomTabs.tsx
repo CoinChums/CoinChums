@@ -17,7 +17,7 @@ const renderTabBarIcon = (assetSrc: string, focused: boolean) => () => (
     assetSrc={assetSrc}
     width={dimensions.viewWidth(22)}
     height={dimensions.viewWidth(22)}
-    fill={focused ? theme.palette.primary.medium : theme.palette.secondary.dark}
+    fill={focused ? theme.palette.primary.medium : theme.palette.secondary.medium}
   />
 );
 
@@ -34,7 +34,7 @@ const tabBarOptions = {
 
 const tabConfig = {
   tabBarActiveTintColor: theme.palette.primary.medium,
-  tabBarInactiveTintColor: theme.palette.secondary.dark,
+  tabBarInactiveTintColor: theme.palette.secondary.medium,
   tabBarLabelStyle: { fontSize: theme.typography.fontSize.small },
 };
 

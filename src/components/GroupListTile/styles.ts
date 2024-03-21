@@ -19,24 +19,23 @@ export const styles = StyleSheet.create({
     fontSize: theme.typography.fontSize.average,
     fontFamily: theme.typography.fontFamily[400],
     lineHeight: spacing.averageHeight,
-    color: theme.palette.black.dark,
+    color: theme.palette.primary.medium,
   },
   subTitle: {
     fontSize: theme.typography.fontSize.medium,
-    fontFamily: theme.typography.fontFamily[700],
+    fontFamily: theme.typography.fontFamily[500],
     lineHeight: spacing.averageHeight,
-    color: theme.palette.secondary.dark,
-    opacity: 0.7,
+    color: theme.palette.secondary.light,
   },
   debt: {
     color: theme.palette.error.light,
   },
   owes: {
-    color: theme.palette.primary.medium,
+    color: theme.palette.secondary.light,
   },
   balance: {
     fontSize: theme.typography.fontSize.medium,
-    fontFamily: theme.typography.fontFamily[700],
+    fontFamily: theme.typography.fontFamily[500],
     lineHeight: spacing.averageHeight,
   },
 });

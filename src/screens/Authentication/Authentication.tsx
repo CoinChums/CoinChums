@@ -1,6 +1,6 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
 import React, { useCallback, useReducer } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
 import {
   BaseLayout,
@@ -29,6 +29,7 @@ const Authentication = () => {
   const { handleLogin } = useAuthActions();
   const screenWindowWidth = dimensions.screenWidth / 1.5;
   const statusBarColor = state.showModal ? theme.palette.black.light : theme.palette.white.dark;
+  const iconSrc = require('../../assets/images/coinchums.png');
 
   const submitCouponCode = () => {
     const { couponCode } = state;
@@ -77,6 +78,7 @@ const Authentication = () => {
   return (
     <BaseLayout statusColor={statusBarColor}>
       <View style={styles.container}>
+        <Image source={iconSrc} style={styles.appIcon} />
         <OverlayModal
           visible={state.showModal}
           width={screenWindowWidth}

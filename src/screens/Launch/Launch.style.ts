@@ -12,10 +12,6 @@ const backgroundPrimaryStyle = {
   backgroundColor: theme.palette.primary.medium,
 };
 
-const backgroundBlackStyle = {
-  backgroundColor: theme.palette.secondary.dark,
-};
-
 const appIconStyle: ImageStyle = {
   height: dimensions.viewHeight(100),
   width: dimensions.viewWidth(100),
@@ -32,7 +28,6 @@ interface Styles {
   container: ViewStyle;
   authContainer: ViewStyle;
   backgroundPrimary: ViewStyle;
-  backgroundBlack: ViewStyle;
   loginBtn: ViewStyle;
   title: ViewStyle;
   appIcon: ImageStyle;
@@ -48,7 +43,6 @@ export const styles = StyleSheet.create<Styles>({
     paddingHorizontal: dimensions.viewWidth(70),
   },
   backgroundPrimary: backgroundPrimaryStyle,
-  backgroundBlack: backgroundBlackStyle,
   loginBtn: {
     marginTop: spacing.mediumHeight,
     borderRadius: 10,

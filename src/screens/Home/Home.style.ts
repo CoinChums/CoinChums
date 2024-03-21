@@ -14,12 +14,15 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: theme.typography.fontSize.big,
     fontFamily: theme.typography.fontFamily[700],
-    color: theme.palette.secondary.dark,
+    color: theme.palette.secondary.medium,
     marginVertical: spacing.normalHeight,
     lineHeight: spacing.bigHeight,
   },
   btn: {
     marginTop: spacing.smallHeight,
     marginHorizontal: dimensions.viewWidth(60),
+  },
+  titleProps: {
+    color: theme.palette.primary.medium,
   },
 });

@@ -18,10 +18,7 @@ const Login: FC = () => {
   };
 
   const renderAuthButton = (title: string, isSignup: boolean) => {
-    const buttonContainerStyle = [
-      styles.loginBtn,
-      isSignup ? styles.backgroundPrimary : styles.backgroundBlack,
-    ];
+    const buttonContainerStyle = [styles.loginBtn, styles.backgroundPrimary];
 
     return (
       <Button

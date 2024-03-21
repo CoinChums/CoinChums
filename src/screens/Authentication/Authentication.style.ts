@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
+import dimensions from '../../utils/dimensions';
 
 export const styles = StyleSheet.create({
   container: {
@@ -25,5 +26,9 @@ export const styles = StyleSheet.create({
     color: theme.palette.error.dark,
     fontFamily: theme.typography.fontFamily[700],
     marginVertical: spacing.tinyHeight,
+  },
+  appIcon: {
+    height: dimensions.viewHeight(100),
+    width: dimensions.viewWidth(100),
   },
 });
