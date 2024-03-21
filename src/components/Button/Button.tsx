@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { BUTTON_TYPE } from '../../constants/enums';
+import { theme } from '../../themes';
 import dimensions from '../../utils/dimensions';
 import { SVGImage } from '../ImageRender/Image';
 import { styles } from './styles';
@@ -16,6 +17,7 @@ const ButtonContent = ({ title, titleStyle, leftIcon, rightIcon }) => (
         assetSrc={leftIcon}
         height={dimensions.viewHeight(18)}
         width={dimensions.viewWidth(18)}
+        fill={theme.palette.primary.medium}
       />
     )}
     <Text style={[styles.title, titleStyle]}>{title}</Text>
@@ -66,7 +68,7 @@ export const Button = React.memo((props: TButtonProps) => {
     case BUTTON_TYPE.FILL:
       return (
         <AnimatedTouchableOpacity
-          containerStyle={[styles.fillBtnContainer, buttonContainerStyle]}
+          containerStyle={[styles.fillBtnContainer, buttonContainerStyle, titleStyle]}
           {...props}>
           {renderButtonContent()}
         </AnimatedTouchableOpacity>
@@ -75,7 +77,7 @@ export const Button = React.memo((props: TButtonProps) => {
     case BUTTON_TYPE.OUTLINE:
       return (
         <AnimatedTouchableOpacity
-          containerStyle={[styles.outlineBtn, buttonContainerStyle]}
+          containerStyle={[styles.outlineBtn, buttonContainerStyle, titleStyle]}
           {...props}>
           {renderButtonContent()}
         </AnimatedTouchableOpacity>

@@ -19,7 +19,7 @@ const Home: React.FC<THome> = () => {
 
   return (
     <BaseLayout style={styles.home}>
-      <Header title={t('home')} rightIcon={APP_IMAGES.search} />
+      <Header title={t('home')} />
       <View style={styles.container}>
         <Text style={styles.title}>{header}</Text>
         <FlatList data={expense.groups} renderItem={({ item }) => <GroupListTile node={item} />} />
@@ -29,6 +29,7 @@ const Home: React.FC<THome> = () => {
             title={'Create a new group'}
             type={BUTTON_TYPE.OUTLINE}
             leftIcon={APP_IMAGES.userGroup}
+            titleStyle={styles.titleProps}
           />
         </View>
       </View>

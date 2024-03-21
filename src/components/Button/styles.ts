@@ -5,7 +5,7 @@ import dimensions from '../../utils/dimensions';
 
 export const styles = StyleSheet.create({
   fillBtnContainer: {
-    backgroundColor: theme.palette.success.light,
+    backgroundColor: theme.palette.secondary.medium,
     borderRadius: spacing.smallWidth,
     height: dimensions.viewHeight(45),
     width: '100%',
@@ -21,11 +21,11 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.palette.white.dark,
     borderRadius: spacing.smallWidth,
     height: dimensions.viewHeight(45),
-    borderColor: theme.palette.primary.light,
+    borderColor: theme.palette.primary.dark,
     borderWidth: 1,
   },
   title: {
-    color: theme.palette.black.dark,
+    color: theme.palette.white.medium,
     fontFamily: theme.typography.fontFamily[700],
     fontSize: theme.typography.fontSize.average,
     marginHorizontal: spacing.smallWidth,

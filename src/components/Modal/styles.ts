@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: theme.palette.black.light,
+    opacity: 0.96,
   },
   popUpScreen: {
     borderRadius: spacing.bigWidth,

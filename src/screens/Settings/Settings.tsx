@@ -4,11 +4,10 @@ import { t } from 'i18next';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
-import { Accordion, BaseLayout, Button, Header } from '../../components';
+import { BaseLayout, Button, Header } from '../../components';
 import { ASYNC_STORAGE, BUTTON_TYPE } from '../../constants/enums';
 import { useAuth } from '../../store/useAuth/auth.actions';
 import { theme } from '../../themes';
-import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Settings.style';
 
 const languages = [
@@ -34,40 +33,38 @@ const Settings = () => {
 
   return (
     <BaseLayout>
-      <Header title={t('settings')} rightIcon={APP_IMAGES.search} />
-      <Accordion loading={false} title={t('settings')}>
-        <>
-          <Text>{t('accExample')}</Text>
-          <Text>{t('accExample')}</Text>
-          <Text>{t('accExample')}</Text>
-          <Text>{t('accExample')}</Text>
-        </>
-      </Accordion>
-      <View>
-        <Text style={styles.language}>
-          {t('change_language')} ({lang})
-        </Text>
-        {languages.map(currentLang => {
-          const selectedLanguage = currentLang.code === selectedLanguageCode;
-          return (
-            <Text
-              key={currentLang.code}
-              onPress={() => {
-                setLang(currentLang.code);
-                i18n.changeLanguage(currentLang.code);
-              }}
-              style={[
-                {
-                  color: selectedLanguage ? DefaultTheme.colors.primary : theme.palette.black.dark,
-                },
-                styles.languageText,
-              ]}>
-              {currentLang.label}
-            </Text>
-          );
-        })}
+      <Header title={t('settings')} />
+      <View style={styles.container}>
+        <View>
+          <Text style={styles.language}>
+            {t('change_language')} ({lang})
+          </Text>
+          {languages.map(currentLang => {
+            const selectedLanguage = currentLang.code === selectedLanguageCode;
+            return (
+              <Text
+                key={currentLang.code}
+                onPress={() => {
+                  setLang(currentLang.code);
+                  i18n.changeLanguage(currentLang.code);
+                }}
+                style={[
+                  {
+                    color: selectedLanguage
+                      ? DefaultTheme.colors.primary
+                      : theme.palette.black.dark,
+                  },
+                  styles.languageText,
+                ]}>
+                {currentLang.label}
+              </Text>
+            );
+          })}
+        </View>
+        <View style={styles.btn}>
+          <Button onPress={handleLogout} title={'Logout'} type={BUTTON_TYPE.FILL} />
+        </View>
       </View>
-      <Button onPress={handleLogout} title={'Logout'} type={BUTTON_TYPE.FILL} />
     </BaseLayout>
   );
 };

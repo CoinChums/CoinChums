@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: spacing.normalWidth,
   },
   title: {
-    color: theme.palette.black.dark,
+    color: theme.palette.white.medium,
     fontSize: theme.typography.fontSize.big,
     fontFamily: theme.typography.fontFamily[700],
     lineHeight: spacing.bigHeight,
