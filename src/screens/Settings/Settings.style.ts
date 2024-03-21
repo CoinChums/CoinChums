@@ -11,10 +11,15 @@ export const styles = StyleSheet.create({
     paddingVertical: spacing.tinyHeight,
     fontSize: theme.typography.fontSize.big,
     fontFamily: theme.typography.fontFamily[700],
+    lineHeight: spacing.averageHeight,
   },
   container: {
     flex: 1,
     backgroundColor: theme.palette.white.dark,
     paddingHorizontal: spacing.mediumWidth,
+    justifyContent: 'space-between',
+  },
+  btn: {
+    paddingBottom: spacing.smallHeight,
   },
 });

@@ -4,11 +4,10 @@ import { t } from 'i18next';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
-import { Accordion, BaseLayout, Button, Header } from '../../components';
+import { BaseLayout, Button, Header } from '../../components';
 import { ASYNC_STORAGE, BUTTON_TYPE } from '../../constants/enums';
 import { useAuth } from '../../store/useAuth/auth.actions';
 import { theme } from '../../themes';
-import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Settings.style';
 
 const languages = [
@@ -36,29 +35,35 @@ const Settings = () => {
     <BaseLayout>
       <Header title={t('settings')} />
       <View style={styles.container}>
-        <Text style={styles.language}>
-          {t('change_language')} ({lang})
-        </Text>
-        {languages.map(currentLang => {
-          const selectedLanguage = currentLang.code === selectedLanguageCode;
-          return (
-            <Text
-              key={currentLang.code}
-              onPress={() => {
-                setLang(currentLang.code);
-                i18n.changeLanguage(currentLang.code);
-              }}
-              style={[
-                {
-                  color: selectedLanguage ? DefaultTheme.colors.primary : theme.palette.black.dark,
-                },
-                styles.languageText,
-              ]}>
-              {currentLang.label}
-            </Text>
-          );
-        })}
-        <Button onPress={handleLogout} title={'Logout'} type={BUTTON_TYPE.FILL} />
+        <View>
+          <Text style={styles.language}>
+            {t('change_language')} ({lang})
+          </Text>
+          {languages.map(currentLang => {
+            const selectedLanguage = currentLang.code === selectedLanguageCode;
+            return (
+              <Text
+                key={currentLang.code}
+                onPress={() => {
+                  setLang(currentLang.code);
+                  i18n.changeLanguage(currentLang.code);
+                }}
+                style={[
+                  {
+                    color: selectedLanguage
+                      ? DefaultTheme.colors.primary
+                      : theme.palette.black.dark,
+                  },
+                  styles.languageText,
+                ]}>
+                {currentLang.label}
+              </Text>
+            );
+          })}
+        </View>
+        <View style={styles.btn}>
+          <Button onPress={handleLogout} title={'Logout'} type={BUTTON_TYPE.FILL} />
+        </View>
       </View>
     </BaseLayout>
   );
