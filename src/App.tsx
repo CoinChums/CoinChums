@@ -1,7 +1,9 @@
 import React from 'react';
 import { Text } from 'react-native';
+import { Provider } from 'react-redux';
 import { ToastProvider } from 'react-native-toast-notifications';
 import { MainNavigator } from './navigation';
+import reduxStore from './redux/reduxStore';
 import { theme } from './themes';
 
 //To disable App font scaling
@@ -15,17 +17,19 @@ interface TextWithDefaultProps extends Text {
 
 const App = (): JSX.Element => {
   return (
-    <ToastProvider
-      offset={100}
-      animationType="slide-in"
-      swipeEnabled={true}
-      successColor={theme.palette.success.dark}
-      dangerColor={theme.palette.error.dark}
-      warningColor={theme.palette.warning.dark}
-      duration={3000}
-      textStyle={{ fontSize: theme.typography.fontSize.small }}>
-      <MainNavigator />
-    </ToastProvider>
+    <Provider store={reduxStore}>
+      <ToastProvider
+        offset={100}
+        animationType="slide-in"
+        swipeEnabled={true}
+        successColor={theme.palette.success.dark}
+        dangerColor={theme.palette.error.dark}
+        warningColor={theme.palette.warning.dark}
+        duration={3000}
+        textStyle={{ fontSize: theme.typography.fontSize.small }}>
+        <MainNavigator />
+      </ToastProvider>
+    </Provider>
   );
 };
 

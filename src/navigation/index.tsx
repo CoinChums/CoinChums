@@ -5,13 +5,14 @@ import { StyleSheet, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
 import { IndicatorView } from '../components';
 import { ASYNC_STORAGE, CONSTANTS, TOAST_TYPE } from '../constants/enums';
-import { useAuth } from '../store/useAuth/auth.actions';
+import { getLoginStatus } from '../redux/login/login.selector';
+import { useAppSelector } from '../redux/reduxStore';
 import { loader } from '../utils/helper';
 import { AuthStack } from './AuthStack';
 import { AppTabs } from './BottomTabs';
 
 export const MainNavigator = () => {
-  const { isUserLoggedIn } = useAuth();
+  const loginStatus = useAppSelector(getLoginStatus);
   const toast = useToast();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ export const MainNavigator = () => {
     };
 
     checkLoginStatus();
-  }, [isUserLoggedIn]);
+  }, [loginStatus]);
 
   if (loading) {
     return (
