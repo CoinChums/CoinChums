@@ -11,22 +11,22 @@ import {
   SVGImage,
 } from '../../components';
 import { AUTH_ACTIONS, BUTTON_TYPE, CONSTANTS, TOAST_TYPE } from '../../constants/enums';
-import { useAuthActions } from '../../store/useAuth/actions/useAuth';
+import { useAuth } from '../../store/useAuth/useAuth';
 import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
 import { TNavRoutes } from '../../types/types';
 import dimensions from '../../utils/dimensions';
+import { validateCredentials } from '../../utils/helper';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Authentication.style';
 import { initialState, reducer } from './reducer';
-import { validateCredentials } from '../../utils/helper';
 
 const Authentication = () => {
   const toast = useToast();
   const route = useRoute<RouteProp<TNavRoutes, 'Authentication'>>();
   const { isSignup } = route.params;
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { handleLogin } = useAuthActions();
+  const { handleLogin } = useAuth();
   const screenWindowWidth = dimensions.screenWidth / 1.5;
   const statusBarColor = state.showModal ? theme.palette.black.light : theme.palette.white.dark;
   const iconSrc = require('../../assets/images/coinchums.png');

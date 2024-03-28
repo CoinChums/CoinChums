@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
 import { BaseLayout, Button, Header } from '../../components';
 import { ASYNC_STORAGE, BUTTON_TYPE } from '../../constants/enums';
-import { useAuth } from '../../store/useAuth/auth.actions';
+import { useAuth } from '../../store/useAuth/useAuth';
 import { theme } from '../../themes';
 import { styles } from './Settings.style';
 

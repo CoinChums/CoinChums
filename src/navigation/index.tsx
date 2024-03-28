@@ -5,7 +5,7 @@ import { StyleSheet, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
 import { IndicatorView } from '../components';
 import { ASYNC_STORAGE, CONSTANTS, TOAST_TYPE } from '../constants/enums';
-import { useAuth } from '../store/useAuth/auth.actions';
+import { useAuth } from '../store/useAuth/useAuth';
 import { loader } from '../utils/helper';
 import { AuthStack } from './AuthStack';
 import { AppTabs } from './BottomTabs';
