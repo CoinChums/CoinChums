@@ -1,4 +1,5 @@
 import { SCREEN_STATE } from '../../constants/enums';
+import { TUserState } from '../../screens/Authentication/types';
 import { UserRole } from '../../types/models/user';
 
 export type LoginPayload = {
@@ -11,14 +12,16 @@ export type LogoutPayload = {
 };
 
 export type InitialAuthState = {
-  isUserLoggedIn: boolean;
+  isAuthenticated: boolean;
   state: SCREEN_STATE;
   loggedInUserDetails: UserRole;
 };
 
+export type GetLoggedInUser = () => UserRole | undefined;
+
 export type UseAuthStore = InitialAuthState & {
-  loginLoading: () => void;
-  loginSuccess: (payload: LoginPayload) => void;
-  loginFailed: () => void;
   logoutUser: () => void;
+  getLogInStatus: () => void;
+  handleLogin: (user: TUserState) => Promise<void>;
+  getLoggedInUser: GetLoggedInUser;
 };
