@@ -5,32 +5,36 @@ import { StyleSheet, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
 import { IndicatorView } from '../components';
 import { ASYNC_STORAGE, CONSTANTS, TOAST_TYPE } from '../constants/enums';
-import { useAuth } from '../store/useAuth/useAuth';
+import { useAuth } from '../store/useAuth/auth.store';
 import { loader } from '../utils/helper';
 import { AuthStack } from './AuthStack';
 import { AppTabs } from './BottomTabs';
 
 export const MainNavigator = () => {
-  const { isUserLoggedIn } = useAuth();
+  const { isAuthenticated } = useAuth();
   const toast = useToast();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [authenticationState, setAuthenticationState] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkLoginStatus = async () => {
+    let isMounted = true;
+    const fetchAuthenticationStatus = async () => {
       try {
-        const id = await AsyncStorage.getItem(ASYNC_STORAGE.ACCESS_TOKEN);
-        setIsLoggedIn(!!id);
-      } catch (error) {
+        const accessToken = await AsyncStorage.getItem(ASYNC_STORAGE.ACCESS_TOKEN);
+        setAuthenticationState(!!accessToken);
+      } catch {
         toast.show(CONSTANTS.GENERIC_ERROR_MESSAGE, { type: TOAST_TYPE.DANGER });
-        console.error('Error retrieving access token:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    checkLoginStatus();
-  }, [isUserLoggedIn]);
+    fetchAuthenticationStatus();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [isAuthenticated]);
 
   if (loading) {
     return (
@@ -40,7 +44,9 @@ export const MainNavigator = () => {
     );
   }
 
-  return <NavigationContainer>{isLoggedIn ? <AppTabs /> : <AuthStack />}</NavigationContainer>;
+  return (
+    <NavigationContainer>{authenticationState ? <AppTabs /> : <AuthStack />}</NavigationContainer>
+  );
 };
 
 const styles = StyleSheet.create({

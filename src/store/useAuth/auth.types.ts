@@ -12,7 +12,7 @@ export type LogoutPayload = {
 };
 
 export type InitialAuthState = {
-  isUserLoggedIn: boolean;
+  isAuthenticated: boolean;
   state: SCREEN_STATE;
   loggedInUserDetails: UserRole;
 };
@@ -21,7 +21,7 @@ export type GetLoggedInUser = () => UserRole | undefined;
 
 export type UseAuthStore = InitialAuthState & {
   logoutUser: () => void;
-  signInUser: () => Promise<void>;
+  getLogInStatus: () => void;
   handleLogin: (user: TUserState) => Promise<void>;
   getLoggedInUser: GetLoggedInUser;
 };

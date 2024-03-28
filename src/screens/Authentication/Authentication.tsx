@@ -11,7 +11,7 @@ import {
   SVGImage,
 } from '../../components';
 import { AUTH_ACTIONS, BUTTON_TYPE, CONSTANTS, TOAST_TYPE } from '../../constants/enums';
-import { useAuth } from '../../store/useAuth/useAuth';
+import { useAuth } from '../../store/useAuth/auth.store';
 import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
 import { TNavRoutes } from '../../types/types';
