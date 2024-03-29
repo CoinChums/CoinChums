@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ASYNC_STORAGE, SCREEN_STATE } from '../../constants/enums';
-import { TUserState } from '../../screens/Authentication/types';
+import { UserPayload } from '../../screens/Authentication/types';
 import { generateRandomId } from '../../utils/helper';
 import { InitialAuthState } from './auth.types';
 
@@ -15,23 +15,20 @@ export const generateUserIdAndSetInAsyncStorage = async () => {
 };
 
 export const handleLogin = async (
-  user: TUserState,
+  user: UserPayload,
   set: (state: Partial<InitialAuthState>) => void,
 ) => {
   try {
-    const { email, password, couponCode, fullName } = user;
-    if (!email || !password || !couponCode) {
+    const { email, name, _id } = user;
+    if (!email) {
       throw new Error('Email, password, and coupon code are required.');
     }
     set({ state: SCREEN_STATE.LOADING });
-    const userId = await generateUserIdAndSetInAsyncStorage();
 
     const userDetails = {
-      id: userId,
+      id: _id,
       email: email,
-      password: password,
-      couponCode: couponCode,
-      fullName: fullName ?? '',
+      fullName: name ?? '',
     };
 
     set({

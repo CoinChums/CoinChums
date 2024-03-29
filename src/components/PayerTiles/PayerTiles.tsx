@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
+import { emptyFunction } from '../../utils/helper';
 import { SVGImage } from '../ImageRender/Image';
 import { Input } from '../Input/Input';
 import { styles } from './styles';
@@ -21,7 +22,12 @@ export const PayerTiles: React.FC<TPayerTiles> = props => {
         />
       </View>
       <View style={styles.input}>
-        <Input type="text" placeholder={placeholder} variant={variant} />
+        <Input
+          type="text"
+          placeholder={placeholder}
+          variant={variant}
+          onChangeText={emptyFunction}
+        />
       </View>
     </View>
   );

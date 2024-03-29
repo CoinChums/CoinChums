@@ -2,7 +2,7 @@ import { AUTH_ACTIONS } from '../../constants/enums';
 import { Action, TUserState } from './types';
 
 export const initialState: TUserState = {
-  fullName: '',
+  fullName: 'John Sharma',
   email: '',
   password: '',
   isFullNameEntered: false,

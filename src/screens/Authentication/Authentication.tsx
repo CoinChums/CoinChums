@@ -6,17 +6,27 @@ import {
   BaseLayout,
   Button,
   ConditionRenderer,
+  IndicatorView,
   Input,
   OverlayModal,
   SVGImage,
 } from '../../components';
-import { AUTH_ACTIONS, BUTTON_TYPE, CONSTANTS, TOAST_TYPE } from '../../constants/enums';
+import {
+  AUTH_ACTIONS,
+  BUTTON_TYPE,
+  CONSTANTS,
+  EReqMethod,
+  SCREEN_STATE,
+  TOAST_TYPE,
+} from '../../constants/enums';
+import { HttpService } from '../../services/http.service';
 import { useAuth } from '../../store/useAuth/auth.store';
 import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
 import { TNavRoutes } from '../../types/types';
 import dimensions from '../../utils/dimensions';
-import { validateCredentials } from '../../utils/helper';
+import { USERS } from '../../utils/endpoints';
+import { loader, validateCredentials } from '../../utils/helper';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './Authentication.style';
 import { initialState, reducer } from './reducer';
@@ -26,7 +36,8 @@ const Authentication = () => {
   const route = useRoute<RouteProp<TNavRoutes, 'Authentication'>>();
   const { isSignup } = route.params;
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { handleLogin } = useAuth();
+  const { handleLogin, state: authState } = useAuth();
+  const isLoading = authState === SCREEN_STATE.LOADING;
   const screenWindowWidth = dimensions.screenWidth / 1.5;
   const statusBarColor = state.showModal ? theme.palette.black.light : theme.palette.white.dark;
   const iconSrc = require('../../assets/images/coinchums.png');
@@ -37,7 +48,6 @@ const Authentication = () => {
       dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: CONSTANTS.COUPON_ERROR });
       return;
     }
-    handleLogin(state);
   };
 
   const handleContinuation = () => {
@@ -55,14 +65,32 @@ const Authentication = () => {
     }
   };
 
-  const handleLoginCall = () => {
-    const { email, password } = state;
+  const handleLoginCall = async () => {
+    const { email, password, fullName } = state;
     const { isEmailValid, isPasswordValid } = validateCredentials(email, password);
     if (!isEmailValid || !isPasswordValid) {
       toast.show(CONSTANTS.INVALID_CRED, { type: TOAST_TYPE.DANGER });
       return;
     }
-    dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
+    try {
+      const response = await HttpService({
+        method: EReqMethod.POST,
+        url: USERS,
+        authRequired: false,
+        body: {
+          email: email,
+          password: password,
+          name: fullName,
+        },
+      });
+
+      if (response.data._id) {
+        handleLogin(response.data);
+        dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const toggleModal = useCallback(() => {
@@ -74,6 +102,14 @@ const Authentication = () => {
     dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: '' });
     dispatch({ type: AUTH_ACTIONS.COUPON_CODE, payload: text });
   };
+
+  if (isLoading) {
+    return (
+      <View>
+        <IndicatorView isLoading={isLoading} ref={loader} />
+      </View>
+    );
+  }
 
   return (
     <BaseLayout statusColor={statusBarColor}>

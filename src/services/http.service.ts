@@ -43,7 +43,6 @@ export const HttpService = async (param: HttpServiceType) => {
   } else {
     headers = {
       'Content-type': 'application/json',
-      'Accept': 'application/json',
     };
   }
 
