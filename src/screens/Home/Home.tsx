@@ -2,7 +2,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Text, View } from 'react-native';
-import { BaseLayout, Button, GroupListTile, Header } from '../../components';
+import { BaseLayout, Button, GroupListTile, Header, Tiles } from '../../components';
 import { APP_ROUTES, BUTTON_TYPE } from '../../constants/enums';
 import { expense } from '../../mocks';
 import { NavigationParams } from '../../types/types';
@@ -32,6 +32,9 @@ const Home: React.FC<THome> = () => {
             titleStyle={styles.titleProps}
           />
         </View>
+      </View>
+      <View style={{ marginTop: 20 }}>
+        <Tiles title={'Gopu'} icon={APP_IMAGES.settings} />
       </View>
     </BaseLayout>
   );

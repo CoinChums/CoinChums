@@ -15,3 +15,4 @@ export * from './Indicator/Indicator';
 export * from './Input/Input';
 export * from './Modal/Modal';
 export * from './PayerTiles/PayerTiles';
+export * from './Tiles/Tiles';
