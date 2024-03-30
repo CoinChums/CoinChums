@@ -1,11 +1,11 @@
 import { DefaultTheme, useNavigation } from '@react-navigation/native';
+import { t } from 'i18next';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
-import { theme } from '../../themes';
-import i18n from '../../localization/i18n';
-import { t } from 'i18next';
-import { styles } from './Language.styles';
 import { BaseLayout, Header } from '../../components';
+import i18n from '../../localization/i18n';
+import { theme } from '../../themes';
+import { styles } from './Language.styles';
 
 const languages = [
   { code: 'en', label: t('language:english') },
@@ -22,7 +22,7 @@ const Languages = () => {
   return (
     <BaseLayout>
       <Header onPress={backPress} title={t('languages')} />
-      <View>
+      <View style={styles.container}>
         <Text style={styles.language}>
           {t('change_language')} ({lang})
         </Text>

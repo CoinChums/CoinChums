@@ -3,6 +3,9 @@ import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
 
 export const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: spacing.mediumWidth,
+  },
   language: {
     paddingTop: spacing.normalHeight,
     textAlign: 'center',
