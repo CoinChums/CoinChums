@@ -49,6 +49,7 @@ enum SCREEN_STATE {
 enum ASYNC_STORAGE {
   IS_FIRSTLAUNCH = 'appLaunched',
   ACCESS_TOKEN = 'accessToken',
+  COUPON = 'couponCode',
 }
 
 enum STATUS {

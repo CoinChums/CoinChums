@@ -11,6 +11,8 @@ const initialStateData: InitialAuthState = {
     id: '',
     fullName: '',
     email: '',
+    couponCode: '',
+    token: '',
   },
 };
 
@@ -21,5 +23,7 @@ export const useAuth = create<UseAuthStore>((set, get) => {
     getLogInStatus: () => get().isAuthenticated,
     logoutUser: () => set({ isAuthenticated: false }),
     handleLogin: (user: UserPayload) => handleLogin(user, set),
+    setCouponCode: (couponCode: string) =>
+      set({ loggedInUserDetails: { ...get().loggedInUserDetails, couponCode } }),
   };
 });

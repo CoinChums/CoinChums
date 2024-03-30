@@ -11,17 +11,18 @@ import { AuthStack } from './AuthStack';
 import { AppTabs } from './BottomTabs';
 
 export const MainNavigator = () => {
-  const { isAuthenticated } = useAuth();
+  const { loggedInUserDetails } = useAuth();
   const toast = useToast();
   const [authenticationState, setAuthenticationState] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let isMounted = true;
     const fetchAuthenticationStatus = async () => {
       try {
         const accessToken = await AsyncStorage.getItem(ASYNC_STORAGE.ACCESS_TOKEN);
-        setAuthenticationState(!!accessToken);
+        const couponCode = await AsyncStorage.getItem(ASYNC_STORAGE.COUPON);
+        const isAuthenticated = accessToken && couponCode;
+        setAuthenticationState(!!isAuthenticated);
       } catch {
         toast.show(CONSTANTS.GENERIC_ERROR_MESSAGE, { type: TOAST_TYPE.DANGER });
       } finally {
@@ -30,11 +31,7 @@ export const MainNavigator = () => {
     };
 
     fetchAuthenticationStatus();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [isAuthenticated]);
+  }, [loggedInUserDetails.token, loggedInUserDetails.couponCode]);
 
   if (loading) {
     return (

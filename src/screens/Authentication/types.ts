@@ -14,6 +14,8 @@ export type UserPayload = {
   name: string;
   email: string;
   _id: string;
+  couponId: string;
+  encodedToken: string;
 };
 
 export type Action =

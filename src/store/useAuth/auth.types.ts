@@ -24,4 +24,5 @@ export type UseAuthStore = InitialAuthState & {
   getLogInStatus: () => void;
   logoutUser: () => void;
   handleLogin: (user: UserPayload) => Promise<void>;
+  setCouponCode: (couponCode: string) => void;
 };
