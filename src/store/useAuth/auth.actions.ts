@@ -1,38 +1,33 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ASYNC_STORAGE, SCREEN_STATE } from '../../constants/enums';
-import { TUserState } from '../../screens/Authentication/types';
-import { generateRandomId } from '../../utils/helper';
+import { UserPayload } from '../../screens/Authentication/types';
 import { InitialAuthState } from './auth.types';
 
-export const setUserInAsyncStorage = async (userId: string) => {
-  await AsyncStorage.setItem(ASYNC_STORAGE.ACCESS_TOKEN, userId);
-};
+export const setTokenAsyncStorage = async (token: string) =>
+  await AsyncStorage.setItem(ASYNC_STORAGE.ACCESS_TOKEN, token);
 
-export const generateUserIdAndSetInAsyncStorage = async () => {
-  const userId = generateRandomId();
-  await setUserInAsyncStorage(userId);
-  return userId;
-};
+export const setCouponAsyncStorage = async (coupon: string) =>
+  await AsyncStorage.setItem(ASYNC_STORAGE.COUPON, coupon);
 
 export const handleLogin = async (
-  user: TUserState,
+  user: UserPayload,
   set: (state: Partial<InitialAuthState>) => void,
 ) => {
   try {
-    const { email, password, couponCode, fullName } = user;
-    if (!email || !password || !couponCode) {
+    const { email, name, _id, couponId, encodedToken } = user;
+    if (!email) {
       throw new Error('Email, password, and coupon code are required.');
     }
     set({ state: SCREEN_STATE.LOADING });
-    const userId = await generateUserIdAndSetInAsyncStorage();
 
     const userDetails = {
-      id: userId,
+      id: _id,
       email: email,
-      password: password,
-      couponCode: couponCode,
-      fullName: fullName ?? '',
+      fullName: name ?? '',
+      couponCode: couponId,
+      token: encodedToken,
     };
+    await setTokenAsyncStorage(encodedToken);
 
     set({
       loggedInUserDetails: userDetails,

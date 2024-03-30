@@ -1,4 +1,3 @@
-import { RouteProp, useRoute } from '@react-navigation/native';
 import React, { useCallback, useReducer } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
@@ -6,63 +5,79 @@ import {
   BaseLayout,
   Button,
   ConditionRenderer,
+  IndicatorView,
   Input,
   OverlayModal,
   SVGImage,
 } from '../../components';
-import { AUTH_ACTIONS, BUTTON_TYPE, CONSTANTS, TOAST_TYPE } from '../../constants/enums';
+import {
+  AUTH_ACTIONS,
+  BUTTON_TYPE,
+  CONSTANTS,
+  EReqMethod,
+  SCREEN_STATE,
+  TOAST_TYPE,
+} from '../../constants/enums';
+import { HttpService } from '../../services/http.service';
+import { setCouponAsyncStorage } from '../../store/useAuth/auth.actions';
 import { useAuth } from '../../store/useAuth/auth.store';
 import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
-import { TNavRoutes } from '../../types/types';
 import dimensions from '../../utils/dimensions';
-import { validateCredentials } from '../../utils/helper';
+import { COUPON, SIGNUP } from '../../utils/endpoints';
+import { loader, validateCredentials } from '../../utils/helper';
 import { APP_IMAGES } from '../../utils/imageMapper';
-import { styles } from './Authentication.style';
 import { initialState, reducer } from './reducer';
+import { styles } from './style';
+import { Action } from './types';
 
-const Authentication = () => {
+const SignupScreen = () => {
   const toast = useToast();
-  const route = useRoute<RouteProp<TNavRoutes, 'Authentication'>>();
-  const { isSignup } = route.params;
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { handleLogin } = useAuth();
+  const { handleLogin, state: authState, getLoggedInUser, setCouponCode } = useAuth();
+  const userId = getLoggedInUser()!.id;
+  const isLoading = authState === SCREEN_STATE.LOADING;
   const screenWindowWidth = dimensions.screenWidth / 1.5;
   const statusBarColor = state.showModal ? theme.palette.black.light : theme.palette.white.dark;
   const iconSrc = require('../../assets/images/coinchums.png');
 
-  const submitCouponCode = () => {
-    const { couponCode } = state;
-    if (couponCode.trim() !== CONSTANTS.MOCK_COUPON) {
-      dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: CONSTANTS.COUPON_ERROR });
+  const handleContinuation = () => {
+    const { fullName } = state;
+    if (!fullName.trim()) {
+      toast.show('Please enter your name', {
+        type: TOAST_TYPE.DANGER,
+      });
       return;
     }
-    handleLogin(state);
+    dispatch({ type: AUTH_ACTIONS.SET_IS_FULL_NAME_ENTERED, payload: true });
   };
 
-  const handleContinuation = () => {
-    if (!isSignup) {
-      dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: true });
-    } else {
-      const { fullName } = state;
-      if (!fullName.trim()) {
-        toast.show('Please enter your name', {
-          type: TOAST_TYPE.DANGER,
-        });
-        return;
-      }
-      dispatch({ type: AUTH_ACTIONS.SET_IS_FULL_NAME_ENTERED, payload: true });
-    }
-  };
-
-  const handleLoginCall = () => {
-    const { email, password } = state;
+  const handleSignup = async () => {
+    const { email, password, fullName } = state;
     const { isEmailValid, isPasswordValid } = validateCredentials(email, password);
     if (!isEmailValid || !isPasswordValid) {
       toast.show(CONSTANTS.INVALID_CRED, { type: TOAST_TYPE.DANGER });
       return;
     }
-    dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
+    try {
+      const response = await HttpService({
+        method: EReqMethod.POST,
+        url: SIGNUP,
+        authRequired: false,
+        body: {
+          name: fullName,
+          email: email,
+          password: password,
+        },
+      });
+
+      if (response.data._id) {
+        handleLogin(response.data);
+        dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const toggleModal = useCallback(() => {
@@ -74,6 +89,35 @@ const Authentication = () => {
     dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: '' });
     dispatch({ type: AUTH_ACTIONS.COUPON_CODE, payload: text });
   };
+
+  const submitCouponCode = async (couponCode: string, dispatch: (action: Action) => void) => {
+    try {
+      if (userId) {
+        const response = await HttpService({
+          method: EReqMethod.POST,
+          url: COUPON,
+          authRequired: false,
+          body: {
+            userId: userId,
+            couponCode: couponCode,
+          },
+        });
+        setCouponCode(response.data.couponId);
+        setCouponAsyncStorage(response.data.couponId);
+      }
+    } catch (err) {
+      dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: CONSTANTS.COUPON_ERROR });
+      return;
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <View>
+        <IndicatorView isLoading={isLoading} ref={loader} />
+      </View>
+    );
+  }
 
   return (
     <BaseLayout statusColor={statusBarColor}>
@@ -101,11 +145,15 @@ const Authentication = () => {
                 />
               </TouchableOpacity>
             </View>
-            <Button type={BUTTON_TYPE.FILL} title="Submit" onPress={submitCouponCode} />
+            <Button
+              type={BUTTON_TYPE.FILL}
+              title="Submit"
+              onPress={() => submitCouponCode(state.couponCode, dispatch)}
+            />
           </View>
         </OverlayModal>
         <ConditionRenderer
-          state={isSignup && !state.isFullNameEntered}
+          state={!state.isFullNameEntered}
           C1={
             <>
               <Input
@@ -136,7 +184,7 @@ const Authentication = () => {
                 label={'Password'}
                 onChangeText={text => dispatch({ type: AUTH_ACTIONS.SET_PASSWORD, payload: text })}
               />
-              <Button type={BUTTON_TYPE.FILL} title="Login" onPress={handleLoginCall} />
+              <Button type={BUTTON_TYPE.FILL} title="Signup" onPress={handleSignup} />
             </>
           }
         />
@@ -145,4 +193,4 @@ const Authentication = () => {
   );
 };
 
-export default React.memo(Authentication);
+export default React.memo(SignupScreen);

@@ -15,7 +15,8 @@ enum APP_ROUTES {
   groups = 'Groups',
   settings = 'Settings',
   onboarding = 'Onboarding',
-  auth = 'Authentication',
+  signup = 'Signup',
+  signin = 'Signin',
 }
 
 enum APP_LABELS {
@@ -48,6 +49,7 @@ enum SCREEN_STATE {
 enum ASYNC_STORAGE {
   IS_FIRSTLAUNCH = 'appLaunched',
   ACCESS_TOKEN = 'accessToken',
+  COUPON = 'couponCode',
 }
 
 enum STATUS {
