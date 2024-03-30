@@ -13,11 +13,10 @@ const Login: FC = () => {
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
   const iconSrc = require('../../assets/images/coinchums.png');
 
-  const navigateToAuth = (isSignup: boolean) => {
-    navigation.navigate(APP_ROUTES.auth, { isSignup });
-  };
+  const navigateToSignup = () => navigation.navigate(APP_ROUTES.signup);
+  const navigateToSignin = () => navigation.navigate(APP_ROUTES.signin);
 
-  const renderAuthButton = (title: string, isSignup: boolean) => {
+  const renderAuthButton = (title: string, cb: () => void) => {
     const buttonContainerStyle = [styles.loginBtn, styles.backgroundPrimary];
 
     return (
@@ -25,7 +24,7 @@ const Login: FC = () => {
         key={title}
         title={title}
         buttonContainerStyle={buttonContainerStyle}
-        onPress={() => navigateToAuth(isSignup)}
+        onPress={cb}
         titleStyle={styles.title}
         type={BUTTON_TYPE.FILL}
       />
@@ -36,8 +35,8 @@ const Login: FC = () => {
     <BaseLayout style={styles.container} statusColor={theme.palette.white.dark}>
       <View style={styles.authContainer}>
         <Image source={iconSrc} style={styles.appIcon} />
-        {renderAuthButton(t('signUp'), true)}
-        {renderAuthButton(t('login'), false)}
+        {renderAuthButton(t('signUp'), navigateToSignup)}
+        {renderAuthButton(t('Login'), navigateToSignin)}
         <Text style={styles.terms}>{t('terms')}</Text>
       </View>
       <BottomShape />

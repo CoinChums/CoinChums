@@ -15,7 +15,8 @@ enum APP_ROUTES {
   groups = 'Groups',
   settings = 'Settings',
   onboarding = 'Onboarding',
-  auth = 'Authentication',
+  signup = 'Signup',
+  signin = 'Signin',
 }
 
 enum APP_LABELS {
