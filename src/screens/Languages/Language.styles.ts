@@ -13,20 +13,4 @@ export const styles = StyleSheet.create({
     fontFamily: theme.typography.fontFamily[700],
     lineHeight: spacing.averageHeight,
   },
-  container: {
-    flex: 1,
-    backgroundColor: theme.palette.white.dark,
-    paddingHorizontal: spacing.mediumWidth,
-    paddingVertical: spacing.mediumWidth,
-    gap: spacing.averageWidth,
-  },
-  btn: {
-    paddingBottom: spacing.smallHeight,
-  },
-  logoutButton: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    gap: spacing.normalWidth,
-  },
 });

@@ -24,4 +24,6 @@ export default {
   owes: 'you are owed',
   groupCreation: 'Create a group',
   groupName: 'Group name',
+  languages: 'Languages',
+  logout: 'Logout',
 };
