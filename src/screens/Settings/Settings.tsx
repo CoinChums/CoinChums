@@ -1,26 +1,20 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { DefaultTheme } from '@react-navigation/native';
-import { t } from 'i18next';
-import React, { useState } from 'react';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
-import { BaseLayout, Button, Header } from '../../components';
-import { ASYNC_STORAGE, BUTTON_TYPE } from '../../constants/enums';
+import { Pressable, Text, View } from 'react-native';
+import { BaseLayout, Header, SVGImage } from '../../components';
+import { APP_ROUTES, ASYNC_STORAGE } from '../../constants/enums';
 import { useAuth } from '../../store/useAuth/auth.store';
-import { theme } from '../../themes';
 import { styles } from './Settings.style';
-
-const languages = [
-  { code: 'en', label: t('language:english') },
-  { code: 'ka', label: t('language:kannada') },
-  { code: 'hn', label: t('language:hindi') },
-];
+import { APP_IMAGES } from '../../utils/imageMapper';
+import { spacing } from '../../themes/spacing';
+import { NavigationParams } from '../../types/types';
 
 const Settings = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { logoutUser } = useAuth();
-  const [lang, setLang] = useState('en');
-  const selectedLanguageCode = i18n.language;
+  const navigation = useNavigation<NavigationProp<NavigationParams>>();
 
   const handleLogout = async () => {
     try {
@@ -33,37 +27,26 @@ const Settings = () => {
 
   return (
     <BaseLayout>
-      <Header title={t('settings')} />
+      <Header title={t('Settings')} />
       <View style={styles.container}>
-        <View>
-          <Text style={styles.language}>
-            {t('change_language')} ({lang})
-          </Text>
-          {languages.map(currentLang => {
-            const selectedLanguage = currentLang.code === selectedLanguageCode;
-            return (
-              <Text
-                key={currentLang.code}
-                onPress={() => {
-                  setLang(currentLang.code);
-                  i18n.changeLanguage(currentLang.code);
-                }}
-                style={[
-                  {
-                    color: selectedLanguage
-                      ? DefaultTheme.colors.primary
-                      : theme.palette.black.dark,
-                  },
-                  styles.languageText,
-                ]}>
-                {currentLang.label}
-              </Text>
-            );
-          })}
-        </View>
-        <View style={styles.btn}>
-          <Button onPress={handleLogout} title={'Logout'} type={BUTTON_TYPE.FILL} />
-        </View>
+        <Pressable
+          onPress={() => navigation.navigate(APP_ROUTES.languages)}
+          style={styles.logoutButton}>
+          <SVGImage
+            assetSrc={APP_IMAGES.language}
+            height={spacing.heroHeight}
+            width={spacing.heroWidth}
+          />
+          <Text style={styles.logoutText}>{t('languages')}</Text>
+        </Pressable>
+        <Pressable onPress={handleLogout} style={styles.logoutButton}>
+          <SVGImage
+            assetSrc={APP_IMAGES.logout}
+            height={spacing.heroHeight}
+            width={spacing.heroWidth}
+          />
+          <Text style={styles.logoutText}>{t('logout')}</Text>
+        </Pressable>
       </View>
     </BaseLayout>
   );

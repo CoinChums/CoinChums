@@ -8,6 +8,7 @@ enum STORAGE_KEYS {
 enum APP_ROUTES {
   homeStack = 'HomeStack',
   profileStack = 'ProfileStack',
+  settingsStack = 'SettingsStack',
   launch = 'Launch',
   home = 'Home',
   details = 'Details',
@@ -17,6 +18,8 @@ enum APP_ROUTES {
   onboarding = 'Onboarding',
   signup = 'Signup',
   signin = 'Signin',
+  auth = 'Authentication',
+  languages = 'Languages',
 }
 
 enum APP_LABELS {

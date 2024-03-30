@@ -2,13 +2,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { FC } from 'react';
 import { SVGImage } from '../components';
 import { APP_LABELS, APP_ROUTES } from '../constants/enums';
-import { Settings } from '../screens';
 import { theme } from '../themes';
 import { spacing } from '../themes/spacing';
 import { NavigationParams } from '../types/types';
 import dimensions from '../utils/dimensions';
 import { APP_IMAGES } from '../utils/imageMapper';
-import { HomeStack, ProfileStack } from './AppStack';
+import { HomeStack, ProfileStack, SettingsStack } from './AppStack';
 
 const Tab = createBottomTabNavigator<NavigationParams>();
 
@@ -67,7 +66,7 @@ export const AppTabs: FC = () => {
     <Tab.Navigator screenOptions={tabBarOptions}>
       <Tab.Screen name={APP_ROUTES.homeStack} component={HomeStack} options={HomeTab} />
       <Tab.Screen name={APP_ROUTES.profileStack} component={ProfileStack} options={ProfileTab} />
-      <Tab.Screen name={APP_ROUTES.settings} component={Settings} options={SettingsTab} />
+      <Tab.Screen name={APP_ROUTES.settingsStack} component={SettingsStack} options={SettingsTab} />
     </Tab.Navigator>
   );
 };

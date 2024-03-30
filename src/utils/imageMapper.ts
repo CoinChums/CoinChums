@@ -8,6 +8,8 @@ import Settings from '../assets/images/settings.svg';
 import UserGroup from '../assets/images/userGroup.svg';
 import Warning from '../assets/images/warning.svg';
 import Cross from '../assets/images/cross.svg';
+import Logout from '../assets/images/logout.svg';
+import Language from '../assets/images/language.svg';
 
 export const APP_IMAGES = {
   home: Home,
@@ -20,4 +22,6 @@ export const APP_IMAGES = {
   cross: Cross,
   userGroup: UserGroup,
   bill: Bill,
+  logout: Logout,
+  language: Language,
 };

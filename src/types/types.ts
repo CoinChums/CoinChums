@@ -7,11 +7,13 @@ export type NavigationParams = {
   [APP_ROUTES.profile]: undefined;
   [APP_ROUTES.homeStack]: undefined;
   [APP_ROUTES.profileStack]: undefined;
+  [APP_ROUTES.settingsStack]: undefined;
   [APP_ROUTES.settings]: undefined;
   [APP_ROUTES.onboarding]: undefined;
   [APP_ROUTES.signup]: undefined;
   [APP_ROUTES.groups]: undefined;
   [APP_ROUTES.signin]: undefined;
+  [APP_ROUTES.languages]: undefined;
 };
 
 export type TNavRoutes = {
