@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { SCREEN_STATE } from '../../constants/enums';
-import { TUserState } from '../../screens/Authentication/types';
+import { UserPayload } from '../../screens/Authentication/types';
 import { handleLogin } from './auth.actions';
 import { InitialAuthState, UseAuthStore } from './auth.types';
 
@@ -11,8 +11,8 @@ const initialStateData: InitialAuthState = {
     id: '',
     fullName: '',
     email: '',
-    phone: '',
     couponCode: '',
+    token: '',
   },
 };
 
@@ -22,6 +22,8 @@ export const useAuth = create<UseAuthStore>((set, get) => {
     getLoggedInUser: () => get().loggedInUserDetails,
     getLogInStatus: () => get().isAuthenticated,
     logoutUser: () => set({ isAuthenticated: false }),
-    handleLogin: (user: TUserState) => handleLogin(user, set),
+    handleLogin: (user: UserPayload) => handleLogin(user, set),
+    setCouponCode: (couponCode: string) =>
+      set({ loggedInUserDetails: { ...get().loggedInUserDetails, couponCode } }),
   };
 });

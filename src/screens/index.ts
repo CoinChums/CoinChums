@@ -1,4 +1,5 @@
-export { default as Authentication } from './Authentication/Authentication';
+export { default as Signin } from './Authentication/Signin';
+export { default as Signup } from './Authentication/Signup';
 export { default as Groups } from './Groups/Groups';
 export { default as Details } from './Home/Details/Details';
 export { default as Home } from './Home/Home';

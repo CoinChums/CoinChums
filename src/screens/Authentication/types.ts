@@ -10,6 +10,14 @@ export type TUserState = {
   errorMessage: string;
 };
 
+export type UserPayload = {
+  name: string;
+  email: string;
+  _id: string;
+  couponId: string;
+  encodedToken: string;
+};
+
 export type Action =
   | { type: AUTH_ACTIONS.SET_FULL_NAME; payload: string }
   | { type: AUTH_ACTIONS.SET_EMAIL; payload: string }
