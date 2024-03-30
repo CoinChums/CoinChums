@@ -6,3 +6,4 @@ export { default as Launch } from './Launch/Launch';
 export { default as OnboardingComponent } from './Onboarding/Onboarding';
 export { default as Profile } from './Profile/Profile';
 export { default as Settings } from './Settings/Settings';
+export { default as Languages } from './Languages/Languages';

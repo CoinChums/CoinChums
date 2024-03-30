@@ -16,6 +16,7 @@ export const Header: React.FC<IHeaderProps> = props => {
             assetSrc={APP_IMAGES.back}
             height={spacing.bigHeight}
             width={spacing.bigWidth}
+            fill={theme.palette.white.dark}
           />
         </Pressable>
       )}

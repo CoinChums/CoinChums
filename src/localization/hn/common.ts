@@ -24,4 +24,6 @@ export default {
   owes: 'तुम्हें ऋण दिया गया है',
   groupCreation: 'ग्रुप बनाएं',
   groupName: 'समूह का नाम',
+  languages: 'भाषाओं',
+  logout: 'लॉगआउट',
 };
