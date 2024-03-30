@@ -1,9 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { FC } from 'react';
 import { APP_ROUTES } from '../constants/enums';
-import { Details, Groups, Home, Profile, Settings } from '../screens';
+import { Details, Groups, Home, Languages, Profile, Settings } from '../screens';
 import { NavigationParams } from '../types/types';
-import Languages from '../screens/Languages/Languages';
 
 const Stack = createNativeStackNavigator<NavigationParams>();
 
@@ -41,7 +40,11 @@ export const SettingsStack: FC = () => {
   return (
     <Stack.Navigator screenOptions={{ animation: 'slide_from_left', headerShown: false }}>
       <Stack.Screen name={APP_ROUTES.settings} component={Settings} />
-      <Stack.Screen name={APP_ROUTES.languages} component={Languages} />
+      <Stack.Screen
+        name={APP_ROUTES.languages}
+        component={Languages}
+        options={{ animation: 'slide_from_right' }}
+      />
     </Stack.Navigator>
   );
 };

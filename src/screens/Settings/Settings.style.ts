@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.palette.white.dark,
     paddingHorizontal: spacing.mediumWidth,
     paddingVertical: spacing.mediumWidth,
-    gap: 20,
+    gap: spacing.averageWidth,
   },
   btn: {
     paddingBottom: spacing.smallHeight,
@@ -27,7 +27,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    gap: 10,
+    gap: spacing.normalWidth,
   },
-  logoutText: {},
 });
