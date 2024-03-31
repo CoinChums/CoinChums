@@ -21,7 +21,11 @@ export const useAuth = create<UseAuthStore>((set, get) => {
     ...initialStateData,
     getLoggedInUser: () => get().loggedInUserDetails,
     getLogInStatus: () => get().isAuthenticated,
-    logoutUser: () => set({ isAuthenticated: false }),
+    logoutUser: () =>
+      set({
+        isAuthenticated: false,
+        loggedInUserDetails: { ...get().loggedInUserDetails, token: '', couponCode: '' },
+      }),
     handleLogin: (user: UserPayload) => handleLogin(user, set),
     setCouponCode: (couponCode: string) =>
       set({ loggedInUserDetails: { ...get().loggedInUserDetails, couponCode } }),
