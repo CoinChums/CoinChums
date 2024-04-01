@@ -31,4 +31,10 @@ export const styles = StyleSheet.create({
     height: dimensions.viewHeight(100),
     width: dimensions.viewWidth(100),
   },
+  loader: {
+    flex: 1,
+    backgroundColor: theme.palette.white.dark,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

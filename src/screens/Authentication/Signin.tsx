@@ -1,39 +1,70 @@
-import React, { useCallback, useReducer } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { useToast } from 'react-native-toast-notifications';
-import { BaseLayout, Button, IndicatorView, Input, OverlayModal, SVGImage } from '../../components';
-import { AUTH_ACTIONS, BUTTON_TYPE, SCREEN_STATE } from '../../constants/enums';
+import React from 'react';
+import { Image, View } from 'react-native';
+import { BaseLayout, Button, IndicatorView, Input } from '../../components';
+import {
+  BUTTON_TYPE,
+  CONSTANTS,
+  EReqMethod,
+  SCREEN_STATE,
+  TOAST_TYPE,
+} from '../../constants/enums';
+import { HttpService } from '../../services/http.service';
 import { useAuth } from '../../store/useAuth/auth.store';
 import { theme } from '../../themes';
-import { spacing } from '../../themes/spacing';
-import dimensions from '../../utils/dimensions';
-import { emptyFunction, loader } from '../../utils/helper';
-import { APP_IMAGES } from '../../utils/imageMapper';
-import { initialState, reducer } from './reducer';
+import { SIGNIN } from '../../utils/endpoints';
+import { loader, validateCredentials } from '../../utils/helper';
 import { styles } from './style';
+import { setCouponAsyncStorage } from '../../store/useAuth/auth.actions';
 
 const SigninScreen = () => {
-  const toast = useToast();
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { handleLogin, state: authState } = useAuth();
+  const {
+    setUserDetails,
+    state: authState,
+    inputDetails,
+    setShowModal,
+    setInputEmail,
+    setInputPassword,
+    setCouponCode,
+    setScreenState,
+  } = useAuth();
+  const { email, password, showModal } = inputDetails();
   const isLoading = authState === SCREEN_STATE.LOADING;
-  const screenWindowWidth = dimensions.screenWidth / 1.5;
-  const statusBarColor = state.showModal ? theme.palette.black.light : theme.palette.white.dark;
+  const statusBarColor = theme.palette.white.dark;
   const iconSrc = require('../../assets/images/coinchums.png');
 
-  const toggleModal = useCallback(() => {
-    dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: '' });
-    dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
-  }, [state.showModal]);
-
-  const readCouponCode = (text: string) => {
-    dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: '' });
-    dispatch({ type: AUTH_ACTIONS.COUPON_CODE, payload: text });
+  const handleSignin = async () => {
+    setScreenState(SCREEN_STATE.NONE);
+    const { isEmailValid, isPasswordValid } = validateCredentials(email, password);
+    if (!isEmailValid || !isPasswordValid) {
+      toast.show(CONSTANTS.INVALID_CRED, { type: TOAST_TYPE.DANGER });
+      return;
+    }
+    try {
+      setScreenState(SCREEN_STATE.LOADING);
+      const response = await HttpService({
+        method: EReqMethod.POST,
+        url: SIGNIN,
+        authRequired: false,
+        body: {
+          email: email,
+          password: password,
+        },
+      });
+      if (response.data._id) {
+        setScreenState(SCREEN_STATE.SUCCESS);
+        setUserDetails(response.data);
+        setCouponCode(response.data.couponId);
+        setCouponAsyncStorage(response.data.couponId);
+        setShowModal(!showModal);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   if (isLoading) {
     return (
-      <View>
+      <View style={styles.loader}>
         <IndicatorView isLoading={isLoading} ref={loader} />
       </View>
     );
@@ -43,47 +74,23 @@ const SigninScreen = () => {
     <BaseLayout statusColor={statusBarColor}>
       <View style={styles.container}>
         <Image source={iconSrc} style={styles.appIcon} />
-        <OverlayModal
-          visible={state.showModal}
-          width={screenWindowWidth}
-          onRequestClose={toggleModal}>
-          <View style={styles.modal}>
-            <View>
-              <Input
-                type="text"
-                placeholder="Coupon Code"
-                variant="underlined"
-                label="Coupon Code"
-                onChangeText={readCouponCode}
-              />
-              {!!state.errorMessage && <Text style={styles.error}>{state.errorMessage}</Text>}
-              <TouchableOpacity style={styles.closeIcon} onPress={toggleModal}>
-                <SVGImage
-                  assetSrc={APP_IMAGES.cross}
-                  height={spacing.bigHeight}
-                  width={spacing.bigWidth}
-                />
-              </TouchableOpacity>
-            </View>
-            <Button type={BUTTON_TYPE.FILL} title="Submit" onPress={emptyFunction} />
-          </View>
-        </OverlayModal>
         <Input
           type="text"
           placeholder="Your email address"
           variant="underlined"
           label="Email"
-          value={state.email}
-          onChangeText={text => dispatch({ type: AUTH_ACTIONS.SET_EMAIL, payload: text })}
+          value={email}
+          onChangeText={email => setInputEmail(email)}
         />
         <Input
           type="password"
           placeholder={'Your password'}
           variant={'underlined'}
           label={'Password'}
-          onChangeText={text => dispatch({ type: AUTH_ACTIONS.SET_PASSWORD, payload: text })}
+          value={password}
+          onChangeText={password => setInputPassword(password)}
         />
-        <Button type={BUTTON_TYPE.FILL} title="Signin" onPress={emptyFunction} />
+        <Button type={BUTTON_TYPE.FILL} title={'Signin'} onPress={handleSignin} />
       </View>
     </BaseLayout>
   );

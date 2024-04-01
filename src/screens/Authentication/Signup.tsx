@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from 'react';
+import React, { useCallback } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
 import {
@@ -11,7 +11,6 @@ import {
   SVGImage,
 } from '../../components';
 import {
-  AUTH_ACTIONS,
   BUTTON_TYPE,
   CONSTANTS,
   EReqMethod,
@@ -27,39 +26,52 @@ import dimensions from '../../utils/dimensions';
 import { COUPON, SIGNUP } from '../../utils/endpoints';
 import { loader, validateCredentials } from '../../utils/helper';
 import { APP_IMAGES } from '../../utils/imageMapper';
-import { initialState, reducer } from './reducer';
 import { styles } from './style';
-import { Action } from './types';
 
 const SignupScreen = () => {
   const toast = useToast();
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { handleLogin, state: authState, getLoggedInUser, setCouponCode } = useAuth();
-  const userId = getLoggedInUser()!.id;
+  const {
+    setUserDetails,
+    state: authState,
+    userDetails,
+    setCouponCode,
+    inputDetails,
+    setShowModal,
+    setErrorMessage,
+    setInputCoupon,
+    setInputFullName,
+    setInputEmail,
+    setInputPassword,
+    setInputIsFullNameEntered,
+    errorMessage,
+    setScreenState,
+  } = useAuth();
+  const { fullName, email, password, showModal, isFullNameEntered, couponCode } = inputDetails();
+  const userId = userDetails()!.id;
   const isLoading = authState === SCREEN_STATE.LOADING;
   const screenWindowWidth = dimensions.screenWidth / 1.5;
-  const statusBarColor = state.showModal ? theme.palette.black.light : theme.palette.white.dark;
+  const statusBarColor = showModal ? theme.palette.black.light : theme.palette.white.dark;
   const iconSrc = require('../../assets/images/coinchums.png');
 
   const handleContinuation = () => {
-    const { fullName } = state;
     if (!fullName.trim()) {
       toast.show('Please enter your name', {
         type: TOAST_TYPE.DANGER,
       });
       return;
     }
-    dispatch({ type: AUTH_ACTIONS.SET_IS_FULL_NAME_ENTERED, payload: true });
+    setInputIsFullNameEntered(true);
   };
 
   const handleSignup = async () => {
-    const { email, password, fullName } = state;
+    setScreenState(SCREEN_STATE.NONE);
     const { isEmailValid, isPasswordValid } = validateCredentials(email, password);
     if (!isEmailValid || !isPasswordValid) {
       toast.show(CONSTANTS.INVALID_CRED, { type: TOAST_TYPE.DANGER });
       return;
     }
     try {
+      setScreenState(SCREEN_STATE.LOADING);
       const response = await HttpService({
         method: EReqMethod.POST,
         url: SIGNUP,
@@ -70,10 +82,10 @@ const SignupScreen = () => {
           password: password,
         },
       });
-
       if (response.data._id) {
-        handleLogin(response.data);
-        dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
+        setScreenState(SCREEN_STATE.SUCCESS);
+        setUserDetails(response.data);
+        setShowModal(!showModal);
       }
     } catch (err) {
       console.error(err);
@@ -81,39 +93,42 @@ const SignupScreen = () => {
   };
 
   const toggleModal = useCallback(() => {
-    dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: '' });
-    dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
-  }, [state.showModal]);
+    setErrorMessage('');
+    setShowModal(!showModal);
+  }, [showModal]);
 
   const readCouponCode = (text: string) => {
-    dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: '' });
-    dispatch({ type: AUTH_ACTIONS.COUPON_CODE, payload: text });
+    setErrorMessage('');
+    setInputCoupon(text);
   };
 
-  const submitCouponCode = async (couponCode: string, dispatch: (action: Action) => void) => {
+  const submitCouponCode = async (couponCode: string) => {
     try {
+      setScreenState(SCREEN_STATE.LOADING);
       if (userId) {
         const response = await HttpService({
           method: EReqMethod.POST,
           url: COUPON,
-          authRequired: false,
+          authRequired: true,
           body: {
             userId: userId,
             couponCode: couponCode,
           },
         });
+        setShowModal(false);
+        setScreenState(SCREEN_STATE.SUCCESS);
         setCouponCode(response.data.couponId);
         setCouponAsyncStorage(response.data.couponId);
       }
     } catch (err) {
-      dispatch({ type: AUTH_ACTIONS.ERROR_MSG, payload: CONSTANTS.COUPON_ERROR });
+      setErrorMessage(CONSTANTS.COUPON_ERROR);
       return;
     }
   };
 
   if (isLoading) {
     return (
-      <View>
+      <View style={styles.loader}>
         <IndicatorView isLoading={isLoading} ref={loader} />
       </View>
     );
@@ -123,10 +138,7 @@ const SignupScreen = () => {
     <BaseLayout statusColor={statusBarColor}>
       <View style={styles.container}>
         <Image source={iconSrc} style={styles.appIcon} />
-        <OverlayModal
-          visible={state.showModal}
-          width={screenWindowWidth}
-          onRequestClose={toggleModal}>
+        <OverlayModal visible={showModal} width={screenWindowWidth} onRequestClose={toggleModal}>
           <View style={styles.modal}>
             <View>
               <Input
@@ -136,7 +148,7 @@ const SignupScreen = () => {
                 label="Coupon Code"
                 onChangeText={readCouponCode}
               />
-              {!!state.errorMessage && <Text style={styles.error}>{state.errorMessage}</Text>}
+              {!!errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
               <TouchableOpacity style={styles.closeIcon} onPress={toggleModal}>
                 <SVGImage
                   assetSrc={APP_IMAGES.cross}
@@ -148,12 +160,12 @@ const SignupScreen = () => {
             <Button
               type={BUTTON_TYPE.FILL}
               title="Submit"
-              onPress={() => submitCouponCode(state.couponCode, dispatch)}
+              onPress={() => submitCouponCode(couponCode)}
             />
           </View>
         </OverlayModal>
         <ConditionRenderer
-          state={!state.isFullNameEntered}
+          state={!isFullNameEntered}
           C1={
             <>
               <Input
@@ -161,8 +173,8 @@ const SignupScreen = () => {
                 placeholder="Full Name"
                 variant="underlined"
                 label="Full Name"
-                value={state.fullName}
-                onChangeText={text => dispatch({ type: AUTH_ACTIONS.SET_FULL_NAME, payload: text })}
+                value={fullName}
+                onChangeText={name => setInputFullName(name)}
               />
               <Button type={BUTTON_TYPE.FILL} title="Continue" onPress={handleContinuation} />
             </>
@@ -174,15 +186,16 @@ const SignupScreen = () => {
                 placeholder="Your email address"
                 variant="underlined"
                 label="Email address"
-                value={state.email}
-                onChangeText={text => dispatch({ type: AUTH_ACTIONS.SET_EMAIL, payload: text })}
+                value={email}
+                onChangeText={email => setInputEmail(email)}
               />
               <Input
                 type="password"
                 placeholder={'Your password'}
                 variant={'underlined'}
                 label={'Password'}
-                onChangeText={text => dispatch({ type: AUTH_ACTIONS.SET_PASSWORD, payload: text })}
+                value={password}
+                onChangeText={password => setInputPassword(password)}
               />
               <Button type={BUTTON_TYPE.FILL} title="Signup" onPress={handleSignup} />
             </>

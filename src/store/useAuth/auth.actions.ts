@@ -14,28 +14,27 @@ export const handleLogin = async (
   set: (state: Partial<InitialAuthState>) => void,
 ) => {
   try {
-    const { email, name, _id, couponId, encodedToken } = user;
-    if (!email) {
+    if (!user || !user.email) {
       throw new Error('Email, password, and coupon code are required.');
     }
-    set({ state: SCREEN_STATE.LOADING });
+
+    const { email, name, _id, couponId, encodedToken } = user;
 
     const userDetails = {
-      id: _id,
-      email: email,
-      fullName: name ?? '',
-      couponCode: couponId,
-      token: encodedToken,
+      id: _id || '',
+      email,
+      fullName: name || '',
+      couponCode: couponId || '',
+      token: encodedToken || '',
     };
-    await setTokenAsyncStorage(encodedToken);
+
+    await setTokenAsyncStorage(encodedToken || '');
 
     set({
-      loggedInUserDetails: userDetails,
+      user: userDetails,
       isAuthenticated: true,
-      state: SCREEN_STATE.NONE,
     });
   } catch (err) {
-    set({ state: SCREEN_STATE.ERROR });
     console.error(err);
   }
 };

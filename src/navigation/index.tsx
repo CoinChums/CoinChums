@@ -11,13 +11,13 @@ import { AuthStack } from './AuthStack';
 import { AppTabs } from './BottomTabs';
 
 export const MainNavigator = () => {
-  const { loggedInUserDetails } = useAuth();
+  const { user } = useAuth();
   const toast = useToast();
   const [authenticationState, setAuthenticationState] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchAuthenticationStatus = async () => {
+    (async () => {
       try {
         const accessToken = await AsyncStorage.getItem(ASYNC_STORAGE.ACCESS_TOKEN);
         const couponCode = await AsyncStorage.getItem(ASYNC_STORAGE.COUPON);
@@ -28,10 +28,8 @@ export const MainNavigator = () => {
       } finally {
         setLoading(false);
       }
-    };
-
-    fetchAuthenticationStatus();
-  }, [loggedInUserDetails.token, loggedInUserDetails.couponCode]);
+    })();
+  }, [user.token, user.couponCode]);
 
   if (loading) {
     return (

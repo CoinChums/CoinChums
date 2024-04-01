@@ -8,4 +8,5 @@ export type UserRole = {
   email: string;
   couponCode?: string;
   token: string;
+  error?: string;
 };
