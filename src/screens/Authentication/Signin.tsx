@@ -1,21 +1,62 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { BaseLayout, Button, IndicatorView, Input, OverlayModal, SVGImage } from '../../components';
-import { BUTTON_TYPE, SCREEN_STATE } from '../../constants/enums';
+import { Image, View } from 'react-native';
+import { BaseLayout, Button, IndicatorView, Input } from '../../components';
+import {
+  BUTTON_TYPE,
+  CONSTANTS,
+  EReqMethod,
+  SCREEN_STATE,
+  TOAST_TYPE,
+} from '../../constants/enums';
+import { HttpService } from '../../services/http.service';
 import { useAuth } from '../../store/useAuth/auth.store';
 import { theme } from '../../themes';
-import { spacing } from '../../themes/spacing';
-import dimensions from '../../utils/dimensions';
-import { emptyFunction, loader } from '../../utils/helper';
-import { APP_IMAGES } from '../../utils/imageMapper';
+import { SIGNIN } from '../../utils/endpoints';
+import { loader, validateCredentials } from '../../utils/helper';
 import { styles } from './style';
+import { setCouponAsyncStorage } from '../../store/useAuth/auth.actions';
 
 const SigninScreen = () => {
-  const { state: authState } = useAuth();
+  const {
+    setUserDetails,
+    state: authState,
+    inputDetails,
+    setShowModal,
+    setInputEmail,
+    setInputPassword,
+    setCouponCode,
+  } = useAuth();
+  const { email, password, showModal } = inputDetails();
   const isLoading = authState === SCREEN_STATE.LOADING;
-  const screenWindowWidth = dimensions.screenWidth / 1.5;
   const statusBarColor = theme.palette.white.dark;
   const iconSrc = require('../../assets/images/coinchums.png');
+
+  const handleSignin = async () => {
+    const { isEmailValid, isPasswordValid } = validateCredentials(email, password);
+    if (!isEmailValid || !isPasswordValid) {
+      toast.show(CONSTANTS.INVALID_CRED, { type: TOAST_TYPE.DANGER });
+      return;
+    }
+    try {
+      const response = await HttpService({
+        method: EReqMethod.POST,
+        url: SIGNIN,
+        authRequired: false,
+        body: {
+          email: email,
+          password: password,
+        },
+      });
+      if (response.data._id) {
+        setUserDetails(response.data);
+        setCouponCode(response.data.couponId);
+        setCouponAsyncStorage(response.data.couponId);
+        setShowModal(!showModal);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -29,43 +70,23 @@ const SigninScreen = () => {
     <BaseLayout statusColor={statusBarColor}>
       <View style={styles.container}>
         <Image source={iconSrc} style={styles.appIcon} />
-        <OverlayModal visible={true} width={screenWindowWidth} onRequestClose={emptyFunction}>
-          <View style={styles.modal}>
-            <View>
-              <Input
-                type="text"
-                placeholder="Coupon Code"
-                variant="underlined"
-                label="Coupon Code"
-                onChangeText={emptyFunction}
-              />
-              <Text style={styles.error}>{''}</Text>
-              <TouchableOpacity style={styles.closeIcon} onPress={emptyFunction}>
-                <SVGImage
-                  assetSrc={APP_IMAGES.cross}
-                  height={spacing.bigHeight}
-                  width={spacing.bigWidth}
-                />
-              </TouchableOpacity>
-            </View>
-            <Button type={BUTTON_TYPE.FILL} title="Submit" onPress={emptyFunction} />
-          </View>
-        </OverlayModal>
         <Input
           type="text"
           placeholder="Your email address"
           variant="underlined"
           label="Email"
-          onChangeText={emptyFunction}
+          value={email}
+          onChangeText={email => setInputEmail(email)}
         />
         <Input
           type="password"
           placeholder={'Your password'}
           variant={'underlined'}
           label={'Password'}
-          onChangeText={emptyFunction}
+          value={password}
+          onChangeText={password => setInputPassword(password)}
         />
-        <Button type={BUTTON_TYPE.FILL} title="Signin" onPress={emptyFunction} />
+        <Button type={BUTTON_TYPE.FILL} title="Signin" onPress={handleSignin} />
       </View>
     </BaseLayout>
   );

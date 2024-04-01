@@ -36,7 +36,7 @@ const Login: FC = () => {
       <View style={styles.authContainer}>
         <Image source={iconSrc} style={styles.appIcon} />
         {renderAuthButton(t('signUp'), navigateToSignup)}
-        {/* {renderAuthButton(t('Login'), navigateToSignin)} */}
+        {renderAuthButton(t('Login'), navigateToSignin)}
         <Text style={styles.terms}>{t('terms')}</Text>
       </View>
       <BottomShape />

@@ -18,7 +18,6 @@ export type UserInput = {
   isFullNameEntered: boolean;
   showModal: boolean;
   couponCode: string;
-  errorMessage: string;
 };
 
 export type InitialAuthState = {
@@ -26,6 +25,7 @@ export type InitialAuthState = {
   state: SCREEN_STATE;
   user: UserRole;
   input: UserInput;
+  errorMessage: string;
 };
 
 export type GetLoggedInUser = () => UserRole | undefined;
@@ -33,14 +33,14 @@ export type GetLoggedInUser = () => UserRole | undefined;
 export type UseAuthStore = InitialAuthState & {
   userDetails: GetLoggedInUser;
   setUserDetails: (user: UserPayload) => Promise<void>;
+  setErrorMessage: (errorMessage: string) => void;
   setCouponCode: (couponCode: string) => void;
   inputDetails: () => UserInput;
   setShowModal: (bool: boolean) => void;
-  setInputErrorMessage: (errorMessage: string) => void;
   setInputCoupon: (couponCode: string) => void;
   setInputFullName: (fullName: string) => void;
   setInputEmail: (email: string) => void;
   setInputPassword: (password: string) => void;
   setInputIsFullNameEntered: (isFullNameEntered: boolean) => void;
-  logoutUser: () => void;
+  setLogout: () => void;
 };

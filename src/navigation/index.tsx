@@ -17,7 +17,7 @@ export const MainNavigator = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchAuthenticationStatus = async () => {
+    (async () => {
       try {
         const accessToken = await AsyncStorage.getItem(ASYNC_STORAGE.ACCESS_TOKEN);
         const couponCode = await AsyncStorage.getItem(ASYNC_STORAGE.COUPON);
@@ -28,9 +28,7 @@ export const MainNavigator = () => {
       } finally {
         setLoading(false);
       }
-    };
-
-    fetchAuthenticationStatus();
+    })();
   }, [user.token, user.couponCode]);
 
   if (loading) {

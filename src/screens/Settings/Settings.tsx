@@ -14,14 +14,14 @@ import { styles } from './Settings.style';
 
 const Settings = () => {
   const { t } = useTranslation();
-  const { logoutUser } = useAuth();
+  const { setLogout } = useAuth();
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
 
   const handleLogout = async () => {
     try {
       await AsyncStorage.removeItem(ASYNC_STORAGE.ACCESS_TOKEN);
       await AsyncStorage.removeItem(ASYNC_STORAGE.COUPON);
-      logoutUser();
+      setLogout();
     } catch (error) {
       console.error('Failed to remove item:', error);
     }

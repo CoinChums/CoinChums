@@ -37,15 +37,15 @@ const SignupScreen = () => {
     setCouponCode,
     inputDetails,
     setShowModal,
-    setInputErrorMessage,
+    setErrorMessage,
     setInputCoupon,
     setInputFullName,
     setInputEmail,
     setInputPassword,
     setInputIsFullNameEntered,
+    errorMessage,
   } = useAuth();
-  const { fullName, email, password, showModal, isFullNameEntered, errorMessage, couponCode } =
-    inputDetails();
+  const { fullName, email, password, showModal, isFullNameEntered, couponCode } = inputDetails();
   const userId = userDetails()!.id;
   const isLoading = authState === SCREEN_STATE.LOADING;
   const screenWindowWidth = dimensions.screenWidth / 1.5;
@@ -79,7 +79,6 @@ const SignupScreen = () => {
           password: password,
         },
       });
-
       if (response.data._id) {
         setUserDetails(response.data);
         setShowModal(!showModal);
@@ -90,12 +89,12 @@ const SignupScreen = () => {
   };
 
   const toggleModal = useCallback(() => {
-    setInputErrorMessage('');
+    setErrorMessage('');
     setShowModal(!showModal);
   }, [showModal]);
 
   const readCouponCode = (text: string) => {
-    setInputErrorMessage('');
+    setErrorMessage('');
     setInputCoupon(text);
   };
 
@@ -115,7 +114,7 @@ const SignupScreen = () => {
         setCouponAsyncStorage(response.data.couponId);
       }
     } catch (err) {
-      setInputErrorMessage(CONSTANTS.COUPON_ERROR);
+      setErrorMessage(CONSTANTS.COUPON_ERROR);
       return;
     }
   };
@@ -168,7 +167,7 @@ const SignupScreen = () => {
                 variant="underlined"
                 label="Full Name"
                 value={fullName}
-                onChangeText={text => setInputFullName(text)}
+                onChangeText={name => setInputFullName(name)}
               />
               <Button type={BUTTON_TYPE.FILL} title="Continue" onPress={handleContinuation} />
             </>
@@ -181,14 +180,15 @@ const SignupScreen = () => {
                 variant="underlined"
                 label="Email address"
                 value={email}
-                onChangeText={text => setInputEmail(text)}
+                onChangeText={email => setInputEmail(email)}
               />
               <Input
                 type="password"
                 placeholder={'Your password'}
                 variant={'underlined'}
                 label={'Password'}
-                onChangeText={text => setInputPassword(text)}
+                value={password}
+                onChangeText={password => setInputPassword(password)}
               />
               <Button type={BUTTON_TYPE.FILL} title="Signup" onPress={handleSignup} />
             </>

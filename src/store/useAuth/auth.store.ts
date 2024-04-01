@@ -7,6 +7,7 @@ import { InitialAuthState, UseAuthStore } from './auth.types';
 const initialStateData: InitialAuthState = {
   isAuthenticated: false,
   state: SCREEN_STATE.NONE,
+  errorMessage: '',
   user: {
     id: '',
     fullName: '',
@@ -21,7 +22,6 @@ const initialStateData: InitialAuthState = {
     isFullNameEntered: false,
     showModal: false,
     couponCode: '',
-    errorMessage: '',
   },
 };
 
@@ -29,6 +29,8 @@ export const useAuth = create<UseAuthStore>((set, get) => ({
   ...initialStateData,
   userDetails: () => get().user,
   setUserDetails: (user: UserPayload) => handleLogin(user, set),
+
+  setErrorMessage: (errorMessage: string) => set(state => ({ ...state, errorMessage })),
 
   setCouponCode: (couponCode: string) =>
     set(state => ({
@@ -44,9 +46,6 @@ export const useAuth = create<UseAuthStore>((set, get) => ({
   setShowModal: (bool: boolean) =>
     set(state => ({ ...state, input: { ...state.input, showModal: bool } })),
 
-  setInputErrorMessage: (errorMessage: string) =>
-    set(state => ({ ...state, input: { ...state.input, errorMessage } })),
-
   setInputCoupon: (couponCode: string) =>
     set(state => ({ ...state, input: { ...state.input, couponCode } })),
 
@@ -61,13 +60,5 @@ export const useAuth = create<UseAuthStore>((set, get) => ({
   setInputIsFullNameEntered: (isFullNameEntered: boolean) =>
     set(state => ({ ...state, input: { ...state.input, isFullNameEntered } })),
 
-  logoutUser: () =>
-    set(state => ({
-      ...state,
-      user: {
-        ...state.user,
-        token: '',
-        couponCode: '',
-      },
-    })),
+  setLogout: () => set(initialStateData),
 }));
