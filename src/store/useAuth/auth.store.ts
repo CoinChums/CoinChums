@@ -32,6 +32,8 @@ export const useAuth = create<UseAuthStore>((set, get) => ({
 
   setErrorMessage: (errorMessage: string) => set(state => ({ ...state, errorMessage })),
 
+  setScreenState: (screenState: SCREEN_STATE) => set(state => ({ ...state, state: screenState })),
+
   setCouponCode: (couponCode: string) =>
     set(state => ({
       ...state,

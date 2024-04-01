@@ -25,6 +25,7 @@ const SigninScreen = () => {
     setInputEmail,
     setInputPassword,
     setCouponCode,
+    setScreenState,
   } = useAuth();
   const { email, password, showModal } = inputDetails();
   const isLoading = authState === SCREEN_STATE.LOADING;
@@ -32,12 +33,14 @@ const SigninScreen = () => {
   const iconSrc = require('../../assets/images/coinchums.png');
 
   const handleSignin = async () => {
+    setScreenState(SCREEN_STATE.NONE);
     const { isEmailValid, isPasswordValid } = validateCredentials(email, password);
     if (!isEmailValid || !isPasswordValid) {
       toast.show(CONSTANTS.INVALID_CRED, { type: TOAST_TYPE.DANGER });
       return;
     }
     try {
+      setScreenState(SCREEN_STATE.LOADING);
       const response = await HttpService({
         method: EReqMethod.POST,
         url: SIGNIN,
@@ -48,6 +51,7 @@ const SigninScreen = () => {
         },
       });
       if (response.data._id) {
+        setScreenState(SCREEN_STATE.SUCCESS);
         setUserDetails(response.data);
         setCouponCode(response.data.couponId);
         setCouponAsyncStorage(response.data.couponId);
@@ -60,7 +64,7 @@ const SigninScreen = () => {
 
   if (isLoading) {
     return (
-      <View>
+      <View style={styles.loader}>
         <IndicatorView isLoading={isLoading} ref={loader} />
       </View>
     );
@@ -86,7 +90,7 @@ const SigninScreen = () => {
           value={password}
           onChangeText={password => setInputPassword(password)}
         />
-        <Button type={BUTTON_TYPE.FILL} title="Signin" onPress={handleSignin} />
+        <Button type={BUTTON_TYPE.FILL} title={'Signin'} onPress={handleSignin} />
       </View>
     </BaseLayout>
   );

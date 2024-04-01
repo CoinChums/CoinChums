@@ -34,6 +34,7 @@ export type UseAuthStore = InitialAuthState & {
   userDetails: GetLoggedInUser;
   setUserDetails: (user: UserPayload) => Promise<void>;
   setErrorMessage: (errorMessage: string) => void;
+  setScreenState: (screenState: SCREEN_STATE) => void;
   setCouponCode: (couponCode: string) => void;
   inputDetails: () => UserInput;
   setShowModal: (bool: boolean) => void;

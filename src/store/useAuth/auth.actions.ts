@@ -20,8 +20,6 @@ export const handleLogin = async (
 
     const { email, name, _id, couponId, encodedToken } = user;
 
-    set({ state: SCREEN_STATE.LOADING });
-
     const userDetails = {
       id: _id || '',
       email,
@@ -35,10 +33,8 @@ export const handleLogin = async (
     set({
       user: userDetails,
       isAuthenticated: true,
-      state: SCREEN_STATE.NONE,
     });
   } catch (err) {
-    set({ state: SCREEN_STATE.ERROR });
     console.error(err);
   }
 };

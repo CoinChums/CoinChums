@@ -44,6 +44,7 @@ const SignupScreen = () => {
     setInputPassword,
     setInputIsFullNameEntered,
     errorMessage,
+    setScreenState,
   } = useAuth();
   const { fullName, email, password, showModal, isFullNameEntered, couponCode } = inputDetails();
   const userId = userDetails()!.id;
@@ -63,12 +64,14 @@ const SignupScreen = () => {
   };
 
   const handleSignup = async () => {
+    setScreenState(SCREEN_STATE.NONE);
     const { isEmailValid, isPasswordValid } = validateCredentials(email, password);
     if (!isEmailValid || !isPasswordValid) {
       toast.show(CONSTANTS.INVALID_CRED, { type: TOAST_TYPE.DANGER });
       return;
     }
     try {
+      setScreenState(SCREEN_STATE.LOADING);
       const response = await HttpService({
         method: EReqMethod.POST,
         url: SIGNUP,
@@ -80,6 +83,7 @@ const SignupScreen = () => {
         },
       });
       if (response.data._id) {
+        setScreenState(SCREEN_STATE.SUCCESS);
         setUserDetails(response.data);
         setShowModal(!showModal);
       }
@@ -100,6 +104,7 @@ const SignupScreen = () => {
 
   const submitCouponCode = async (couponCode: string) => {
     try {
+      setScreenState(SCREEN_STATE.LOADING);
       if (userId) {
         const response = await HttpService({
           method: EReqMethod.POST,
@@ -110,6 +115,8 @@ const SignupScreen = () => {
             couponCode: couponCode,
           },
         });
+        setShowModal(false);
+        setScreenState(SCREEN_STATE.SUCCESS);
         setCouponCode(response.data.couponId);
         setCouponAsyncStorage(response.data.couponId);
       }
@@ -121,7 +128,7 @@ const SignupScreen = () => {
 
   if (isLoading) {
     return (
-      <View>
+      <View style={styles.loader}>
         <IndicatorView isLoading={isLoading} ref={loader} />
       </View>
     );
