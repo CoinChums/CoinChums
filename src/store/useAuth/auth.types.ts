@@ -11,18 +11,29 @@ export type LogoutPayload = {
   allowLogin: boolean;
 };
 
+export type UserInput = {
+  fullName: string;
+  email: string;
+  password: string;
+  isFullNameEntered: boolean;
+  showModal: boolean;
+  couponCode: string;
+  errorMessage: string;
+};
+
 export type InitialAuthState = {
   isAuthenticated: boolean;
   state: SCREEN_STATE;
-  loggedInUserDetails: UserRole;
+  user: UserRole;
+  input: UserInput;
 };
 
 export type GetLoggedInUser = () => UserRole | undefined;
 
 export type UseAuthStore = InitialAuthState & {
-  getLoggedInUser: GetLoggedInUser;
-  getLogInStatus: () => void;
-  logoutUser: () => void;
-  handleLogin: (user: UserPayload) => Promise<void>;
+  userDetails: GetLoggedInUser;
+  setUserDetails: (user: UserPayload) => Promise<void>;
+  couponCode: () => void;
   setCouponCode: (couponCode: string) => void;
+  logoutUser: () => void;
 };

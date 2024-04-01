@@ -11,7 +11,7 @@ import { AuthStack } from './AuthStack';
 import { AppTabs } from './BottomTabs';
 
 export const MainNavigator = () => {
-  const { loggedInUserDetails } = useAuth();
+  const { user } = useAuth();
   const toast = useToast();
   const [authenticationState, setAuthenticationState] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -31,7 +31,7 @@ export const MainNavigator = () => {
     };
 
     fetchAuthenticationStatus();
-  }, [loggedInUserDetails.token, loggedInUserDetails.couponCode]);
+  }, [user.token, user.couponCode]);
 
   if (loading) {
     return (

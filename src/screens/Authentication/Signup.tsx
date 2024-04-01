@@ -34,8 +34,8 @@ import { Action } from './types';
 const SignupScreen = () => {
   const toast = useToast();
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { handleLogin, state: authState, getLoggedInUser, setCouponCode } = useAuth();
-  const userId = getLoggedInUser()!.id;
+  const { setUserDetails, state: authState, userDetails, setCouponCode } = useAuth();
+  const userId = userDetails()!.id;
   const isLoading = authState === SCREEN_STATE.LOADING;
   const screenWindowWidth = dimensions.screenWidth / 1.5;
   const statusBarColor = state.showModal ? theme.palette.black.light : theme.palette.white.dark;
@@ -72,7 +72,7 @@ const SignupScreen = () => {
       });
 
       if (response.data._id) {
-        handleLogin(response.data);
+        setUserDetails(response.data);
         dispatch({ type: AUTH_ACTIONS.SHOW_MODAL, payload: !state.showModal });
       }
     } catch (err) {
@@ -96,7 +96,7 @@ const SignupScreen = () => {
         const response = await HttpService({
           method: EReqMethod.POST,
           url: COUPON,
-          authRequired: false,
+          authRequired: true,
           body: {
             userId: userId,
             couponCode: couponCode,

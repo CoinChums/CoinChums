@@ -30,7 +30,7 @@ export const handleLogin = async (
     await setTokenAsyncStorage(encodedToken);
 
     set({
-      loggedInUserDetails: userDetails,
+      user: userDetails,
       isAuthenticated: true,
       state: SCREEN_STATE.NONE,
     });
