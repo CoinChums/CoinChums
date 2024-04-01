@@ -33,7 +33,14 @@ export type GetLoggedInUser = () => UserRole | undefined;
 export type UseAuthStore = InitialAuthState & {
   userDetails: GetLoggedInUser;
   setUserDetails: (user: UserPayload) => Promise<void>;
-  couponCode: () => void;
   setCouponCode: (couponCode: string) => void;
+  inputDetails: () => UserInput;
+  setShowModal: (bool: boolean) => void;
+  setInputErrorMessage: (errorMessage: string) => void;
+  setInputCoupon: (couponCode: string) => void;
+  setInputFullName: (fullName: string) => void;
+  setInputEmail: (email: string) => void;
+  setInputPassword: (password: string) => void;
+  setInputIsFullNameEntered: (isFullNameEntered: boolean) => void;
   logoutUser: () => void;
 };

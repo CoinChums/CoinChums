@@ -30,7 +30,6 @@ export const useAuth = create<UseAuthStore>((set, get) => ({
   userDetails: () => get().user,
   setUserDetails: (user: UserPayload) => handleLogin(user, set),
 
-  couponCode: () => get().user.couponCode,
   setCouponCode: (couponCode: string) =>
     set(state => ({
       ...state,
@@ -39,6 +38,28 @@ export const useAuth = create<UseAuthStore>((set, get) => ({
         couponCode,
       },
     })),
+
+  inputDetails: () => get().input,
+
+  setShowModal: (bool: boolean) =>
+    set(state => ({ ...state, input: { ...state.input, showModal: bool } })),
+
+  setInputErrorMessage: (errorMessage: string) =>
+    set(state => ({ ...state, input: { ...state.input, errorMessage } })),
+
+  setInputCoupon: (couponCode: string) =>
+    set(state => ({ ...state, input: { ...state.input, couponCode } })),
+
+  setInputFullName: (fullName: string) =>
+    set(state => ({ ...state, input: { ...state.input, fullName } })),
+
+  setInputEmail: (email: string) => set(state => ({ ...state, input: { ...state.input, email } })),
+
+  setInputPassword: (password: string) =>
+    set(state => ({ ...state, input: { ...state.input, password } })),
+
+  setInputIsFullNameEntered: (isFullNameEntered: boolean) =>
+    set(state => ({ ...state, input: { ...state.input, isFullNameEntered } })),
 
   logoutUser: () =>
     set(state => ({
