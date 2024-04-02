@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ASYNC_STORAGE, SCREEN_STATE } from '../../constants/enums';
+import { ASYNC_STORAGE } from '../../constants/enums';
 import { UserPayload } from '../../screens/Authentication/types';
-import { InitialAuthState } from './auth.types';
+import { AuthInitialState } from './auth.types';
 
 export const setTokenAsyncStorage = async (token: string) =>
   await AsyncStorage.setItem(ASYNC_STORAGE.ACCESS_TOKEN, token);
@@ -11,7 +11,7 @@ export const setCouponAsyncStorage = async (coupon: string) =>
 
 export const handleLogin = async (
   user: UserPayload,
-  set: (state: Partial<InitialAuthState>) => void,
+  set: (state: Partial<AuthInitialState>) => void,
 ) => {
   try {
     if (!user || !user.email) {

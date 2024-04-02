@@ -2,9 +2,9 @@ import { create } from 'zustand';
 import { SCREEN_STATE } from '../../constants/enums';
 import { UserPayload } from '../../screens/Authentication/types';
 import { handleLogin } from './auth.actions';
-import { InitialAuthState, UseAuthStore } from './auth.types';
+import { AuthInitialState, AuthStoreContext } from './auth.types';
 
-const initialStateData: InitialAuthState = {
+const initialStateData: AuthInitialState = {
   isAuthenticated: false,
   state: SCREEN_STATE.NONE,
   errorMessage: '',
@@ -25,7 +25,7 @@ const initialStateData: InitialAuthState = {
   },
 };
 
-export const useAuth = create<UseAuthStore>((set, get) => ({
+export const useAuth = create<AuthStoreContext>((set, get) => ({
   ...initialStateData,
   userDetails: () => get().user,
   setUserDetails: (user: UserPayload) => handleLogin(user, set),
