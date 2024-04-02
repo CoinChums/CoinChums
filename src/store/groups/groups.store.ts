@@ -5,7 +5,7 @@ import { GroupStoreContext, TInitialGroupsState } from './groups.types';
 const initialStateData: TInitialGroupsState = {
   screenState: SCREEN_STATE.NONE,
   errorMessage: '',
-  groups: {
+  group: {
     createdBy: '',
     category: '',
     groupState: '',
@@ -24,7 +24,22 @@ const initialStateData: TInitialGroupsState = {
   },
 };
 
-export const useAuth = create<GroupStoreContext>((set, get) => ({
+export const useGroups = create<GroupStoreContext>((set, get) => ({
   ...initialStateData,
-  groupDetails: () => get().groups,
+  groupDetails: () => get().group,
+
+  inputEvents: () => get().input,
+
+  setErrorMessage: (message: string) => set(state => ({ ...state, errorMessage: message })),
+
+  resetState: () => set(initialStateData),
+
+  setGroups: (groups: TInitialGroupsState['group']) =>
+    set(state => ({ ...state, groups, input: initialStateData.input })),
+
+  setInputTitle: (title: string) =>
+    set(state => ({ ...state, errorMessage: '', input: { ...state.input, title } })),
+
+  setInputDescription: (description: string) =>
+    set(state => ({ ...state, errorMessage: '', input: { ...state.input, description } })),
 }));

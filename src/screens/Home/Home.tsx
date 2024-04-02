@@ -26,7 +26,7 @@ const Home: React.FC<THome> = () => {
         <View style={styles.btn}>
           <Button
             onPress={handleNavigation}
-            title={'Create a new group'}
+            title={'Start a new group'}
             type={BUTTON_TYPE.OUTLINE}
             leftIcon={APP_IMAGES.userGroup}
             titleStyle={styles.titleProps}

@@ -26,4 +26,6 @@ export default {
   groupName: 'Group name',
   languages: 'Languages',
   logout: 'Logout',
+  groupDesc: 'Group description',
+  create: 'Create Group',
 };
