@@ -22,8 +22,8 @@ const GroupCreation = () => {
     setInputDescription,
     setErrorMessage,
     setGroups,
-    errorMessage,
     resetState,
+    errorMessage,
   } = useGroups();
   const { userDetails } = useAuth();
   const { title, description } = inputEvents();

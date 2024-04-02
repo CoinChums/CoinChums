@@ -1,5 +1,5 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Text, View } from 'react-native';
 import { BaseLayout, Button, GroupListTile, Header } from '../../components';
@@ -16,6 +16,10 @@ const Home: React.FC<THome> = () => {
   const header = 'Overall, you owe ₹ 300';
 
   const handleNavigation = () => navigation.navigate(APP_ROUTES.groups);
+
+  useEffect(() => {
+    (async () => {})();
+  }, []);
 
   return (
     <BaseLayout style={styles.home}>

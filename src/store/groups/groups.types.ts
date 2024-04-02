@@ -1,36 +1,46 @@
 import { SCREEN_STATE } from '../../constants/enums';
 
-export type Group = {
-  title: string;
-  description: string;
-  createdBy: string;
-  members: Array<string>;
-  category: string;
+export type ResponseStatusDetails = {
+  screenState: SCREEN_STATE;
 };
 
-export type TGroups = Group & {
+export type Group = {
+  createdBy: string;
+  category: string;
   groupState: string;
-  transactionIds: Array<string>;
+  members: string[];
+  title: string;
+  description: string;
+  transactionIds: string[];
   _id: string;
 };
 
-export type InputEvents = Group;
+export type Input = {
+  title: string;
+  description: string;
+  createdBy: string;
+  members: string[];
+  category: string;
+};
 
-export type TInitialGroupsState = {
-  screenState: SCREEN_STATE;
+export type GroupDetails = ResponseStatusDetails & {
+  group: Group;
+};
+
+export type InitialGroupsState = {
   errorMessage: string;
-  group: TGroups;
-  input: InputEvents;
+  groupDetails: GroupDetails;
+  input: Input;
 };
 
 export type GroupActionTypes = {
-  groupDetails: () => void;
-  inputEvents: () => InputEvents;
+  getGroupDetails: () => void;
+  inputEvents: () => Input;
   setErrorMessage: (message: string) => void;
   resetState: () => void;
-  setGroups: (groups: TGroups) => void;
+  setGroups: (groups: Group) => void;
   setInputTitle: (title: string) => void;
   setInputDescription: (description: string) => void;
 };
 
-export type GroupStoreContext = TInitialGroupsState & GroupActionTypes;
+export type GroupStoreContext = InitialGroupsState & GroupActionTypes;
