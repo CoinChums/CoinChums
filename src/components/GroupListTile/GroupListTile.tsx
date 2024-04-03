@@ -13,15 +13,18 @@ import { GroupListTileProps } from './types';
 export const GroupListTile: React.FC<GroupListTileProps> = ({ node }) => {
   const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
-  const { icon, title, group_status } = node;
+  const { title, description, groupState } = node;
   const balance = `${CURRENCY_SYMBOLS.INR} 300`; //TODO GET FROM BACKEND
   const isDebt = true; //TODO GET FROM BACKEND
-  const groupState = group_status !== GROUP_STATUS.ARCHIVE;
+  const groupStatus = groupState !== GROUP_STATUS.ARCHIVE;
+  const icon =
+    'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+
   const navigateToDetails = () => navigation.navigate(APP_ROUTES.details);
 
   return (
     <ConditionRenderer
-      state={groupState}
+      state={groupStatus}
       C1={
         <TouchableOpacity style={styles.container} onPress={navigateToDetails}>
           <View style={styles.imageContainer}>
@@ -34,10 +37,11 @@ export const GroupListTile: React.FC<GroupListTileProps> = ({ node }) => {
           </View>
           <View>
             <Text style={styles.title}>{title}</Text>
-            {group_status === GROUP_STATUS.SETTLED && (
+            <Text style={styles.title}>{description}</Text>
+            {groupState === GROUP_STATUS.SETTLED && (
               <Text style={styles.subTitle}>{t('noExpense')}</Text>
             )}
-            {group_status === GROUP_STATUS.UNSETTLED && (
+            {groupState === GROUP_STATUS.UNSETTLED && (
               <Text style={[styles.balance, isDebt ? styles.debt : styles.owes]}>
                 {isDebt ? t('owe') : t('owes')} {balance}
               </Text>

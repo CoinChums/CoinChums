@@ -14,4 +14,5 @@ export type UserPayload = {
   _id: string;
   couponId: string;
   encodedToken: string;
+  groupIds: Array<string>;
 };

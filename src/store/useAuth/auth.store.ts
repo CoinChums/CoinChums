@@ -14,6 +14,7 @@ const initialStateData: AuthInitialState = {
     email: '',
     couponCode: '',
     token: '',
+    groupIds: [''],
   },
   input: {
     fullName: '',

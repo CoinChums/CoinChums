@@ -18,7 +18,7 @@ export const handleLogin = async (
       throw new Error('Email, password, and coupon code are required.');
     }
 
-    const { email, name, _id, couponId, encodedToken } = user;
+    const { email, name, _id, couponId, encodedToken, groupIds } = user;
 
     const userDetails = {
       id: _id || '',
@@ -26,6 +26,7 @@ export const handleLogin = async (
       fullName: name || '',
       couponCode: couponId || '',
       token: encodedToken || '',
+      groupIds: groupIds,
     };
 
     await setTokenAsyncStorage(encodedToken || '');

@@ -15,7 +15,12 @@ const initialStateData: InitialGroupsState = {
       description: '',
       transactionIds: [],
       _id: '',
+      created_at: '',
+      updated_at: '',
     },
+  },
+  groupList: {
+    groups: [],
   },
   input: {
     title: '',
@@ -30,6 +35,8 @@ export const useGroups = create<GroupStoreContext>((set, get) => ({
   ...initialStateData,
   getGroupDetails: () => get().groupDetails,
 
+  getGroupList: () => get().groupList,
+
   inputEvents: () => get().input,
 
   setErrorMessage: (message: string) => set(state => ({ ...state, errorMessage: message })),
@@ -37,6 +44,8 @@ export const useGroups = create<GroupStoreContext>((set, get) => ({
   resetState: () => set(initialStateData),
 
   setGroups: (groups: Group) => set(state => ({ ...state, groups, input: initialStateData.input })),
+
+  setGroupList: (groups: Group[]) => set(state => ({ ...state, groupList: { groups } })),
 
   setInputTitle: (title: string) =>
     set(state => ({ ...state, errorMessage: '', input: { ...state.input, title } })),

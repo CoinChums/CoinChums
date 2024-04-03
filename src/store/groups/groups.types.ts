@@ -13,6 +13,8 @@ export type Group = {
   description: string;
   transactionIds: string[];
   _id: string;
+  created_at: string;
+  updated_at: string;
 };
 
 export type Input = {
@@ -27,18 +29,25 @@ export type GroupDetails = ResponseStatusDetails & {
   group: Group;
 };
 
+export type GroupList = {
+  groups: Group[];
+};
+
 export type InitialGroupsState = {
   errorMessage: string;
   groupDetails: GroupDetails;
+  groupList: GroupList;
   input: Input;
 };
 
 export type GroupActionTypes = {
   getGroupDetails: () => void;
+  getGroupList: () => GroupList;
   inputEvents: () => Input;
   setErrorMessage: (message: string) => void;
   resetState: () => void;
   setGroups: (groups: Group) => void;
+  setGroupList: (groups: Group[]) => void;
   setInputTitle: (title: string) => void;
   setInputDescription: (description: string) => void;
 };
