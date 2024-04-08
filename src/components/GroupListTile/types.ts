@@ -1,5 +1,5 @@
-import { TGroupListTile } from '../../types/models/expense';
+import { Group } from '../../store/groups/groups.types';
 
 export type GroupListTileProps = {
-  node: TGroupListTile;
+  node: Group;
 };

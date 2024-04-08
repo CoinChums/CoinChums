@@ -26,4 +26,6 @@ export default {
   groupName: 'समूह का नाम',
   languages: 'भाषाओं',
   logout: 'लॉगआउट',
+  groupDesc: 'समूह विवरण',
+  create: 'समूह बनाएं',
 };

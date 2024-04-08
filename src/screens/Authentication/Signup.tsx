@@ -23,7 +23,7 @@ import { useAuth } from '../../store/useAuth/auth.store';
 import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
 import dimensions from '../../utils/dimensions';
-import { COUPON, SIGNUP } from '../../utils/endpoints';
+import { VERIFY_COUPON, SIGNUP } from '../../utils/endpoints';
 import { loader, validateCredentials } from '../../utils/helper';
 import { APP_IMAGES } from '../../utils/imageMapper';
 import { styles } from './style';
@@ -108,7 +108,7 @@ const SignupScreen = () => {
       if (userId) {
         const response = await HttpService({
           method: EReqMethod.POST,
-          url: COUPON,
+          url: VERIFY_COUPON,
           authRequired: true,
           body: {
             userId: userId,
