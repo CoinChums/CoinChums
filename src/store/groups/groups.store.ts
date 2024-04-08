@@ -20,6 +20,7 @@ const initialStateData: InitialGroupsState = {
     },
   },
   groupList: {
+    responseState: SCREEN_STATE.NONE,
     groups: [],
   },
   input: {
@@ -43,9 +44,22 @@ export const useGroups = create<GroupStoreContext>((set, get) => ({
 
   resetState: () => set(initialStateData),
 
-  setGroups: (groups: Group) => set(state => ({ ...state, groups, input: initialStateData.input })),
+  setGroups: groups =>
+    set(state => ({
+      ...state,
+      groupDetails: {
+        ...state.groupDetails,
+        group: {
+          ...groups,
+        },
+      },
+    })),
 
-  setGroupList: (groups: Group[]) => set(state => ({ ...state, groupList: { groups } })),
+  setGroupListState: (responseState: SCREEN_STATE) =>
+    set(state => ({ ...state, groupList: { ...state.groupList, responseState } })),
+
+  setGroupList: (groups: Group[]) =>
+    set(state => ({ ...state, groupList: { ...state.groupList, groups } })),
 
   setInputTitle: (title: string) =>
     set(state => ({ ...state, errorMessage: '', input: { ...state.input, title } })),

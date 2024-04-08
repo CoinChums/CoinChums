@@ -30,6 +30,7 @@ export type GroupDetails = ResponseStatusDetails & {
 };
 
 export type GroupList = {
+  responseState: SCREEN_STATE;
   groups: Group[];
 };
 
@@ -41,7 +42,7 @@ export type InitialGroupsState = {
 };
 
 export type GroupActionTypes = {
-  getGroupDetails: () => void;
+  getGroupDetails: () => GroupDetails;
   getGroupList: () => GroupList;
   inputEvents: () => Input;
   setErrorMessage: (message: string) => void;

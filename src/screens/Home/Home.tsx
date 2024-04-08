@@ -17,11 +17,11 @@ const Home: React.FC<THome> = () => {
   const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp<NavigationParams>>();
   const header = 'Overall, you owe ₹ 300';
-  const { setGroupList, getGroupList } = useGroups();
+  const { setGroupList, getGroupList, getGroupDetails } = useGroups();
   const { userDetails } = useAuth();
   const { groupIds } = userDetails()!;
   const { groups } = getGroupList();
-
+  const { group } = getGroupDetails();
   const handleNavigation = () => navigation.navigate(APP_ROUTES.groups);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Home: React.FC<THome> = () => {
         console.error(err);
       }
     })();
-  }, []);
+  }, [group]);
 
   return (
     <BaseLayout style={styles.home}>
