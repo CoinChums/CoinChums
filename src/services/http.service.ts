@@ -1,7 +1,7 @@
 import { COINCHUMS_API } from '@env';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios, { AxiosRequestConfig } from 'axios';
-import { ASYNC_STORAGE, CONSTANTS, EReqMethod } from '../constants/enums';
+import { EReqMethod } from '../constants/enums';
+import { getTokenAsyncStorage } from './auth.service';
 import { isNetworkConnected } from './network.service';
 
 type HttpServiceType = {
@@ -47,7 +47,7 @@ export const HttpService = async (param: HttpServiceType) => {
   }
 
   if (authRequired) {
-    const bearerToken = await AsyncStorage.getItem(ASYNC_STORAGE.ACCESS_TOKEN);
+    const bearerToken = await getTokenAsyncStorage();
     const tokenType = 'Bearer';
     headers.authorization = `${tokenType} ${bearerToken}`;
   }
@@ -61,7 +61,7 @@ export const HttpService = async (param: HttpServiceType) => {
 
   const resp = await axios(axiosParams).catch(error => {
     console.error(error, requestUrl);
-    return Promise.reject(CONSTANTS.SERVER_RESOURCE_NOT_FOUND);
+    return Promise.reject(new Error(JSON.stringify(error)));
   });
 
   return resp.data;

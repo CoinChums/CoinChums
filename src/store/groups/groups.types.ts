@@ -51,6 +51,7 @@ export type GroupActionTypes = {
   setGroupList: (groups: Group[]) => void;
   setInputTitle: (title: string) => void;
   setInputDescription: (description: string) => void;
+  setGroupListState: (responseState: SCREEN_STATE) => void;
 };
 
 export type GroupStoreContext = InitialGroupsState & GroupActionTypes;

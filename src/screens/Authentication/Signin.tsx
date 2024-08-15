@@ -8,13 +8,13 @@ import {
   SCREEN_STATE,
   TOAST_TYPE,
 } from '../../constants/enums';
+import { setCouponAsyncStorage } from '../../services/auth.service';
 import { HttpService } from '../../services/http.service';
 import { useAuth } from '../../store/useAuth/auth.store';
 import { theme } from '../../themes';
 import { SIGNIN } from '../../utils/endpoints';
 import { loader, validateCredentials } from '../../utils/helper';
 import { styles } from './style';
-import { setCouponAsyncStorage } from '../../store/useAuth/auth.actions';
 
 const SigninScreen = () => {
   const {
