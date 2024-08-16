@@ -2,5 +2,25 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#1FA73D",
+    "activityBar.background": "#1FA73D",
+    "activityBar.foreground": "#0D521E",
+    "activityBar.inactiveForeground": "#0D521E99",
+    "activityBarBadge.background": "#16682A",
+    "activityBarBadge.foreground": "#E6F3E7",
+    "commandCenter.border": "#0D521E99",
+    "sash.hoverBorder": "#1FA73D",
+    "statusBar.background": "#1B9135",
+    "statusBar.foreground": "#0D521E",
+    "statusBarItem.hoverBackground": "#146D29",
+    "statusBarItem.remoteBackground": "#1B9135",
+    "statusBarItem.remoteForeground": "#0D521E",
+    "titleBar.activeBackground": "#1B9135",
+    "titleBar.activeForeground": "#0D521E",
+    "titleBar.inactiveBackground": "#1B913599",
+    "titleBar.inactiveForeground": "#0D521E99",
+    "sideBar.border": "#1FA73D"
   }
 }
