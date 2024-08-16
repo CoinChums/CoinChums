@@ -69,6 +69,8 @@ const addUniqueIdToChildren = (children: ReactNode, primaryKey: string = 'key'):
   }
 };
 
+const isNotEmpty = (text: string) => text?.toString().trim()?.length > 0;
+
 export {
   addUniqueIdToChildren,
   boxShadow,
@@ -80,4 +82,5 @@ export {
   removeItemById,
   validateCredentials,
   validateTextInput,
+  isNotEmpty,
 };
