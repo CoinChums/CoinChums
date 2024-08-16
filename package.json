@@ -36,6 +36,7 @@
     "react-native-screens": "^3.27.0",
     "react-native-svg": "^14.1.0",
     "react-native-toast-notifications": "^3.4.0",
+    "uuid": "^10.0.0",
     "zustand": "^4.5.1"
   },
   "devDependencies": {
@@ -50,6 +51,7 @@
     "@types/react": "^18.0.24",
     "@types/react-native": "^0.70.8",
     "@types/react-test-renderer": "^18.0.0",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
     "babel-jest": "29.2.1",
