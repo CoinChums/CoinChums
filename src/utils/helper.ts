@@ -50,6 +50,9 @@ const removeItemById = <T extends { _id: string }>(items: T[], id: string): T[] 
   items.filter(item => item._id !== id);
 
 const convertPercentageToNumber = (percentage: string) => {
+  if (!percentage.endsWith('%')) {
+    throw new Error('Invalid percentage string');
+  }
   const numberString = percentage.replace('%', '');
   return parseInt(numberString, 10);
 };
@@ -65,6 +68,7 @@ const addUniqueIdToChildren = (children: ReactNode, primaryKey: string = 'key'):
       return child;
     }) as ReactElement[];
   } catch (err) {
+    console.error('Error adding unique IDs to children:', err);
     return React.Children.toArray(children) as ReactElement[];
   }
 };
