@@ -13,6 +13,6 @@ export const styles = StyleSheet.create({
   error: {
     fontSize: theme.typography.fontSize.small,
     color: theme.palette.error.dark,
-    marginTop: spacing.tinyHeight,
+    marginBottom: spacing.tinyHeight,
   },
 });

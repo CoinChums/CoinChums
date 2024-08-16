@@ -25,4 +25,6 @@ export default {
   groupName: 'ಸಮೂಹ ಹೆಸರು',
   languages: 'ಭಾಷೆಗಳು',
   logout: 'ಲಾಗ್ ಔಟ್',
+  groupDesc: 'ಗುಂಪು ವಿವರಗಳು',
+  create: 'ಗುಂಪು ರಚಿಸಿ',
 };

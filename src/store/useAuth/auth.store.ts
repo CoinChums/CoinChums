@@ -1,10 +1,11 @@
 import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
 import { SCREEN_STATE } from '../../constants/enums';
 import { UserPayload } from '../../screens/Authentication/types';
 import { handleLogin } from './auth.actions';
-import { InitialAuthState, UseAuthStore } from './auth.types';
+import { AuthInitialState, AuthStoreContext } from './auth.types';
 
-const initialStateData: InitialAuthState = {
+const initialStateData: AuthInitialState = {
   isAuthenticated: false,
   state: SCREEN_STATE.NONE,
   errorMessage: '',
@@ -14,6 +15,7 @@ const initialStateData: InitialAuthState = {
     email: '',
     couponCode: '',
     token: '',
+    groupIds: [''],
   },
   input: {
     fullName: '',
@@ -25,42 +27,41 @@ const initialStateData: InitialAuthState = {
   },
 };
 
-export const useAuth = create<UseAuthStore>((set, get) => ({
-  ...initialStateData,
-  userDetails: () => get().user,
-  setUserDetails: (user: UserPayload) => handleLogin(user, set),
-
-  setErrorMessage: (errorMessage: string) => set(state => ({ ...state, errorMessage })),
-
-  setScreenState: (screenState: SCREEN_STATE) => set(state => ({ ...state, state: screenState })),
-
-  setCouponCode: (couponCode: string) =>
-    set(state => ({
-      ...state,
-      user: {
-        ...state.user,
-        couponCode,
-      },
-    })),
-
-  inputDetails: () => get().input,
-
-  setShowModal: (bool: boolean) =>
-    set(state => ({ ...state, input: { ...state.input, showModal: bool } })),
-
-  setInputCoupon: (couponCode: string) =>
-    set(state => ({ ...state, input: { ...state.input, couponCode } })),
-
-  setInputFullName: (fullName: string) =>
-    set(state => ({ ...state, input: { ...state.input, fullName } })),
-
-  setInputEmail: (email: string) => set(state => ({ ...state, input: { ...state.input, email } })),
-
-  setInputPassword: (password: string) =>
-    set(state => ({ ...state, input: { ...state.input, password } })),
-
-  setInputIsFullNameEntered: (isFullNameEntered: boolean) =>
-    set(state => ({ ...state, input: { ...state.input, isFullNameEntered } })),
-
-  setLogout: () => set(initialStateData),
-}));
+export const useAuth = create<AuthStoreContext>()(
+  persist(
+    (set, get) => ({
+      ...initialStateData,
+      userDetails: () => get().user,
+      setUserDetails: (user: UserPayload) => handleLogin(user, set),
+      setErrorMessage: (errorMessage: string) => set(state => ({ ...state, errorMessage })),
+      setScreenState: (screenState: SCREEN_STATE) =>
+        set(state => ({ ...state, state: screenState })),
+      setCouponCode: (couponCode: string) =>
+        set(state => ({
+          ...state,
+          user: {
+            ...state.user,
+            couponCode,
+          },
+        })),
+      inputDetails: () => get().input,
+      setShowModal: (bool: boolean) =>
+        set(state => ({ ...state, input: { ...state.input, showModal: bool } })),
+      setInputCoupon: (couponCode: string) =>
+        set(state => ({ ...state, input: { ...state.input, couponCode } })),
+      setInputFullName: (fullName: string) =>
+        set(state => ({ ...state, input: { ...state.input, fullName } })),
+      setInputEmail: (email: string) =>
+        set(state => ({ ...state, input: { ...state.input, email } })),
+      setInputPassword: (password: string) =>
+        set(state => ({ ...state, input: { ...state.input, password } })),
+      setInputIsFullNameEntered: (isFullNameEntered: boolean) =>
+        set(state => ({ ...state, input: { ...state.input, isFullNameEntered } })),
+      setLogout: () => set(initialStateData),
+    }),
+    {
+      name: 'auth-storage',
+      storage: createJSONStorage(() => sessionStorage),
+    },
+  ),
+);

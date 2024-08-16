@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { FC } from 'react';
 import { APP_ROUTES } from '../constants/enums';
-import { Details, Groups, Home, Languages, Profile, Settings } from '../screens';
+import { Details, GroupCreation, Home, Languages, Profile, Settings } from '../screens';
 import { NavigationParams } from '../types/types';
 
 const Stack = createNativeStackNavigator<NavigationParams>();
@@ -21,7 +21,7 @@ export const HomeStack: FC = () => {
       />
       <Stack.Screen
         name={APP_ROUTES.groups}
-        component={Groups}
+        component={GroupCreation}
         options={{ animation: 'slide_from_right' }}
       />
     </Stack.Navigator>

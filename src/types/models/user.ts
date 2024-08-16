@@ -9,4 +9,5 @@ export type UserRole = {
   couponCode?: string;
   token: string;
   error?: string;
+  groupIds: Array<string>;
 };

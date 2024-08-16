@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { LogBox, Text } from 'react-native';
 import { ToastProvider } from 'react-native-toast-notifications';
 import { MainNavigator } from './navigation';
 import { theme } from './themes';
@@ -13,6 +13,7 @@ interface TextWithDefaultProps extends Text {
   (Text as unknown as TextWithDefaultProps).defaultProps ?? {};
 (Text as unknown as TextWithDefaultProps).defaultProps!.allowFontScaling = false;
 
+LogBox.ignoreAllLogs();
 const App = (): JSX.Element => {
   return (
     <ToastProvider

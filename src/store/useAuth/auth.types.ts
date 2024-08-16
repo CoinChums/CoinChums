@@ -2,16 +2,7 @@ import { SCREEN_STATE } from '../../constants/enums';
 import { UserPayload } from '../../screens/Authentication/types';
 import { UserRole } from '../../types/models/user';
 
-export type LoginPayload = {
-  user: UserRole;
-  allowLogin: boolean;
-};
-
-export type LogoutPayload = {
-  allowLogin: boolean;
-};
-
-export type UserInput = {
+export type UserProfile = {
   fullName: string;
   email: string;
   password: string;
@@ -20,17 +11,31 @@ export type UserInput = {
   couponCode: string;
 };
 
-export type InitialAuthState = {
+export type AuthStateBase = {
   isAuthenticated: boolean;
   state: SCREEN_STATE;
   user: UserRole;
-  input: UserInput;
   errorMessage: string;
+};
+
+export type LoginPayload = UserProfile & {
+  user: UserRole;
+  allowLogin: boolean;
+};
+
+export type LogoutPayload = {
+  allowLogin: boolean;
+};
+
+export type UserInput = UserProfile;
+
+export type AuthInitialState = AuthStateBase & {
+  input: UserInput;
 };
 
 export type GetLoggedInUser = () => UserRole | undefined;
 
-export type UseAuthStore = InitialAuthState & {
+export type AuthActionTypes = {
   userDetails: GetLoggedInUser;
   setUserDetails: (user: UserPayload) => Promise<void>;
   setErrorMessage: (errorMessage: string) => void;
@@ -45,3 +50,5 @@ export type UseAuthStore = InitialAuthState & {
   setInputIsFullNameEntered: (isFullNameEntered: boolean) => void;
   setLogout: () => void;
 };
+
+export type AuthStoreContext = AuthInitialState & AuthActionTypes;
