@@ -1,10 +1,10 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
 import { IndicatorView } from '../components';
 import { ASYNC_STORAGE, CONSTANTS, TOAST_TYPE } from '../constants/enums';
+import { getAsyncItem } from '../services/storage.service';
 import { useAuth } from '../store/useAuth/auth.store';
 import { loader } from '../utils/helper';
 import { AuthStack } from './AuthStack';
@@ -19,8 +19,8 @@ export const MainNavigator = () => {
   useEffect(() => {
     (async () => {
       try {
-        const accessToken = await AsyncStorage.getItem(ASYNC_STORAGE.ACCESS_TOKEN);
-        const couponCode = await AsyncStorage.getItem(ASYNC_STORAGE.COUPON);
+        const accessToken = await getAsyncItem(ASYNC_STORAGE.ACCESS_TOKEN);
+        const couponCode = await getAsyncItem(ASYNC_STORAGE.COUPON);
         const isAuthenticated = accessToken && couponCode;
         setAuthenticationState(!!isAuthenticated);
       } catch {

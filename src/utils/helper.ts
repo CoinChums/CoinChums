@@ -1,4 +1,5 @@
-import { createRef } from 'react';
+import React, { createRef, ReactElement, ReactNode } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { IndicatorRef } from '../components/Indicator/Indicator';
 
 const boxShadow = (color: string, offset = { height: 2, width: 2 }, radius = 8, opacity = 0.2) => {
@@ -45,12 +46,45 @@ const validateCredentials = (email: string, password: string) => {
   };
 };
 
+const removeItemById = <T extends { _id: string }>(items: T[], id: string): T[] =>
+  items.filter(item => item._id !== id);
+
+const convertPercentageToNumber = (percentage: string) => {
+  if (!percentage.endsWith('%')) {
+    throw new Error('Invalid percentage string');
+  }
+  const numberString = percentage.replace('%', '');
+  return parseInt(numberString, 10);
+};
+
+const addUniqueIdToChildren = (children: ReactNode, primaryKey: string = 'key'): ReactElement[] => {
+  try {
+    return React.Children.toArray(children).map(child => {
+      if (React.isValidElement(child)) {
+        if (!child.props[primaryKey]) {
+          return React.cloneElement(child, { ...child.props, [primaryKey]: uuidv4() });
+        }
+      }
+      return child;
+    }) as ReactElement[];
+  } catch (err) {
+    console.error('Error adding unique IDs to children:', err);
+    return React.Children.toArray(children) as ReactElement[];
+  }
+};
+
+const isNotEmpty = (text: string) => text?.toString().trim()?.length > 0;
+
 export {
+  addUniqueIdToChildren,
   boxShadow,
+  convertPercentageToNumber,
   delay,
   emptyFunction,
   generateRandomId,
   loader,
-  validateTextInput,
+  removeItemById,
   validateCredentials,
+  validateTextInput,
+  isNotEmpty,
 };

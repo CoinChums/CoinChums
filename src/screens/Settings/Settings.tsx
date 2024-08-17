@@ -1,10 +1,10 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { BaseLayout, Header, SVGImage } from '../../components';
 import { APP_ROUTES, ASYNC_STORAGE } from '../../constants/enums';
+import { removeAsyncItem } from '../../services/storage.service';
 import { useAuth } from '../../store/useAuth/auth.store';
 import { theme } from '../../themes';
 import { spacing } from '../../themes/spacing';
@@ -19,8 +19,8 @@ const Settings = () => {
 
   const handleLogout = async () => {
     try {
-      await AsyncStorage.removeItem(ASYNC_STORAGE.ACCESS_TOKEN);
-      await AsyncStorage.removeItem(ASYNC_STORAGE.COUPON);
+      await removeAsyncItem(ASYNC_STORAGE.ACCESS_TOKEN);
+      await removeAsyncItem(ASYNC_STORAGE.COUPON);
       setLogout();
     } catch (error) {
       console.error('Failed to remove item:', error);
